@@ -687,6 +687,11 @@ h3 {
   padding-bottom: 96px;
 }
 
+.iteration-intro-section {
+  border-top: none;
+  border-bottom: none;
+}
+
 .task-findings {
   margin-top: 32px;
 }
@@ -1049,6 +1054,22 @@ figcaption {
   width: 100%;
   border-radius: 24px;
   background: var(--soft);
+}
+
+.testing-photos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  padding: 0 5vw;
+  margin-top: -72px;
+}
+
+.testing-photos img {
+  width: 100%;
+  aspect-ratio: 16 / 4.5;
+  object-fit: cover;
+  border-radius: 24px;
+  display: block;
 }
 
 .final-gallery {
