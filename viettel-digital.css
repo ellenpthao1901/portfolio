@@ -493,10 +493,11 @@ a {
 
 .pods-feature-diamonds-row {
   display: grid;
-  grid-template-columns: repeat(3, minmax(160px, 1fr));
-  gap: clamp(32px, 6vw, 96px);
+  grid-template-columns: repeat(3, minmax(120px, 220px));
+  gap: clamp(48px, 8vw, 120px);
   width: 100%;
   max-width: 1100px;
+  justify-content: center;
 }
 
 .pods-feature-diamond {
@@ -508,19 +509,17 @@ a {
   justify-content: center;
   padding: 16% 14%;
   text-align: center;
-  background:
-    linear-gradient(135deg, rgba(180, 192, 255, 0.22), rgba(204, 178, 235, 0.22) 50%, rgba(178, 196, 235, 0.22) 100%),
-    rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(235, 235, 235, 0.16);
+  background: linear-gradient(135deg, #e8b4f0 0%, #b8c8f8 50%, #d0e8ff 100%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 14px;
   transform: rotate(45deg);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .pods-feature-diamond-text {
   display: inline-block;
   transform: rotate(-45deg);
-  color: var(--ink);
+  color: #2a2050;
   font-size: clamp(14px, 1.1vw, 17px);
   font-weight: 500;
   line-height: 1.35;
@@ -535,6 +534,98 @@ a {
   letter-spacing: -0.32px;
   text-align: center;
   max-width: 720px;
+  margin: 0 auto;
+}
+
+.pods-survey-pie {
+  grid-column: 2 / 3;
+  display: grid;
+  justify-items: center;
+  gap: 28px;
+  margin-top: 36px;
+}
+
+.pods-survey-pie-chart {
+  position: relative;
+  width: clamp(220px, 22vw, 320px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(206, 178, 235, 0.55) 0% 84%,
+    rgba(178, 196, 235, 0.55) 84% 100%
+  );
+  /* slight gap between slices, drawn with a thin border-coloured wedge */
+}
+
+.pods-survey-pie-chart::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0% 83.6%,
+      var(--bg) 83.6% 84.4%,
+      transparent 84.4% 99.6%,
+      var(--bg) 99.6% 100%
+    );
+  pointer-events: none;
+}
+
+.pods-survey-pie-label {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+  z-index: 1;
+}
+
+.pods-survey-pie-label-yes {
+  top: 56%;
+  left: 58%;
+  transform: translate(-50%, -50%);
+}
+
+.pods-survey-pie-label-no {
+  top: 12%;
+  left: 22%;
+  transform: translate(-50%, -50%);
+}
+
+.pods-survey-pie-percent {
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.36px;
+}
+
+.pods-survey-pie-label-no .pods-survey-pie-percent {
+  font-size: 14px;
+}
+
+.pods-survey-pie-name {
+  color: var(--ink);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.44px;
+}
+
+.pods-survey-pie-label-no .pods-survey-pie-name {
+  font-size: 16px;
+}
+
+.pods-survey-pie-caption {
+  color: var(--ink);
+  font-size: clamp(16px, 1.3vw, 19px);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.32px;
+  text-align: center;
+  max-width: 480px;
   margin: 0 auto;
 }
 
