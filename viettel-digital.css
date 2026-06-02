@@ -765,9 +765,10 @@ h3 {
 .iteration-comparisons {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto;
   gap: clamp(40px, 6vw, 80px);
-  width: 90%;
-  max-width: 1500px;
+  width: 75%;
+  max-width: 1250px;
   margin: 0 auto;
   padding: 0 0 120px;
 }
@@ -775,6 +776,8 @@ h3 {
 .iteration-pair {
   margin: 0;
   display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
   gap: 28px;
 }
 
