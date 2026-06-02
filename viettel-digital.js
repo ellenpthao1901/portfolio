@@ -1,3 +1,18 @@
+const localTimeEl = document.querySelector("#local-time");
+
+function updateLocalTime() {
+  if (!localTimeEl) return;
+  localTimeEl.textContent = new Intl.DateTimeFormat("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+    timeZone: "America/Los_Angeles",
+  }).format(new Date());
+}
+
+updateLocalTime();
+setInterval(updateLocalTime, 30_000);
+
 const tocLinks = Array.from(document.querySelectorAll(".toc-link"));
 const tocSections = tocLinks.map(l => document.getElementById(l.dataset.section)).filter(Boolean);
 
