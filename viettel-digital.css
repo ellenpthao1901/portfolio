@@ -1065,6 +1065,11 @@ figcaption {
   margin-top: -72px;
 }
 
+.testing-photos.chapter-end {
+  padding-bottom: 96px;
+  border-bottom: 1px solid var(--line);
+}
+
 .testing-photos img {
   width: 100%;
   aspect-ratio: 16 / 4.5;
