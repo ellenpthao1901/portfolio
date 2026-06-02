@@ -681,6 +681,52 @@ h3 {
   padding-top: 96px;
 }
 
+.user-testing-task-section {
+  align-items: start;
+  padding-top: 72px;
+  padding-bottom: 96px;
+}
+
+.task-findings {
+  margin-top: 32px;
+}
+
+.task-findings-heading {
+  color: var(--ink);
+  font-size: 20.6px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: -0.44px;
+  margin: 0 0 12px;
+}
+
+.task-findings ul {
+  margin: 0 0 32px 0;
+  padding-left: 1.2em;
+}
+
+.task-findings li {
+  color: var(--muted);
+  font-size: 20.6px;
+  line-height: 32px;
+  letter-spacing: -0.44px;
+  margin-bottom: 6px;
+}
+
+.task-image-wrapper {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.task-testing-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
 .user-flow-image {
   grid-column: 1 / -1;
   width: 100%;
