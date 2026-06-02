@@ -77,15 +77,15 @@ a {
   justify-content: space-between;
   gap: 0;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 999px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06)),
-    rgba(30, 30, 30, 0.72);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.012)),
+    rgba(7, 7, 7, 0.46);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
-    0 18px 52px rgba(0, 0, 0, 0.6);
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.04),
+    0 18px 52px rgba(0, 0, 0, 0.46);
   backdrop-filter: blur(22px) saturate(135%);
   -webkit-backdrop-filter: blur(22px) saturate(135%);
 }
@@ -96,7 +96,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #c0c0c0;
+  color: #8a8a8a;
   font-size: 13px;
   font-weight: 500;
   line-height: 1;
@@ -108,7 +108,7 @@ a {
 }
 
 .site-nav a:hover {
-  color: #ffffff;
+  color: #f2f2f2;
 }
 
 .nav-on-dark .site-nav {
@@ -547,11 +547,7 @@ h3 {
 .solution-carousel {
   grid-column: 1 / -1;
   position: relative;
-  width: 69%;
-  max-width: 990px;
   margin-top: 64px;
-  margin-left: auto;
-  margin-right: auto;
   min-height: 430px;
   display: grid;
   align-items: center;
@@ -1074,6 +1070,12 @@ figcaption {
 .cards.two {
   grid-template-columns: repeat(2, 1fr);
   border-bottom: none;
+  width: 69%;
+  max-width: 990px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .cards.three {
@@ -1118,8 +1120,12 @@ figcaption {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
-  padding: 0 5vw;
+  padding: 0;
   margin-top: -72px;
+  width: 69%;
+  max-width: 990px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .testing-photos.chapter-end {
@@ -1215,6 +1221,14 @@ figcaption {
     grid-template-columns: 1fr;
   }
 
+  .cards.two,
+  .testing-photos {
+    width: auto;
+    max-width: none;
+    margin-left: 5vw;
+    margin-right: 5vw;
+  }
+
   .pain-points-table {
     grid-column: 1;
   }
@@ -1302,8 +1316,6 @@ figcaption {
   }
 
   .solution-carousel {
-    width: 100%;
-    max-width: none;
     margin-top: 56px;
     min-height: auto;
   }
