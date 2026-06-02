@@ -1179,8 +1179,7 @@ figcaption {
   font-size: 24px;
 }
 
-.phone-showcase,
-.phone-wall {
+.phone-showcase {
   display: grid;
   grid-template-columns: repeat(2, minmax(180px, 1fr));
   gap: 28px;
@@ -1188,12 +1187,28 @@ figcaption {
   margin-top: 42px;
 }
 
+.phone-wall {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 28px;
+  margin-top: 42px;
+}
+
 .phone-showcase.three-phone {
   grid-template-columns: repeat(3, minmax(160px, 1fr));
 }
 
+.phone-wall img {
+  width: 240px;
+  max-width: 240px;
+  border-radius: 24px;
+  background: var(--soft);
+  justify-self: center;
+}
+
 .phone-showcase img,
-.phone-wall img,
 .image-grid img {
   width: 100%;
   border-radius: 24px;
@@ -1243,11 +1258,6 @@ figcaption {
 
 .final-gallery .label {
   text-align: center;
-}
-
-.phone-wall {
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  justify-items: center;
 }
 
 .takeaways h2,
