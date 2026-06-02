@@ -1,7 +1,27 @@
+const tocLinks = Array.from(document.querySelectorAll(".toc-link"));
+const tocSections = tocLinks.map(l => document.getElementById(l.dataset.section)).filter(Boolean);
+
+function updateToc() {
+  const mid = window.innerHeight / 2;
+  let active = null;
+  for (const section of tocSections) {
+    const r = section.getBoundingClientRect();
+    if (r.top <= mid) active = section.id;
+  }
+  tocLinks.forEach(l => l.classList.toggle("is-active", l.dataset.section === active));
+}
+
+if (tocLinks.length) {
+  window.addEventListener("scroll", updateToc, { passive: true });
+  updateToc();
+}
+
 const navRow = document.querySelector(".nav-row");
 const videoSection = document.querySelector(".case-video");
 const wireframeSection = document.querySelector(".wireframe-section");
 const contentBlock = document.querySelector(".content-block");
+const finalGalleries = Array.from(document.querySelectorAll(".final-gallery"));
+const iterationComparisons = document.querySelector(".iteration-comparisons");
 
 function isOver(el, navBottom) {
   if (!el) return false;
@@ -13,7 +33,9 @@ function updateNav() {
   const navBottom = navRow.getBoundingClientRect().bottom;
   const onDark = isOver(videoSection, navBottom) ||
                  isOver(wireframeSection, navBottom) ||
-                 isOver(contentBlock, navBottom);
+                 isOver(contentBlock, navBottom) ||
+                 isOver(iterationComparisons, navBottom) ||
+                 finalGalleries.some(el => isOver(el, navBottom));
   navRow.classList.toggle("nav-on-dark", onDark);
 }
 
