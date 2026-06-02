@@ -714,7 +714,7 @@ h3 {
 }
 
 .task-image-wrapper {
-  grid-column: 1 / -1;
+  grid-column: 2 / 3;
   width: 100%;
   margin-top: 40px;
 }
