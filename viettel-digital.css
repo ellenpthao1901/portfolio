@@ -199,13 +199,13 @@ a {
   color: var(--ink);
 }
 
-.toc.toc-on-light .toc-link {
+.toc-link.toc-link-on-light {
   color: rgba(20, 20, 20, 0.62);
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.65);
 }
 
-.toc.toc-on-light .toc-link:hover,
-.toc.toc-on-light .toc-link.is-active {
+.toc-link.toc-link-on-light:hover,
+.toc-link.toc-link-on-light.is-active {
   color: #111111;
 }
 
@@ -451,12 +451,11 @@ a {
   gap: 16px;
 }
 
-.pods-preview-placeholder {
+.pods-preview-item img {
   width: 100%;
-  aspect-ratio: 3 / 4;
   border-radius: 20px;
   background: var(--soft);
-  border: 1px solid var(--line);
+  display: block;
 }
 
 .pods-preview-annotation {
