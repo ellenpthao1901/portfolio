@@ -483,6 +483,13 @@ a {
   margin-top: 56px;
 }
 
+.pods-chart-image {
+  width: 92%;
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .pods-feature-diamonds-row {
   display: grid;
   grid-template-columns: repeat(3, minmax(96px, 176px));
@@ -786,30 +793,29 @@ a {
 }
 
 .pods-ideation-section {
-  grid-template-columns: minmax(0, 1fr);
   align-items: start;
 }
 
 .pods-ideation-copy {
-  max-width: 1100px;
+  display: grid;
+  gap: 24px;
 }
 
 .pods-ideation-copy h2 {
-  font-size: clamp(28px, 3.5vw, 46px);
-  line-height: 1.1;
-  font-weight: 400;
-  letter-spacing: -0.5px;
+  margin: 0;
 }
 
 .pods-ideation-copy p {
-  font-size: clamp(18px, 1.4vw, 22px);
-  line-height: 1.55;
-  margin-top: 24px;
+  margin: 0;
 }
 
 .pods-ideation-image {
-  margin-top: 64px;
-  border-radius: 14px;
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 16px;
+  border-radius: 12px;
+  background: var(--soft);
 }
 
 .pods-screen-grid {
