@@ -16,10 +16,12 @@
     <link rel="stylesheet" href="viettel-digital.css" />
   </head>
   <body>
-    <header class="case-nav">
-      <a href="index.html">Work</a>
-      <a href="index.html#play">Playground</a>
-      <a href="index.html#about">About</a>
+    <header class="nav-row" aria-label="Primary navigation">
+      <nav class="site-nav">
+        <a href="index.html">Work</a>
+        <a href="index.html#play">Play</a>
+        <a href="index.html#about">About</a>
+      </nav>
     </header>
 
     <main>
@@ -435,6 +437,36 @@
           <h2>Informed 2 design decisions based on customers' feedback</h2>
           <p>Synthesizing user feedbacks and their experiences within the app, I iterated my initial designs to help users go directly on their golden path. Here are my design improvements:</p>
         </div>
+      </section>
+
+      <section class="iteration-comparisons" aria-label="Design iterations">
+        <figure class="iteration-pair">
+          <div class="iteration-pair-images">
+            <img class="iteration-image" src="assets/iteration-filter-before.webp" alt="Before: filter button hidden at the bottom of the car list" />
+            <span class="iteration-arrow" aria-hidden="true">
+              <svg viewBox="0 0 48 16" xmlns="http://www.w3.org/2000/svg">
+                <line x1="2" y1="8" x2="42" y2="8" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <polyline points="34,2 44,8 34,14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <img class="iteration-image" src="assets/iteration-filter-after.webp" alt="After: filter and seat options surfaced at the top with renamed Filter label" />
+          </div>
+          <figcaption class="iteration-caption">Add Filter Options on the top and Rename "Sort By" to "Filter" for better clarity</figcaption>
+        </figure>
+
+        <figure class="iteration-pair">
+          <div class="iteration-pair-images">
+            <img class="iteration-image" src="assets/iteration-date-before.webp" alt="Before: rental dates and pickup location shown without quick edit affordance" />
+            <span class="iteration-arrow" aria-hidden="true">
+              <svg viewBox="0 0 48 16" xmlns="http://www.w3.org/2000/svg">
+                <line x1="2" y1="8" x2="42" y2="8" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <polyline points="34,2 44,8 34,14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <img class="iteration-image" src="assets/iteration-date-after.webp" alt="After: calendar and edit icons added so users can adjust dates and location in Step 3" />
+          </div>
+          <figcaption class="iteration-caption">Allow users to adjust rental date and location in Step 3 without having to go back to Step 1 or Step 2</figcaption>
+        </figure>
       </section>
 
       <section class="split">
