@@ -763,9 +763,9 @@ h3 {
 }
 
 .iteration-comparisons {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr auto;
   gap: clamp(40px, 6vw, 80px);
   width: 75%;
   max-width: 1250px;
@@ -773,12 +773,19 @@ h3 {
   padding: 0 0 120px;
 }
 
+.iteration-comparisons::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 1px;
+  background: var(--line);
+}
+
 .iteration-pair {
   margin: 0;
-  display: grid;
-  grid-row: span 2;
-  grid-template-rows: subgrid;
-  gap: 28px;
 }
 
 .iteration-pair-images {
