@@ -1178,7 +1178,7 @@ h3 {
 }
 
 .next-project-title {
-  font-size: clamp(64px, 9vw, 140px);
+  font-size: clamp(32px, 4.5vw, 70px);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.04em;
