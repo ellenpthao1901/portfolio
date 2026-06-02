@@ -1129,8 +1129,20 @@ figcaption {
 }
 
 .testing-photos.chapter-end {
+  position: relative;
   padding-bottom: 96px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: none;
+}
+
+.testing-photos.chapter-end::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 1px;
+  background: var(--line);
 }
 
 .testing-photos img {
