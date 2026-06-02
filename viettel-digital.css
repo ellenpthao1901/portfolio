@@ -941,6 +941,10 @@ h3 {
   border-bottom: 1px solid var(--line);
 }
 
+.content-block {
+  border-top: none !important;
+}
+
 .content-block > p:not(.eyebrow),
 .solution > p:not(.label),
 .takeaways > p,
@@ -997,6 +1001,7 @@ figcaption {
   display: grid;
   gap: 24px;
   padding: 0 5vw 96px;
+  border-bottom: none;
 }
 
 .no-border-bottom {
@@ -1005,6 +1010,7 @@ figcaption {
 
 .cards.two {
   grid-template-columns: repeat(2, 1fr);
+  border-bottom: none;
 }
 
 .cards.three {
