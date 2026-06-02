@@ -692,6 +692,10 @@ h3 {
   border-bottom: none;
 }
 
+.final-design-split {
+  border-top: 1px solid var(--line);
+}
+
 .task-findings {
   margin-top: 32px;
 }
