@@ -441,21 +441,24 @@ a {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr auto;
   gap: 28px;
   margin-top: 16px;
 }
 
 .pods-preview-item {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
   gap: 16px;
 }
 
 .pods-preview-item img {
   width: 100%;
   border-radius: 20px;
-  background: var(--soft);
+  background: var(--bg);
   display: block;
+  align-self: center;
 }
 
 .pods-preview-annotation {
@@ -472,12 +475,67 @@ a {
   margin-top: 36px;
   display: block;
   border-radius: 12px;
-  background: var(--soft);
+  background: var(--bg);
 }
 
 .pods-section-image-wide {
   grid-column: 1 / -1;
   margin-top: 56px;
+}
+
+.pods-feature-diamonds {
+  background: var(--bg);
+  padding: 56px 0 0;
+  display: grid;
+  gap: 56px;
+  justify-items: center;
+}
+
+.pods-feature-diamonds-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(160px, 1fr));
+  gap: clamp(32px, 6vw, 96px);
+  width: 100%;
+  max-width: 1100px;
+}
+
+.pods-feature-diamond {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16% 14%;
+  text-align: center;
+  background:
+    linear-gradient(135deg, rgba(180, 192, 255, 0.22), rgba(204, 178, 235, 0.22) 50%, rgba(178, 196, 235, 0.22) 100%),
+    rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(235, 235, 235, 0.16);
+  border-radius: 14px;
+  transform: rotate(45deg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.pods-feature-diamond-text {
+  display: inline-block;
+  transform: rotate(-45deg);
+  color: var(--ink);
+  font-size: clamp(14px, 1.1vw, 17px);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.32px;
+  max-width: 11ch;
+}
+
+.pods-feature-diamonds-caption {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: -0.32px;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .pods-screen-grid {
@@ -1787,6 +1845,12 @@ figcaption {
 
   .pods-section-image {
     grid-column: 1 / -1;
+  }
+
+  .pods-feature-diamonds-row {
+    grid-template-columns: 1fr;
+    gap: 64px;
+    max-width: 320px;
   }
 
   .info-grid,
