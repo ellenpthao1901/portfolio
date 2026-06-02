@@ -13,6 +13,25 @@
   box-sizing: border-box;
 }
 
+.page-fade {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg);
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.page-fade.is-loaded {
+  opacity: 0;
+}
+
+.page-fade.is-leaving {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .cursor-dot {
   position: fixed;
   top: 0;
@@ -177,6 +196,44 @@ a {
   color: var(--ink);
 }
 
+.intro {
+  min-height: 114px;
+  display: grid;
+  grid-template-columns: minmax(320px, 52.7vw) 1fr;
+  align-items: center;
+  padding: 28px 16px;
+  border-bottom: 1px solid var(--line);
+  margin-top: 76px;
+}
+
+.identity h1,
+.identity .project-title {
+  font-size: 20.6px;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.44px;
+  line-height: 26px;
+  margin: 0;
+}
+
+.identity p,
+.identity .project-subtitle {
+  font-size: 20.6px;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: -0.44px;
+  line-height: 26px;
+  margin: 0;
+}
+
+.statement {
+  font-size: 20.6px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: -0.44px;
+  color: var(--muted);
+}
+
 .page-intro {
   display: grid;
   grid-template-columns: minmax(320px, 52.7vw) 1fr;
@@ -249,9 +306,18 @@ a {
 .project-intro {
   min-height: 238px;
   display: grid;
+  grid-template-columns: minmax(320px, 52.7vw) 1fr;
   align-items: center;
   padding: 60px 10%;
   border-bottom: 1px solid var(--line);
+}
+
+.project-statement {
+  color: var(--muted);
+  font-size: 20.6px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: -0.44px;
 }
 
 .project-title,

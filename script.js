@@ -1,3 +1,39 @@
+// Page fade transition
+const pageFade = document.createElement("div");
+pageFade.className = "page-fade";
+document.body.appendChild(pageFade);
+
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => pageFade.classList.add("is-loaded"));
+});
+
+window.addEventListener("pageshow", (e) => {
+  if (e.persisted) {
+    pageFade.classList.remove("is-leaving");
+    pageFade.classList.add("is-loaded");
+  }
+});
+
+document.addEventListener("click", (event) => {
+  const link = event.target.closest("a");
+  if (!link) return;
+  const href = link.getAttribute("href");
+  if (!href) return;
+  if (href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return;
+  if (link.target === "_blank" || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+  const url = new URL(link.href, window.location.href);
+  if (url.origin !== window.location.origin) return;
+  if (url.pathname === window.location.pathname) return;
+
+  event.preventDefault();
+  pageFade.classList.remove("is-loaded");
+  pageFade.classList.add("is-leaving");
+  setTimeout(() => {
+    window.location.href = link.href;
+  }, 380);
+});
+
 const cursor = document.querySelector(".cursor-dot");
 const localTime = document.querySelector("#local-time");
 
