@@ -390,11 +390,13 @@ a {
 .pods-cover {
   padding: 0;
   background: var(--bg);
+  overflow: hidden;
 }
 
 .pods-cover img {
   display: block;
-  width: 100%;
+  width: 102%;
+  margin: -1% -1% -2%;
   height: auto;
   max-height: none;
   object-fit: cover;
@@ -416,6 +418,61 @@ a {
   height: auto;
   border-radius: 14px;
   background: var(--soft);
+}
+
+.pods-preview {
+  padding: 96px 5vw;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 64px;
+}
+
+.pods-preview-header {
+  display: grid;
+  grid-template-columns: minmax(200px, 30%) 1fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+
+.pods-preview-copy h2 {
+  font-size: clamp(24px, 2.8vw, 42px);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.pods-preview-copy p {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.pods-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.pods-preview-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pods-preview-placeholder {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 20px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+}
+
+.pods-preview-annotation {
+  font-size: 14px;
+  color: var(--muted);
+  letter-spacing: -0.28px;
+  text-align: center;
 }
 
 .pods-section-image {
