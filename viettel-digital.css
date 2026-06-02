@@ -999,6 +999,10 @@ figcaption {
   padding: 0 5vw 96px;
 }
 
+.no-border-bottom {
+  border-bottom: none !important;
+}
+
 .cards.two {
   grid-template-columns: repeat(2, 1fr);
 }
