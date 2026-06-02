@@ -1,3 +1,27 @@
+const navRow = document.querySelector(".nav-row");
+const videoSection = document.querySelector(".case-video");
+const wireframeSection = document.querySelector(".wireframe-section");
+const contentBlock = document.querySelector(".content-block");
+
+function isOver(el, navBottom) {
+  if (!el) return false;
+  const r = el.getBoundingClientRect();
+  return r.top < navBottom && r.bottom > 0;
+}
+
+function updateNav() {
+  const navBottom = navRow.getBoundingClientRect().bottom;
+  const onDark = isOver(videoSection, navBottom) ||
+                 isOver(wireframeSection, navBottom) ||
+                 isOver(contentBlock, navBottom);
+  navRow.classList.toggle("nav-on-dark", onDark);
+}
+
+if (navRow) {
+  window.addEventListener("scroll", updateNav, { passive: true });
+  updateNav();
+}
+
 const cursor = document.querySelector(".cursor-dot");
 
 if (cursor) {
@@ -18,6 +42,15 @@ const previousSolutionButton = document.querySelector(".solution-nav-prev");
 const nextSolutionButton = document.querySelector(".solution-nav-next");
 let activeSolutionIndex = 0;
 let solutionTransitionTimer;
+
+function updateSolutionNavVisibility() {
+  if (previousSolutionButton) {
+    previousSolutionButton.classList.toggle("is-hidden", activeSolutionIndex === 0);
+  }
+  if (nextSolutionButton) {
+    nextSolutionButton.classList.toggle("is-hidden", activeSolutionIndex === solutionSlides.length - 1);
+  }
+}
 
 function showSolution(index, direction = "next") {
   if (!solutionSlides.length) return;
@@ -41,16 +74,20 @@ function showSolution(index, direction = "next") {
     dot.classList.toggle("is-active", dotIndex === activeSolutionIndex);
   });
 
+  updateSolutionNavVisibility();
+
   solutionTransitionTimer = window.setTimeout(() => {
     solutionSlides.forEach((slide) => slide.classList.remove("is-exiting"));
   }, 620);
 }
 
 previousSolutionButton?.addEventListener("click", () => {
+  if (activeSolutionIndex === 0) return;
   showSolution(activeSolutionIndex - 1, "prev");
 });
 
 nextSolutionButton?.addEventListener("click", () => {
+  if (activeSolutionIndex === solutionSlides.length - 1) return;
   showSolution(activeSolutionIndex + 1, "next");
 });
 
@@ -59,6 +96,8 @@ solutionDots.forEach((dot, dotIndex) => {
     showSolution(dotIndex, dotIndex < activeSolutionIndex ? "prev" : "next");
   });
 });
+
+updateSolutionNavVisibility();
 
 const flowSlides = Array.from(document.querySelectorAll("[data-flow-slide]"));
 const flowDots = Array.from(document.querySelectorAll(".flow-dots button"));
