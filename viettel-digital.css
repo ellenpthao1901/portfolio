@@ -483,14 +483,6 @@ a {
   margin-top: 56px;
 }
 
-.pods-feature-diamonds {
-  background: var(--bg);
-  padding: 56px 0 0;
-  display: grid;
-  gap: 56px;
-  justify-items: center;
-}
-
 .pods-feature-diamonds-row {
   display: grid;
   grid-template-columns: repeat(3, minmax(120px, 220px));
@@ -537,12 +529,25 @@ a {
   margin: 0 auto;
 }
 
+.pods-survey-bottom {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(200px, 280px) 1fr;
+  gap: clamp(48px, 6vw, 96px);
+  align-items: start;
+  margin-top: 56px;
+}
+
 .pods-survey-pie {
-  grid-column: 2 / 3;
   display: grid;
   justify-items: center;
-  gap: 28px;
-  margin-top: 36px;
+  gap: 20px;
+}
+
+.pods-feature-diamonds {
+  display: grid;
+  gap: 32px;
+  align-content: start;
 }
 
 .pods-survey-pie-chart {
@@ -552,10 +557,9 @@ a {
   border-radius: 50%;
   background: conic-gradient(
     from 0deg,
-    rgba(206, 178, 235, 0.55) 0% 84%,
-    rgba(178, 196, 235, 0.55) 84% 100%
+    #e8b4f0 0% 84%,
+    #b8c8f8 84% 100%
   );
-  /* slight gap between slices, drawn with a thin border-coloured wedge */
 }
 
 .pods-survey-pie-chart::after {
@@ -627,6 +631,139 @@ a {
   text-align: center;
   max-width: 480px;
   margin: 0 auto;
+}
+
+.persona-carousel {
+  grid-column: 1 / -1;
+  position: relative;
+  margin-top: 56px;
+  min-height: clamp(360px, 50vh, 560px);
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+}
+
+.persona-slide {
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 64px 52px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(34px) scale(0.985);
+  transition:
+    opacity 560ms ease,
+    transform 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 560ms step-end;
+  visibility: hidden;
+}
+
+.persona-slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+  transition:
+    opacity 560ms ease,
+    transform 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s;
+  visibility: visible;
+}
+
+.persona-slide.is-exiting {
+  opacity: 0;
+  transform: translateX(-34px) scale(0.985);
+  visibility: visible;
+}
+
+.persona-carousel.is-prev .persona-slide {
+  transform: translateX(-34px) scale(0.985);
+}
+
+.persona-carousel.is-prev .persona-slide.is-active {
+  transform: translateX(0) scale(1);
+}
+
+.persona-carousel.is-prev .persona-slide.is-exiting {
+  transform: translateX(34px) scale(0.985);
+}
+
+.persona-slide img {
+  display: block;
+  width: 100%;
+  max-width: 1100px;
+  height: auto;
+  border-radius: 12px;
+  background: var(--soft);
+}
+
+.persona-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 0;
+  padding: 0;
+  transform: translateY(-50%);
+  transition: opacity 200ms ease;
+}
+
+.persona-nav.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.persona-nav img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: brightness(0) invert(1) opacity(0.65);
+  transition: filter 160ms ease;
+}
+
+.persona-nav:hover img {
+  filter: brightness(0) invert(1) opacity(1);
+}
+
+.persona-nav-prev {
+  left: 0;
+}
+
+.persona-nav-next {
+  right: 0;
+}
+
+.persona-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.persona-dots button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(235, 235, 235, 0.28);
+  cursor: pointer;
+  transition: background 160ms ease;
+}
+
+.persona-dots button.is-active {
+  background: var(--ink);
 }
 
 .pods-screen-grid {

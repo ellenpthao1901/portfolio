@@ -203,6 +203,69 @@ solutionDots.forEach((dot, dotIndex) => {
 
 updateSolutionNavVisibility();
 
+const personaSlides = Array.from(document.querySelectorAll("[data-persona-slide]"));
+const personaDots = Array.from(document.querySelectorAll(".persona-dots button"));
+const personaCarousel = document.querySelector(".persona-carousel");
+const previousPersonaButton = document.querySelector(".persona-nav-prev");
+const nextPersonaButton = document.querySelector(".persona-nav-next");
+let activePersonaIndex = 0;
+let personaTransitionTimer;
+
+function updatePersonaNavVisibility() {
+  if (previousPersonaButton) {
+    previousPersonaButton.classList.toggle("is-hidden", activePersonaIndex === 0);
+  }
+  if (nextPersonaButton) {
+    nextPersonaButton.classList.toggle("is-hidden", activePersonaIndex === personaSlides.length - 1);
+  }
+}
+
+function showPersona(index, direction = "next") {
+  if (!personaSlides.length) return;
+  const nextIndex = (index + personaSlides.length) % personaSlides.length;
+  if (nextIndex === activePersonaIndex) return;
+
+  window.clearTimeout(personaTransitionTimer);
+  personaSlides.forEach((slide) => slide.classList.remove("is-exiting"));
+
+  personaCarousel?.classList.toggle("is-prev", direction === "prev");
+  personaSlides[activePersonaIndex]?.classList.add("is-exiting");
+  personaSlides[activePersonaIndex]?.classList.remove("is-active");
+  activePersonaIndex = nextIndex;
+
+  personaSlides.forEach((slide, slideIndex) => {
+    slide.classList.toggle("is-active", slideIndex === activePersonaIndex);
+  });
+
+  personaDots.forEach((dot, dotIndex) => {
+    dot.classList.toggle("is-active", dotIndex === activePersonaIndex);
+  });
+
+  updatePersonaNavVisibility();
+
+  personaTransitionTimer = window.setTimeout(() => {
+    personaSlides.forEach((slide) => slide.classList.remove("is-exiting"));
+  }, 620);
+}
+
+previousPersonaButton?.addEventListener("click", () => {
+  if (activePersonaIndex === 0) return;
+  showPersona(activePersonaIndex - 1, "prev");
+});
+
+nextPersonaButton?.addEventListener("click", () => {
+  if (activePersonaIndex === personaSlides.length - 1) return;
+  showPersona(activePersonaIndex + 1, "next");
+});
+
+personaDots.forEach((dot, dotIndex) => {
+  dot.addEventListener("click", () => {
+    showPersona(dotIndex, dotIndex < activePersonaIndex ? "prev" : "next");
+  });
+});
+
+updatePersonaNavVisibility();
+
 const flowSlides = Array.from(document.querySelectorAll("[data-flow-slide]"));
 const flowDots = Array.from(document.querySelectorAll(".flow-dots button"));
 const flowCarousel = document.querySelector(".flow-carousel");

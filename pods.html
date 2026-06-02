@@ -122,33 +122,38 @@
             their study difficulties and the platform features they wished existed.
           </p>
         </div>
-        <div class="pods-section-image pods-survey-pie" role="figure" aria-label="84% of surveyed students want a more effective way to learn">
-          <div class="pods-survey-pie-chart" aria-hidden="true">
-            <span class="pods-survey-pie-label pods-survey-pie-label-yes">
-              <span class="pods-survey-pie-percent">84.0%</span>
-              <span class="pods-survey-pie-name">Yes</span>
-            </span>
-            <span class="pods-survey-pie-label pods-survey-pie-label-no">
-              <span class="pods-survey-pie-percent">16.0%</span>
-              <span class="pods-survey-pie-name">No</span>
-            </span>
-          </div>
-          <p class="pods-survey-pie-caption">Are you seeking a more effective way to learn and enhance your productivity?</p>
-        </div>
 
-        <div class="pods-section-image pods-section-image-wide pods-feature-diamonds" aria-label="Top three features users want to see in the new app">
-          <div class="pods-feature-diamonds-row">
-            <div class="pods-feature-diamond">
-              <span class="pods-feature-diamond-text">Organize all materials in one place</span>
+        <img class="pods-section-image pods-section-image-wide" src="assets/pods/line-chart.png" alt="Survey data line chart" />
+
+        <div class="pods-survey-bottom">
+          <div class="pods-survey-pie" role="figure" aria-label="84% of surveyed students want a more effective way to learn">
+            <div class="pods-survey-pie-chart" aria-hidden="true">
+              <span class="pods-survey-pie-label pods-survey-pie-label-yes">
+                <span class="pods-survey-pie-percent">84.0%</span>
+                <span class="pods-survey-pie-name">Yes</span>
+              </span>
+              <span class="pods-survey-pie-label pods-survey-pie-label-no">
+                <span class="pods-survey-pie-percent">16.0%</span>
+                <span class="pods-survey-pie-name">No</span>
+              </span>
             </div>
-            <div class="pods-feature-diamond">
-              <span class="pods-feature-diamond-text">Summarize materials into key points</span>
-            </div>
-            <div class="pods-feature-diamond">
-              <span class="pods-feature-diamond-text">Offer features that let users explore and learn materials</span>
-            </div>
+            <p class="pods-survey-pie-caption">Are you seeking a more effective way to learn and enhance your productivity?</p>
           </div>
-          <p class="pods-feature-diamonds-caption">Top three features users want to see in the new app</p>
+
+          <div class="pods-feature-diamonds" aria-label="Top three features users want to see in the new app">
+            <div class="pods-feature-diamonds-row">
+              <div class="pods-feature-diamond">
+                <span class="pods-feature-diamond-text">Organize all materials in one place</span>
+              </div>
+              <div class="pods-feature-diamond">
+                <span class="pods-feature-diamond-text">Summarize materials into key points</span>
+              </div>
+              <div class="pods-feature-diamond">
+                <span class="pods-feature-diamond-text">Offer features that let users explore and learn materials</span>
+              </div>
+            </div>
+            <p class="pods-feature-diamonds-caption">Top three features users want to see in the new app</p>
+          </div>
         </div>
       </section>
 
@@ -162,8 +167,29 @@
             efficiently while multitasking.
           </p>
         </div>
-        <img class="pods-section-image" src="assets/pods/persona-lily.png" alt="Lily Ng — passionate PhD student persona" />
-        <img class="pods-section-image" src="assets/pods/persona-edward.png" alt="Edward White — tenure CS professor persona" />
+
+        <div class="persona-carousel" aria-label="Persona carousel">
+          <button class="persona-nav persona-nav-prev" type="button" aria-label="Previous persona">
+            <img src="assets/arrow-left.png" alt="" />
+          </button>
+
+          <div class="persona-slide is-active" data-persona-slide>
+            <img src="assets/pods/persona-lily.png" alt="Lily Ng — passionate PhD student persona" />
+          </div>
+
+          <div class="persona-slide" data-persona-slide>
+            <img src="assets/pods/persona-edward.png" alt="Edward White — tenure CS professor persona" />
+          </div>
+
+          <button class="persona-nav persona-nav-next" type="button" aria-label="Next persona">
+            <img src="assets/arrow-right.png" alt="" />
+          </button>
+
+          <div class="persona-dots" aria-label="Choose persona">
+            <button class="is-active" type="button" aria-label="Show persona 1"></button>
+            <button type="button" aria-label="Show persona 2"></button>
+          </div>
+        </div>
       </section>
 
       <section class="stakeholder-quote">
