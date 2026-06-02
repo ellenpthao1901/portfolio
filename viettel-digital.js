@@ -1,3 +1,16 @@
+const cursor = document.querySelector(".cursor-dot");
+
+if (cursor) {
+  window.addEventListener("pointermove", (event) => {
+    cursor.style.opacity = "1";
+    cursor.style.transform = `translate3d(${event.clientX - 5}px, ${event.clientY - 5}px, 0)`;
+  });
+
+  window.addEventListener("pointerleave", () => {
+    cursor.style.opacity = "0";
+  });
+}
+
 const solutionSlides = Array.from(document.querySelectorAll("[data-solution-slide]"));
 const solutionDots = Array.from(document.querySelectorAll(".solution-dots button"));
 const solutionCarousel = document.querySelector(".solution-carousel");
