@@ -188,12 +188,25 @@ a {
   text-transform: uppercase;
   color: var(--meta);
   pointer-events: auto;
-  transition: color 200ms ease;
+  transition:
+    color 220ms ease,
+    background 220ms ease,
+    text-shadow 220ms ease;
 }
 
 .toc-link:hover,
 .toc-link.is-active {
   color: var(--ink);
+}
+
+.toc.toc-on-light .toc-link {
+  color: rgba(20, 20, 20, 0.62);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.65);
+}
+
+.toc.toc-on-light .toc-link:hover,
+.toc.toc-on-light .toc-link.is-active {
+  color: #111111;
 }
 
 .intro {
@@ -420,38 +433,16 @@ a {
   background: var(--soft);
 }
 
-.pods-preview {
-  padding: 96px 5vw;
-  border-bottom: 1px solid var(--line);
-  display: grid;
-  gap: 64px;
-}
-
-.pods-preview-header {
-  display: grid;
-  grid-template-columns: minmax(200px, 30%) 1fr;
-  gap: clamp(40px, 6vw, 96px);
-  align-items: start;
-}
-
-.pods-preview-copy h2 {
-  font-size: clamp(24px, 2.8vw, 42px);
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
-
-.pods-preview-copy p {
-  font-size: 16px;
-  color: var(--muted);
-  line-height: 1.7;
+.pods-preview.case-text-section {
+  padding-bottom: 96px;
 }
 
 .pods-preview-grid {
+  grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
+  margin-top: 16px;
 }
 
 .pods-preview-item {

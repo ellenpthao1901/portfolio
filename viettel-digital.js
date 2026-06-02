@@ -68,16 +68,25 @@ if (tocLinks.length) {
 }
 
 const navRow = document.querySelector(".nav-row");
+const tocRail = document.querySelector(".toc");
 const videoSection = document.querySelector(".case-video");
 const wireframeSection = document.querySelector(".wireframe-section");
 const contentBlock = document.querySelector(".content-block");
 const finalGalleries = Array.from(document.querySelectorAll(".final-gallery"));
 const iterationComparisons = document.querySelector(".iteration-comparisons");
+const podsCover = document.querySelector(".pods-cover");
+const podsOverviewImages = document.querySelector(".pods-overview-images");
 
 function isOver(el, navBottom) {
   if (!el) return false;
   const r = el.getBoundingClientRect();
   return r.top < navBottom && r.bottom > 0;
+}
+
+function intersectsBand(el, top, bottom) {
+  if (!el) return false;
+  const r = el.getBoundingClientRect();
+  return r.top < bottom && r.bottom > top;
 }
 
 function updateNav() {
@@ -86,8 +95,22 @@ function updateNav() {
                  isOver(wireframeSection, navBottom) ||
                  isOver(contentBlock, navBottom) ||
                  isOver(iterationComparisons, navBottom) ||
+                 isOver(podsCover, navBottom) ||
+                 isOver(podsOverviewImages, navBottom) ||
                  finalGalleries.some(el => isOver(el, navBottom));
   navRow.classList.toggle("nav-on-dark", onDark);
+
+  if (tocRail) {
+    const top = 0;
+    const bottom = window.innerHeight;
+    const onLight = intersectsBand(podsCover, top, bottom) ||
+                    intersectsBand(podsOverviewImages, top, bottom) ||
+                    intersectsBand(wireframeSection, top, bottom) ||
+                    intersectsBand(contentBlock, top, bottom) ||
+                    intersectsBand(iterationComparisons, top, bottom) ||
+                    finalGalleries.some(el => intersectsBand(el, top, bottom));
+    tocRail.classList.toggle("toc-on-light", onLight);
+  }
 }
 
 if (navRow) {
