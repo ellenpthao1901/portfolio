@@ -25,6 +25,13 @@
     </header>
 
     <main>
+      <nav class="toc" aria-label="Page sections">
+        <a class="toc-link" href="#section-discovery" data-section="section-discovery">Discovery</a>
+        <a class="toc-link" href="#section-define" data-section="section-define">Define</a>
+        <a class="toc-link" href="#section-prototype" data-section="section-prototype">Prototype</a>
+        <a class="toc-link" href="#section-testing" data-section="section-testing">User Testing</a>
+        <a class="toc-link" href="#section-final" data-section="section-final">Final Design</a>
+      </nav>
       <section class="project-intro">
         <div>
           <p class="project-title">B2C Car Renting Mobile App</p>
@@ -90,7 +97,7 @@
         </p>
       </section>
 
-      <section class="split">
+      <section class="split" id="section-discovery">
         <div>
           <p class="section-number">01. DISCOVERY</p>
           <h2>Understand business objectives and product requirements</h2>
@@ -150,7 +157,7 @@
         />
       </section>
 
-      <section class="split">
+      <section class="split" id="section-define">
         <div>
           <p class="section-number">02. DEFINE</p>
           <h2>Empathize and “listen” to user needs</h2>
@@ -299,7 +306,7 @@
         </div>
       </section>
 
-      <section class="split">
+      <section class="split" id="section-prototype">
         <div>
           <p class="section-number">03. PROTOTYPE</p>
           <h2>Design an intuitive mobile app experience</h2>
@@ -405,7 +412,7 @@
         </div>
       </section>
 
-      <section class="split no-border-bottom">
+      <section class="split no-border-bottom" id="section-testing">
         <div>
           <p class="section-number">04. USER TESTING + ITERATION</p>
           <h2>Cognitive walkthrough and design improvements</h2>
@@ -470,7 +477,7 @@
         <p class="iteration-caption">Allow users to adjust rental date and location in Step 3 without having to go back to Step 1 or Step 2</p>
       </section>
 
-      <section class="split">
+      <section class="split" id="section-final">
         <div>
           <p class="section-number">05. FINAL DESIGN</p>
           <h2>Being mindful with UI design</h2>
@@ -511,7 +518,6 @@
         <div class="phone-wall">
           <img src="https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/be3a346e-ded7-4536-a7d2-89b9ac2bd1e8/Qua%CC%89n+ly%CC%81+thue%CC%82+xe-final.png" alt="Car rental management dashboard" />
           <img src="https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/256a0aee-bcf0-4978-8b79-a25db3ea5d08/Chi+tie%CC%82%CC%81t+thue%CC%82+xe-FINAL.png" alt="Rental booking detail with timeline" />
-          <img src="https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/be6e133b-eb62-4b9b-bee4-7996789b2316/Full.png" alt="Full rental policy and terms view" />
           <img src="https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/e71e214d-651a-47ff-88d1-e171c8c1aeba/Ho%CC%82%CC%83+tro%CC%9B%CC%A3-final.png" alt="Quick Support Center screen with hotline and messaging options" />
         </div>
       </section>
@@ -538,31 +544,31 @@
         </div>
       </section>
 
-      <section class="other-projects">
-        <p class="label">↪ OTHER UX PROJECTS</p>
-        <div class="project-teasers">
-          <article>
-            <h3>Projectube</h3>
-            <p>An AI-powered platform connects users with organizations and events that suit their needs</p>
-            <span>UX Research · Headway Awards · UX Design</span>
-          </article>
-          <article>
-            <h3>Pods</h3>
-            <p>A platform that helps users convert different sources into audio-based podcasts</p>
-            <span>Case Study · Product Design</span>
-          </article>
-        </div>
+      <section class="next-project">
+        <a class="next-project-link" href="#" aria-label="Next project: Pods">
+          <span class="next-project-eyebrow">
+            <span class="next-project-label">Next</span>
+            <span class="next-project-arrow" aria-hidden="true">
+              <svg viewBox="0 0 56 14" xmlns="http://www.w3.org/2000/svg">
+                <line x1="2" y1="7" x2="50" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <polyline points="42,2 52,7 42,12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </span>
+          <span class="next-project-title">PODS</span>
+        </a>
       </section>
 
-      <section class="connect">
-        <h2>Let’s Connect ✦</h2>
-        <p>My name is Thao Nguyen.</p>
-        <p>Let’s write up the next story through designs!</p>
-        <a href="https://www.linkedin.com/in/thaongx/">LinkedIn</a>
-      </section>
     </main>
 
-    <footer class="case-footer">MADE BY THAO NGUYEN</footer>
+    <footer class="footer">
+      <p>Let's write up the next story through designs!</p>
+      <nav aria-label="Contact links">
+        <a href="mailto:hello@example.com">Gmail</a>
+        <span>·</span>
+        <a href="https://www.linkedin.com/in/thaongx/">LinkedIn</a>
+      </nav>
+    </footer>
     <div class="cursor-dot"></div>
     <script src="viettel-digital.js"></script>
   </body>
