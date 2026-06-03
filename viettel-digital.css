@@ -802,16 +802,7 @@ a {
 }
 
 .pods-ideation-copy {
-  display: grid;
-  gap: 24px;
-}
-
-.pods-ideation-copy h2 {
-  margin: 0;
-}
-
-.pods-ideation-copy p {
-  margin: 0;
+  display: block;
 }
 
 .pods-ideation-image {
@@ -924,6 +915,7 @@ a {
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   padding: 112px 10%;
+  border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   background: var(--bg);
 }
