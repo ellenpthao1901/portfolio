@@ -898,9 +898,9 @@ a {
 
 .pods-competitive-callout-tr .pods-competitive-arrow {
   align-self: flex-start;
+  width: clamp(80px, 8.5vw, 120px);
   margin-top: -8px;
   margin-left: -36px;
-  transform: rotate(180deg) scaleX(-1);
 }
 
 .pods-competitive-callout-br {
@@ -915,6 +915,7 @@ a {
   margin-bottom: 12px;
   margin-left: -36px;
   order: -1;
+  transform: scaleY(-1) rotate(30deg);
 }
 
 .pods-screen-grid {
