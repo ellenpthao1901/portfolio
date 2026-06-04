@@ -861,9 +861,10 @@ a {
 }
 
 .pods-competitive-arrow {
-  width: clamp(110px, 12vw, 160px);
+  width: clamp(110px, 12vw, 170px);
   height: auto;
   display: block;
+  pointer-events: none;
 }
 
 .pods-competitive-callout-tl {
@@ -874,8 +875,8 @@ a {
 
 .pods-competitive-callout-tl .pods-competitive-arrow {
   align-self: flex-end;
-  margin-top: 8px;
-  margin-right: -32px;
+  margin-top: 12px;
+  margin-right: -36px;
 }
 
 .pods-competitive-callout-tr {
@@ -887,9 +888,8 @@ a {
 
 .pods-competitive-callout-tr .pods-competitive-arrow {
   align-self: flex-start;
-  margin-top: -28px;
-  margin-left: -32px;
-  transform: scaleX(-1);
+  margin-top: -8px;
+  margin-left: -36px;
 }
 
 .pods-competitive-callout-br {
@@ -901,9 +901,8 @@ a {
 
 .pods-competitive-callout-br .pods-competitive-arrow {
   align-self: flex-start;
-  margin-bottom: 8px;
-  margin-left: -32px;
-  transform: scaleX(-1);
+  margin-bottom: 12px;
+  margin-left: -36px;
   order: -1;
 }
 
