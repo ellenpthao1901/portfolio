@@ -801,6 +801,13 @@ a {
   align-items: start;
 }
 
+.pods-competitive-section {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line) !important;
+  padding-top: 96px;
+  padding-bottom: 120px;
+}
+
 .pods-ideation-copy {
   display: block;
 }
