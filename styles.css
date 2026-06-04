@@ -109,7 +109,16 @@ button {
   position: relative;
   top: -1px;
   flex-shrink: 0;
-  animation: live-pulse 2.4s ease-in-out infinite;
+}
+
+.live-dot::before {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #2a2a2a;
+  animation: live-ripple 2.4s ease-out infinite;
 }
 
 .live-dot::after {
@@ -119,11 +128,13 @@ button {
   height: 8px;
   border-radius: 50%;
   background: #ebebeb;
+  position: relative;
+  z-index: 1;
 }
 
-@keyframes live-pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(0.7); }
+@keyframes live-ripple {
+  0%   { transform: scale(1); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
 }
 
 h1,
