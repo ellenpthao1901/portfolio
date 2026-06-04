@@ -899,7 +899,7 @@ a {
 .pods-competitive-callout-tr .pods-competitive-arrow {
   align-self: flex-start;
   width: clamp(80px, 8.5vw, 120px);
-  margin-top: -8px;
+  margin-top: 12px;
   margin-left: -36px;
 }
 
