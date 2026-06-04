@@ -483,6 +483,16 @@ a {
   margin-top: 56px;
 }
 
+.pods-usp-swirl {
+  width: 80%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 64px;
+  background: transparent;
+  border-radius: 0;
+}
+
 .pods-chart-image {
   width: 61%;
   max-width: 880px;
@@ -890,6 +900,7 @@ a {
   align-self: flex-start;
   margin-top: -8px;
   margin-left: -36px;
+  transform: rotate(180deg) scaleX(-1);
 }
 
 .pods-competitive-callout-br {
