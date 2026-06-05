@@ -462,9 +462,11 @@ a {
 }
 
 .pods-preview-annotation {
-  font-size: 14px;
-  color: var(--muted);
-  letter-spacing: -0.28px;
+  color: var(--ink);
+  font-size: clamp(14px, 1.05vw, 17px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.32px;
   text-align: center;
 }
 
@@ -536,6 +538,45 @@ a {
   font-weight: 600;
   line-height: 1.35;
   letter-spacing: -0.32px;
+}
+
+.pods-vision-cards {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(32px, 4vw, 56px);
+  margin-top: 56px;
+}
+
+.pods-vision-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pods-vision-icon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  background: transparent;
+  border-radius: 0;
+}
+
+.pods-vision-title {
+  font-size: clamp(18px, 1.6vw, 24px);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.44px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.pods-vision-body {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.65;
+  letter-spacing: -0.28px;
+  margin: 0;
 }
 
 .pods-usp-swirl {
