@@ -513,11 +513,11 @@ a {
 }
 
 .pods-usp-heading {
-  font-size: clamp(22px, 2.4vw, 36px);
-  font-weight: 700;
+  font-size: clamp(14px, 1.05vw, 17px);
+  font-weight: 600;
   color: var(--ink);
-  line-height: 1.15;
-  letter-spacing: -0.44px;
+  line-height: 1.35;
+  letter-spacing: -0.32px;
   margin: 0;
 }
 
@@ -532,9 +532,10 @@ a {
 
 .pods-usp-list li {
   color: var(--muted);
-  font-size: 16px;
-  line-height: 1.6;
-  letter-spacing: -0.28px;
+  font-size: clamp(14px, 1.05vw, 17px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.32px;
 }
 
 .pods-usp-swirl {
@@ -958,6 +959,7 @@ a {
 .pods-competitive-callout-br {
   bottom: 4%;
   right: 0;
+  width: clamp(280px, 26vw, 360px);
   align-items: flex-end;
   text-align: right;
 }
