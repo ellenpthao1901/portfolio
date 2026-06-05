@@ -85,10 +85,10 @@ button {
 
 .work-hover-preview {
   position: absolute;
-  top: 50%;
-  left: calc(50% + 3cm);
-  right: max(16px, calc(100vw - 52.7vw - 16px - 860px));
-  transform: translateY(-50%) scale(0.96);
+  top: 220px;
+  left: calc(52.7vw + 56px);
+  width: min(860px, calc(100vw - 52.7vw - 72px));
+  transform: translateY(0) scale(0.96);
   aspect-ratio: 16 / 10;
   pointer-events: none;
   opacity: 0;
@@ -104,7 +104,7 @@ button {
 
 .work-hover-preview.is-active {
   opacity: 1;
-  transform: translateY(-50%) scale(1);
+  transform: translateY(0) scale(1);
 }
 
 .work-hover-video {
