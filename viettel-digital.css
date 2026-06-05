@@ -450,7 +450,7 @@ a {
   display: grid;
   grid-row: span 2;
   grid-template-rows: subgrid;
-  gap: 16px;
+  gap: 28px;
 }
 
 .pods-preview-item img {
@@ -464,7 +464,7 @@ a {
 .pods-preview-annotation {
   color: var(--ink);
   font-size: clamp(14px, 1.05vw, 17px);
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.35;
   letter-spacing: -0.32px;
   text-align: center;
@@ -551,12 +551,14 @@ a {
 .pods-vision-card {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
 }
 
 .pods-vision-icon {
-  width: 80px;
-  height: 80px;
+  width: 112px;
+  height: 112px;
   object-fit: contain;
   background: transparent;
   border-radius: 0;
