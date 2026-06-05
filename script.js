@@ -61,3 +61,38 @@ if (cursor) {
     cursor.style.opacity = "0";
   });
 }
+
+// Work-row hover video preview
+const hoverPreview = document.querySelector(".work-hover-preview");
+const hoverVideo = document.querySelector(".work-hover-video");
+const hoverRows = document.querySelectorAll(".work-row[data-hover-video]");
+
+if (hoverPreview && hoverVideo && hoverRows.length) {
+  let activeSrc = null;
+
+  const showPreview = (src) => {
+    if (activeSrc !== src) {
+      hoverVideo.src = src;
+      activeSrc = src;
+    }
+    hoverPreview.classList.add("is-active");
+    const playPromise = hoverVideo.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(() => {});
+    }
+  };
+
+  const hidePreview = () => {
+    hoverPreview.classList.remove("is-active");
+    hoverVideo.pause();
+  };
+
+  hoverRows.forEach((row) => {
+    const src = row.getAttribute("data-hover-video");
+    if (!src) return;
+    row.addEventListener("pointerenter", () => showPreview(src));
+    row.addEventListener("focus", () => showPreview(src));
+    row.addEventListener("pointerleave", hidePreview);
+    row.addEventListener("blur", hidePreview);
+  });
+}
