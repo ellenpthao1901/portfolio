@@ -486,21 +486,30 @@ a {
 .pods-usp-layout {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: clamp(32px, 5vw, 72px);
-  margin-top: 64px;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  gap: clamp(32px, 4vw, 64px);
+  margin-top: 56px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1100px;
-  width: 90%;
+  max-width: 1000px;
+  width: 85%;
+}
+
+.pods-usp-text-left {
+  align-self: start;
+  padding-top: 40px;
+}
+
+.pods-usp-text-right {
+  align-self: end;
+  padding-bottom: 40px;
 }
 
 .pods-usp-text {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  min-width: 240px;
+  gap: 12px;
 }
 
 .pods-usp-heading {
@@ -530,9 +539,10 @@ a {
 
 .pods-usp-swirl {
   width: 100%;
-  max-width: 600px;
+  max-width: 280px;
   background: transparent;
   border-radius: 0;
+  justify-self: center;
 }
 
 .pods-chart-image {
@@ -957,7 +967,6 @@ a {
   margin-bottom: 12px;
   margin-left: -36px;
   order: -1;
-  transform: rotate(110deg);
 }
 
 .pods-screen-grid {
