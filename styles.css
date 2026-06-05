@@ -86,9 +86,9 @@ button {
 .work-hover-preview {
   position: absolute;
   top: 50%;
-  right: 4vw;
+  left: calc(52.7vw + 56px);
+  right: 16px;
   transform: translateY(-50%) scale(0.96);
-  width: clamp(360px, 38vw, 560px);
   aspect-ratio: 16 / 10;
   pointer-events: none;
   opacity: 0;
