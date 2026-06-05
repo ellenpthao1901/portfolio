@@ -87,7 +87,7 @@ button {
   position: absolute;
   top: 50%;
   left: calc(50% + 3cm);
-  right: 16px;
+  right: max(16px, calc(100vw - 52.7vw - 16px - 860px));
   transform: translateY(-50%) scale(0.96);
   aspect-ratio: 16 / 10;
   pointer-events: none;
