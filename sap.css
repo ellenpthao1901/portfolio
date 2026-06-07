@@ -340,16 +340,6 @@ a {
   letter-spacing: -1.2px;
 }
 
-.mission-statement {
-  margin: 24px 0 0;
-  color: var(--ink);
-  font-size: clamp(48px, 6vw, 88px);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -1.2px;
-  max-width: none;
-}
-
 .project-header-meta {
   margin: 0;
   display: grid;
