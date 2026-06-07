@@ -66,9 +66,12 @@ if (cursor) {
 const hoverPreview = document.querySelector(".work-hover-preview");
 const hoverVideo = document.querySelector(".work-hover-video");
 const hoverRows = document.querySelectorAll(".work-row[data-hover-video]");
+const defaultHoverRow = document.querySelector(".work-row[data-hover-default]")
+  || hoverRows[0];
 
 if (hoverPreview && hoverVideo && hoverRows.length) {
   let activeSrc = null;
+  let defaultActive = Boolean(defaultHoverRow);
 
   const showPreview = (src) => {
     if (activeSrc !== src) {
@@ -83,16 +86,44 @@ if (hoverPreview && hoverVideo && hoverRows.length) {
   };
 
   const hidePreview = () => {
+    if (defaultActive && defaultHoverRow) {
+      const src = defaultHoverRow.getAttribute("data-hover-video");
+      if (src) {
+        showPreview(src);
+        return;
+      }
+    }
     hoverPreview.classList.remove("is-active");
     hoverVideo.pause();
+  };
+
+  const clearDefaultState = () => {
+    if (!defaultActive) return;
+    defaultActive = false;
+    if (defaultHoverRow) defaultHoverRow.classList.remove("is-default");
   };
 
   hoverRows.forEach((row) => {
     const src = row.getAttribute("data-hover-video");
     if (!src) return;
-    row.addEventListener("pointerenter", () => showPreview(src));
-    row.addEventListener("focus", () => showPreview(src));
+    row.addEventListener("pointerenter", () => {
+      if (row !== defaultHoverRow) clearDefaultState();
+      showPreview(src);
+    });
+    row.addEventListener("focus", () => {
+      if (row !== defaultHoverRow) clearDefaultState();
+      showPreview(src);
+    });
     row.addEventListener("pointerleave", hidePreview);
     row.addEventListener("blur", hidePreview);
   });
+
+  // Set default state: highlight default row + autoplay its video on load
+  if (defaultHoverRow) {
+    const defaultSrc = defaultHoverRow.getAttribute("data-hover-video");
+    if (defaultSrc) {
+      defaultHoverRow.classList.add("is-default");
+      showPreview(defaultSrc);
+    }
+  }
 }
