@@ -334,10 +334,10 @@ a {
 .project-header-title {
   margin: 0;
   color: var(--ink);
-  font-size: clamp(48px, 6vw, 88px);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -1.2px;
+  font-size: 20.6px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: -0.44px;
 }
 
 .project-header-meta {
