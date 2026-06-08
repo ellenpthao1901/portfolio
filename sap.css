@@ -325,10 +325,14 @@ a {
 
 /* Roblox-style merged project header — title + 4-column meta row */
 .project-header {
-  padding: 80px 10% 56px;
+  padding: 80px 10% 40px;
   border-bottom: 1px solid var(--line);
   display: grid;
-  gap: clamp(40px, 6vw, 88px);
+}
+
+.project-meta-section {
+  padding: 56px 10%;
+  border-bottom: 1px solid var(--line);
 }
 
 .project-header-title {
@@ -373,8 +377,11 @@ a {
 
 @media (max-width: 900px) {
   .project-header {
-    padding: 60px 5vw 40px;
-    gap: 32px;
+    padding: 60px 5vw 32px;
+  }
+
+  .project-meta-section {
+    padding: 40px 5vw;
   }
 
   .project-header-meta {
