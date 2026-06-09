@@ -174,7 +174,7 @@ export default function SAP() {
                       borderRadius: '9999px',
                       // padding-box: subtle dark surface; border-box: bright top/bottom, dark sides
                       background:
-                        'linear-gradient(180deg, #1c1c1c 0%, #161616 50%, #1c1c1c 100%) padding-box, linear-gradient(190deg, rgba(255,255,255,0.55) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.4) 60%, rgba(255,255,255,0.40) 100%) border-box',
+                        'linear-gradient(180deg, #1c1c1c 0%, #161616 90%, rgba(255,255,255,0.10) 100%, #1c1c1c 100%) padding-box, linear-gradient(190deg, rgba(255,255,255,0.55) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.4) 60%, rgba(255,255,255,0.40) 100%) border-box',
                       border: '1.5px solid transparent',
                       boxShadow:
                         '0 20.716px 51.791px 0 rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
