@@ -1,13 +1,22 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-const WORK_ITEMS = [
+type WorkItem = {
+  title: string
+  subtitle: string | null
+  meta: string
+  href: string
+  preview: string | null
+  isDefault?: boolean
+}
+
+const WORK_ITEMS: WorkItem[] = [
   {
     title: 'SAP',
     subtitle: 'SaaS Analytics Dashboard',
     meta: '2025 • Internship',
     href: '/sap',
-    preview: '/assets/sap-hover.gif',
+    preview: '/assets/sap-hover.webm',
     isDefault: true,
   },
   {
@@ -40,24 +49,35 @@ const WORK_ITEMS = [
   },
 ]
 
-const defaultItem = WORK_ITEMS.find(i => i.isDefault && i.preview)
+const defaultItem = WORK_ITEMS.find(i => i.isDefault && i.preview) ?? null
 
 export default function Home() {
   const [activeSrc, setActiveSrc] = useState<string | null>(defaultItem?.preview ?? null)
+  const [activeIndex, setActiveIndex] = useState<number | null>(
+    defaultItem ? WORK_ITEMS.indexOf(defaultItem) : null,
+  )
   const [visible, setVisible] = useState(!!defaultItem?.preview)
+  // tracks whether we are currently showing the default (auto) state vs. a user-driven hover
+  const [defaultActive, setDefaultActive] = useState(!!defaultItem?.preview)
 
   useEffect(() => {
     if (defaultItem?.preview) {
       setActiveSrc(defaultItem.preview)
+      setActiveIndex(WORK_ITEMS.indexOf(defaultItem))
       setVisible(true)
+      setDefaultActive(true)
     }
   }, [])
 
-  const handleEnter = (preview: string | null) => {
-    if (preview) {
-      setActiveSrc(preview)
+  const handleEnter = (item: WorkItem, index: number) => {
+    if (item !== defaultItem) setDefaultActive(false)
+    if (item.preview) {
+      setActiveSrc(item.preview)
+      setActiveIndex(index)
       setVisible(true)
     } else {
+      // hovered row has no preview — clear active state entirely
+      setActiveIndex(index)
       setVisible(false)
     }
   }
@@ -65,61 +85,76 @@ export default function Home() {
   const handleLeave = () => {
     if (defaultItem?.preview) {
       setActiveSrc(defaultItem.preview)
+      setActiveIndex(WORK_ITEMS.indexOf(defaultItem))
       setVisible(true)
+      setDefaultActive(true)
     } else {
+      setActiveIndex(null)
       setVisible(false)
     }
   }
 
-  return (
-    <>
-      <section className="flex flex-col flex-1" id="work" aria-label="Selected work">
-        {WORK_ITEMS.map((item, i) => (
-          <Link
-            key={i}
-            to={item.href}
-            className="group flex items-center justify-between px-6 py-5 border-b transition-colors hover:bg-white/[0.02]"
-            style={{ borderColor: 'var(--color-line)' }}
-            onPointerEnter={() => handleEnter(item.preview)}
-            onPointerLeave={handleLeave}
-            onFocus={() => handleEnter(item.preview)}
-            onBlur={handleLeave}
-          >
-            <span className="text-base font-medium tracking-tight" style={{ color: 'var(--color-white)' }}>
-              {item.subtitle ? (
-                <>
-                  {item.title}
-                  <span style={{ color: 'var(--color-dim)' }}> | </span>
-                  {item.subtitle}
-                </>
-              ) : item.title}
-            </span>
-            <span className="text-sm shrink-0 ml-4" style={{ color: 'var(--color-quiet)' }}>
-              {item.meta}
-            </span>
-          </Link>
-        ))}
-      </section>
+  const isVideo = activeSrc
+    ? /\.(mov|mp4|webm)$/i.test(activeSrc)
+    : false
 
-      {/* Hover preview */}
-      <div
-        className="fixed right-8 top-1/2 -translate-y-1/2 w-72 rounded-lg overflow-hidden pointer-events-none z-30 transition-opacity duration-300"
-        style={{ opacity: visible ? 1 : 0 }}
-        aria-hidden="true"
-      >
-        {activeSrc && (
-          activeSrc.endsWith('.mov') || activeSrc.endsWith('.mp4') ? (
-            <video
-              key={activeSrc}
-              src={activeSrc}
-              className="w-full h-full object-cover"
-              muted loop playsInline autoPlay
-            />
-          ) : (
-            <img src={activeSrc} alt="" className="w-full h-full object-cover" />
-          )
-        )}
+  return (
+    <main className="home" aria-label="Thao Nguyen portfolio homepage">
+      <div className="work-band">
+        <section className="work-list" id="work" aria-label="Selected work">
+          {WORK_ITEMS.map((item, i) => {
+            const isActive = activeIndex === i && (defaultActive ? item === defaultItem : true)
+            return (
+              <Link
+                key={i}
+                to={item.href}
+                className={`work-row${isActive ? ' is-active' : ''}`}
+                onPointerEnter={() => handleEnter(item, i)}
+                onPointerLeave={handleLeave}
+                onFocus={() => handleEnter(item, i)}
+                onBlur={handleLeave}
+              >
+                <span className="work-title">
+                  {item.subtitle ? (
+                    <>
+                      {item.title}
+                      <span className="title-divider"> | </span>
+                      {item.subtitle}
+                    </>
+                  ) : (
+                    item.title
+                  )}
+                </span>
+                <span className="work-row-right">
+                  <span className="work-active-dot" aria-hidden="true" />
+                  <span className="work-meta">{item.meta}</span>
+                </span>
+              </Link>
+            )
+          })}
+        </section>
+
+        {/* Right-side hover preview, sized to match work-list height */}
+        <div
+          className={`work-hover-preview${visible ? ' is-active' : ''}`}
+          aria-hidden="true"
+        >
+          {activeSrc &&
+            (isVideo ? (
+              <video
+                key={activeSrc}
+                src={activeSrc}
+                className="work-hover-media"
+                muted
+                loop
+                playsInline
+                autoPlay
+              />
+            ) : (
+              <img src={activeSrc} alt="" className="work-hover-media" />
+            ))}
+        </div>
       </div>
-    </>
+    </main>
   )
 }
