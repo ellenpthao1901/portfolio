@@ -1,8 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import LocalTime from '../components/LocalTime'
-import Nav from '../components/Nav'
-import Footer from '../components/Footer'
 
 const WORK_ITEMS = [
   {
@@ -42,12 +39,10 @@ const WORK_ITEMS = [
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const previewRef = useRef<HTMLDivElement>(null)
   const [activeSrc, setActiveSrc] = useState<string | null>(null)
   const [previewVisible, setPreviewVisible] = useState(false)
   const [defaultActive, setDefaultActive] = useState(true)
 
-  // Show default video on mount
   useEffect(() => {
     const defaultItem = WORK_ITEMS.find(i => i.isDefault && i.video)
     if (defaultItem?.video) {
@@ -85,48 +80,7 @@ export default function Home() {
   }
 
   return (
-    <main
-      className="flex flex-col min-h-screen"
-      aria-label="Thao Nguyen portfolio homepage"
-    >
-      {/* Intro */}
-      <section
-        className="flex flex-col justify-end px-6 pt-24 pb-8 gap-6 border-b"
-        style={{ borderColor: 'var(--color-line)' }}
-        aria-label="Introduction"
-      >
-        <div className="flex flex-col gap-1">
-          <h1
-            className="text-4xl md:text-5xl font-medium tracking-tight"
-            style={{ color: 'var(--color-white)' }}
-          >
-            Thao Nguyen
-          </h1>
-          <p className="text-sm" style={{ color: 'var(--color-quiet)' }}>
-            Local time — <LocalTime /> Seattle, WA.{' '}
-            <span className="inline-flex items-center gap-1.5" aria-label="online">
-              <span className="relative flex h-2 w-2">
-                <span
-                  className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-                  style={{ background: '#4ade80', animationName: 'live-ripple' }}
-                />
-                <span
-                  className="relative inline-flex rounded-full h-2 w-2"
-                  style={{ background: '#4ade80' }}
-                />
-              </span>
-            </span>
-          </p>
-        </div>
-        <p className="max-w-xl text-base leading-relaxed" style={{ color: 'var(--color-text)' }}>
-          I designed alongside with data and crafted products that actually matters.
-          Shipping live products at SAP and Viettel Digital.
-        </p>
-      </section>
-
-      <Nav />
-
-      {/* Work list */}
+    <>
       <section
         className="flex flex-col flex-1"
         id="work"
@@ -144,7 +98,7 @@ export default function Home() {
             onBlur={handleLeave}
           >
             <span
-              className="text-base font-medium tracking-tight group-hover:opacity-100 transition-opacity"
+              className="text-base font-medium tracking-tight"
               style={{ color: 'var(--color-white)' }}
             >
               {item.subtitle ? (
@@ -162,9 +116,7 @@ export default function Home() {
         ))}
       </section>
 
-      {/* Hover video preview */}
       <div
-        ref={previewRef}
         className="fixed right-8 top-1/2 -translate-y-1/2 w-72 aspect-video rounded-lg overflow-hidden pointer-events-none z-30 transition-opacity duration-300"
         style={{ opacity: previewVisible ? 1 : 0 }}
         aria-hidden="true"
@@ -179,8 +131,6 @@ export default function Home() {
           preload="auto"
         />
       </div>
-
-      <Footer />
-    </main>
+    </>
   )
 }

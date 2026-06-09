@@ -1,42 +1,47 @@
+import { useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-interface NavProps {
-  theme?: 'dark' | 'light'
-}
-
-export default function Nav({ theme = 'dark' }: NavProps) {
+export default function Nav() {
   const { pathname } = useLocation()
   const isHome = pathname === '/'
+  const navRef = useRef<HTMLElement>(null)
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    const nav = navRef.current
+    if (!nav) return
+    const rect = nav.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    nav.style.setProperty('--mx', `${x}px`)
+    nav.style.setProperty('--my', `${y}px`)
+  }
+
+  const onMouseLeave = () => {
+    const nav = navRef.current
+    if (!nav) return
+    nav.style.setProperty('--mx', `-999px`)
+    nav.style.setProperty('--my', `-999px`)
+  }
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center py-4 px-6"
-      style={{
-        backdropFilter: 'blur(12px) saturate(160%)',
-        WebkitBackdropFilter: 'blur(12px) saturate(160%)',
-      }}
+      className="fixed top-8 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center"
+      style={{ width: 'min(300px, calc(100vw - 48px))', height: '46px' }}
       aria-label="Primary navigation"
     >
       <nav
-        className="flex gap-6 text-sm font-medium tracking-tight"
-        style={{ color: theme === 'light' ? 'var(--color-bg)' : 'var(--color-text)' }}
+        ref={navRef}
+        className="site-nav"
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
       >
         {isHome ? (
-          <a
-            href="#work"
-            className="opacity-100 hover:opacity-60 transition-opacity"
-          >
-            Work
-          </a>
+          <a href="#work" className="site-nav-link">Work</a>
         ) : (
-          <Link to="/" className="hover:opacity-60 transition-opacity">Work</Link>
+          <Link to="/" className="site-nav-link">Work</Link>
         )}
-        <Link
-          to="/about"
-          className={`hover:opacity-60 transition-opacity ${pathname === '/about' ? 'opacity-100' : 'opacity-60'}`}
-        >
-          About
-        </Link>
+        <a href="#play" className="site-nav-link">Play</a>
+        <Link to="/about" className="site-nav-link">About</Link>
       </nav>
     </header>
   )

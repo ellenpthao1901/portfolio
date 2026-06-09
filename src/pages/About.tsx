@@ -1,35 +1,9 @@
-import Nav from '../components/Nav'
-import Footer from '../components/Footer'
-import LocalTime from '../components/LocalTime'
-
 const DESIGN_TOOLS = ['Figma', 'Sketch', 'Blender', 'Spline', 'Adobe Illustrator', 'Adobe After Effects', 'Adobe Express']
 const UX_SKILLS = ['User-Centered Design', 'Product Design', 'User Research', 'Design Systems', 'Information Architecture', 'User Testing', 'Prototyping', 'Branding']
 
 export default function About() {
   return (
-    <main>
-      <Nav />
-
-      {/* Intro */}
-      <section
-        className="flex flex-col gap-4 px-6 pt-24 pb-10 border-b"
-        style={{ borderColor: 'var(--color-line)' }}
-        aria-label="Introduction"
-      >
-        <div className="flex flex-col gap-1">
-          <h1 className="text-4xl md:text-5xl font-medium tracking-tight" style={{ color: 'var(--color-white)' }}>
-            Thao Nguyen
-          </h1>
-          <p className="text-sm" style={{ color: 'var(--color-quiet)' }}>
-            Local time — <LocalTime /> Seattle, WA.
-          </p>
-        </div>
-        <p className="max-w-xl text-base leading-relaxed" style={{ color: 'var(--color-text)' }}>
-          I designed alongside with data and crafted products that actually matters.
-          Shipping live products at SAP and Viettel Digital.
-        </p>
-      </section>
-
+    <>
       {/* Hero */}
       <section
         className="grid md:grid-cols-2 gap-8 px-6 py-16 border-b"
@@ -112,9 +86,7 @@ export default function About() {
           </ul>
         </div>
       </section>
-
-      <Footer />
-    </main>
+    </>
   )
 }
 

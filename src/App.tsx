@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Cursor from './components/Cursor'
 import PageTransition from './components/PageTransition'
+import Layout from './components/Layout'
 import Home from './pages/Home'
 import About from './pages/About'
 import SAP from './pages/case-studies/SAP'
@@ -14,12 +15,14 @@ export default function App() {
       <Cursor />
       <PageTransition />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/sap" element={<SAP />} />
-        <Route path="/viettel-digital" element={<ViettelDigital />} />
-        <Route path="/pods" element={<Pods />} />
-        <Route path="/kitsap" element={<Kitsap />} />
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/sap" element={<SAP />} />
+          <Route path="/viettel-digital" element={<ViettelDigital />} />
+          <Route path="/pods" element={<Pods />} />
+          <Route path="/kitsap" element={<Kitsap />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   )

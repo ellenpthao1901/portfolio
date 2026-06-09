@@ -1,6 +1,4 @@
 import { type ReactNode } from 'react'
-import Nav from '../../components/Nav'
-import Footer from '../../components/Footer'
 import TableOfContents from '../../components/TableOfContents'
 
 interface Meta {
@@ -22,13 +20,11 @@ interface CaseStudyLayoutProps {
 
 export default function CaseStudyLayout({ title, meta, toc, children }: CaseStudyLayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Nav />
+    <>
       {toc && <TableOfContents items={toc} />}
 
-      {/* Project header */}
       <header
-        className="px-6 pt-28 pb-10 border-b"
+        className="px-6 pt-10 pb-10 border-b"
         style={{ borderColor: 'var(--color-line)' }}
       >
         <h1
@@ -50,9 +46,7 @@ export default function CaseStudyLayout({ title, meta, toc, children }: CaseStud
         </div>
       </header>
 
-      <main className="flex-1">{children}</main>
-
-      <Footer />
-    </div>
+      <main>{children}</main>
+    </>
   )
 }
