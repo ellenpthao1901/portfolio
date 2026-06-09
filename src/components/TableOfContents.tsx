@@ -37,33 +37,46 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
 
   return (
     <nav
-      className="fixed left-0 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col"
+      className="
+        fixed left-[2vw] top-1/2 -translate-y-1/2 z-40
+        hidden lg:flex flex-col gap-7
+        pointer-events-none
+      "
       aria-label="Table of contents"
     >
-      {items.map((item) => {
+      {items.map(item => {
         const isActive = active === item.id
         return (
           <button
             key={item.id}
             onClick={() => scrollTo(item.id)}
-            className="group flex items-center gap-0 border-t border-b -mb-px text-left bg-transparent border-0 cursor-pointer p-0"
-            style={{ borderColor: '#2a2a2a' }}
             aria-label={`Go to ${item.label}`}
+            aria-current={isActive ? 'true' : undefined}
+            className="
+              group relative flex items-center justify-center
+              p-0 m-0 bg-transparent border-0 cursor-pointer
+              pointer-events-auto
+            "
           >
-            {/* Active indicator bar */}
-            <div
-              className="w-[2px] self-stretch transition-colors duration-200"
-              style={{ background: isActive ? '#ebebeb' : 'transparent' }}
-            />
-            {/* Label */}
+            {/* White dot indicator — sits above the rotated label */}
             <span
-              className="py-3 px-3 text-[10px] font-medium tracking-[0.12em] uppercase transition-colors duration-200"
-              style={{
-                writingMode: 'vertical-rl',
-                transform: 'rotate(180deg)',
-                color: isActive ? '#ebebeb' : '#444444',
-                fontWeight: isActive ? '600' : '400',
-              }}
+              aria-hidden="true"
+              className={`
+                absolute -top-3 left-1/2 -translate-x-1/2
+                w-[7px] h-[7px] rounded-full bg-[#ebebeb]
+                transition-opacity duration-200
+                ${isActive ? 'opacity-100' : 'opacity-0'}
+              `}
+            />
+            <span
+              className={`
+                [writing-mode:vertical-rl] [text-orientation:mixed] rotate-180
+                text-[11px] tracking-[0.08em] uppercase
+                transition-colors duration-200
+                ${isActive
+                  ? 'text-[#ebebeb] font-medium'
+                  : 'text-[#888] font-normal group-hover:text-[#ebebeb]'}
+              `}
             >
               {item.label}
             </span>
