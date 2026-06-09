@@ -1,6 +1,7 @@
 // Built from Figma design (file S4wa2P3oA7OANLvxjcglAy, node 1:2)
 // All images live in /public/assets/sap/
 
+import { useState } from 'react'
 import TableOfContents from '../../components/TableOfContents'
 
 const TOC = [
@@ -65,33 +66,24 @@ const PROJECTS = [
 // 5 portrait photos + 1 landscape (#4) for variety. Varied positions and z-index
 // for a real scattered-collage feel.
 const HALLOWEEN_PHOTOS = [
-  { src: '/assets/sap/halloween-1.png', rotate: '4.58deg',   top: 0,   left: '4%',  width: 250, height: 350, z: 3 },
+  { src: '/assets/sap/halloween-4.png', rotate: '4.58deg',   top: 0,   left: '4%',  width: 250, height: 350, z: 3 },
   { src: '/assets/sap/halloween-2.png', rotate: '-10.11deg', top: 130, left: '20%', width: 230, height: 350, z: 2 },
   { src: '/assets/sap/halloween-3.png', rotate: '7.99deg',   top: 30,  left: '36%', width: 250, height: 330, z: 1 },
   // 4: landscape — wider than tall
-  { src: '/assets/sap/halloween-4.png', rotate: '-2.67deg',  top: 250, left: '51%', width: 260, height: 200, z: 5 },
+  { src: '/assets/sap/halloween-6.png', rotate: '-2.67deg',  top: 250, left: '51%', width: 260, height: 200, z: 5 },
   { src: '/assets/sap/halloween-5.png', rotate: '4.47deg',   top: 50,  left: '68%', width: 195, height: 300, z: 3 },
-  { src: '/assets/sap/halloween-6.png', rotate: '11.41deg',  top: 130, left: '83%', width: 255, height: 335, z: 2 },
-]
-
-// Team avatars positioned roughly like the Figma cluster
-const TEAM_AVATARS = [
-  '/assets/sap/team-1.png',
-  '/assets/sap/team-2.png',
-  '/assets/sap/team-3.png',
-  '/assets/sap/team-4.png',
-  '/assets/sap/team-5.png',
-  '/assets/sap/team-6.png',
-  '/assets/sap/team-7.png',
-  '/assets/sap/team-8.png',
-  '/assets/sap/team-9.png',
-  '/assets/sap/team-10.png',
-  '/assets/sap/team-11.png',
-  '/assets/sap/team-12.png',
-  '/assets/sap/team-13.png',
+  { src: '/assets/sap/halloween-1.png', rotate: '11.41deg',  top: 130, left: '83%', width: 255, height: 335, z: 2 },
 ]
 
 export default function SAP() {
+  const [tweak, setTweak] = useState(false)
+
+  const playTweak = () => {
+    if (tweak) return
+    setTweak(true)
+    setTimeout(() => setTweak(false), 900)
+  }
+
   return (
     <main className="text-[#ebebeb]">
       <TableOfContents items={TOC} />
@@ -134,11 +126,11 @@ export default function SAP() {
 
       {/* THE MISSION */}
       <section id="section-mission" className="px-[10%] py-20 border-b border-[#252525] max-md:px-[5vw] max-md:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-[clamp(40px,6vw,96px)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <p className="text-[11px] tracking-[0.08em] uppercase text-[#888] pt-1">
             THE MISSION
           </p>
-          <div className="flex flex-col gap-6 max-w-[720px]">
+          <div className="flex flex-col gap-6">
             <p className="text-[20.6px] leading-[1.6] tracking-[-0.44px] text-[#ebebeb]">
               Over my 9-month internship, I worked on 4 separate, fast-paced
               projects across AI workflows, product health scoring, chatbot
@@ -171,14 +163,18 @@ export default function SAP() {
               <h3 className="text-[28px] md:text-[32px] font-medium leading-[1.2] tracking-[-0.5px] text-[#ebebeb]">
                 {p.title}
               </h3>
-              <p className="text-[15px] leading-[1.65] text-[#888] max-w-[440px]">
+              <p className="text-[20.6px] leading-[1.6] tracking-[-0.44px] text-[#888] max-w-[440px]">
                 {p.body}
               </p>
-              <div className="flex flex-wrap gap-2 mt-2">
+              <div className="flex flex-wrap gap-4 mt-2">
                 {p.tags.map(t => (
                   <span
                     key={t}
-                    className="px-3 py-1.5 rounded-full bg-[rgba(40,40,40,0.4)] text-[12px] text-[#ebebeb] shadow-[0_4px_10px_rgba(0,0,0,0.25)]"
+                    className="
+                      px-7 py-3 rounded-full
+                      bg-[#161616] text-[15px] text-[#ebebeb]
+                      shadow-[inset_2px_2px_6px_rgba(0,0,0,0.7),inset_-2px_-2px_6px_rgba(255,255,255,0.06)]
+                    "
                   >
                     {t}
                   </span>
@@ -217,65 +213,17 @@ export default function SAP() {
 
       {/* Confidential card */}
       <section id="section-confidential" className="px-[10%] py-20 border-b border-[#252525] flex justify-center max-md:px-[5vw] max-md:py-16">
-        <div className="w-full max-w-[560px] bg-[#1e1e1e] border border-[#2a2a2b] rounded-[20px] p-10 flex flex-col gap-5 items-start">
-          <div className="w-[44px] h-[44px] rounded-full bg-[#2a2a2a] flex items-center justify-center">
-            <svg
-              viewBox="0 0 24 24"
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.6"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <rect x="5" y="11" width="14" height="10" rx="2" />
-              <path d="M8 11V7a4 4 0 0 1 8 0v4" />
-            </svg>
-          </div>
-          <p className="text-[15px] leading-[1.6] text-[#ebebeb]">
-            This work is confidential.
-            <br />
-            Please{' '}
-            <a
-              href="mailto:ellenpthao19012004@gmail.com"
-              className="underline underline-offset-[3px] hover:opacity-70 transition-opacity"
-            >
-              email me
-            </a>{' '}
-            or drop me a message below if you'd like to chat!
-          </p>
-          <form
-            onSubmit={e => e.preventDefault()}
-            className="w-full flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(40,40,40,0.4)]"
-          >
-            <input
-              type="text"
-              placeholder="Enter…"
-              aria-label="Message"
-              className="flex-1 bg-transparent border-0 outline-none text-[14px] text-[#ebebeb] placeholder:text-[#888]"
-            />
-            <button
-              type="submit"
-              aria-label="Send message"
-              className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-white/5 transition-colors"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <polyline points="12 8 12 16" />
-                <polyline points="8 12 12 8 16 12" />
-              </svg>
-            </button>
-          </form>
-        </div>
+        <a
+          href="mailto:ellenpthao19012004@gmail.com"
+          aria-label="This work is confidential — email me"
+          className="block w-full max-w-[760px] hover:opacity-95 transition-opacity"
+        >
+          <img
+            src="/assets/sap/confidential-card.png"
+            alt="This work is confidential. Please email me or drop me a message below if you'd like to chat!"
+            className="w-full h-auto block"
+          />
+        </a>
       </section>
 
       {/* Manager quote */}
@@ -283,17 +231,14 @@ export default function SAP() {
         <p className="text-[11px] tracking-[0.08em] uppercase text-[#888] mb-10">
           KIND WORDS FROM MY MANAGER
         </p>
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-[clamp(40px,6vw,80px)] items-start max-w-[920px] mx-auto">
-          <div className="flex flex-col items-center gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(40px,6vw,96px)] items-center">
+          {/* Left — manager photo + name + title (composed image) */}
+          <div className="flex justify-center">
             <img
-              src="/assets/sap/team-1.png"
-              alt="Christopher Siwinski"
-              className="w-[140px] h-[140px] rounded-full object-cover bg-[#2a2a2a]"
+              src="/assets/sap/manager-info.png"
+              alt="Christopher Siwinski — Senior IT Product Owner @ SAP"
+              className="w-full max-w-[280px] h-auto block"
             />
-            <div className="text-center">
-              <p className="text-[15px] text-[#ebebeb]">Christopher Siwinski</p>
-              <p className="text-[13px] text-[#888]">Senior IT Product Owner @ SAP</p>
-            </div>
           </div>
           <div className="flex flex-col gap-4">
             <span className="font-serif text-[48px] leading-none text-[#888]">"</span>
@@ -347,34 +292,41 @@ She turns every complex technical concepts into clear, actionable
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(40px,6vw,80px)] items-start">
           {/* Workspace photo */}
           <div className="flex flex-col items-center gap-4">
-            <div
-              className="w-full max-w-[320px] aspect-[3/4] bg-white border-2 border-white rounded-[6px] p-2 shadow-[0_4px_24px_rgba(119,119,119,0.2)]"
-              style={{ transform: 'rotate(-6.46deg)' }}
+            <button
+              type="button"
+              onClick={playTweak}
+              aria-label="Tweak the photo"
+              className={`w-full max-w-[320px] aspect-[3/4] bg-white border-2 border-white rounded-[6px] p-2 shadow-[0_4px_24px_rgba(119,119,119,0.2)] cursor-pointer focus:outline-none ${tweak ? 'workspace-tweak' : ''}`}
+              style={
+                {
+                  transform: 'rotate(-6.46deg)',
+                  ['--base-rotate' as string]: '-6.46deg',
+                } as React.CSSProperties
+              }
             >
               <img
                 src="/assets/sap/workspace.png"
                 alt="My favorite working spot"
-                className="w-full h-full object-cover rounded-[4px]"
+                className="w-full h-full object-cover rounded-[4px] pointer-events-none"
               />
-            </div>
-            <p className="text-[18px] text-[#888] mt-6 pt-10">My favorite working spots &lt;3</p>
+            </button>
+            <p className="text-[18px] text-[#888] mt-3 pt-5">My favorite working spots &lt;3</p>
           </div>
 
           {/* Team avatars + thank you */}
-          <div className="min-h-[280px]">
+          <div className="min-h-[280px] -ml-8">
             <div className="flex flex-wrap gap-2">
               <img
-                src="assets/sap/teamn.png"
+                src="/assets/sap/team.png"
                 alt=""
-                className="w-[800px] h-[400px] object-contain object-center"
+                className="w-full h-auto object-contain"
               />
             </div>
-            <div className="mt-4 inline-flex items-center gap-2 px-5 py-3 rounded-full rounded-bl-[20px] bg-[#1e1e1e] border border-[#2a2a2b]">
-              <span aria-hidden="true">🥹</span>
-              <p className="text-[13px] text-[#ebebeb]">
-                Thank you my amazing team for a wonderful internship!
-              </p>
-            </div>
+            <img
+              src="/assets/sap/thank-you-chat.png"
+              alt="Thank you my amazing team for a wonderful internship!"
+              className="mt-8 ml-auto w-4/5 max-w-[680px] h-auto block"
+            />
           </div>
         </div>
       </section>

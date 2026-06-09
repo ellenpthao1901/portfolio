@@ -158,6 +158,20 @@ h1 {
   100% { transform: scale(2.2); opacity: 0; }
 }
 
+/* Workspace photo click "tweak" — swings right, overshoots back, then settles
+   Uses CSS variable --base-rotate so the host element keeps its resting tilt */
+@keyframes workspace-tweak {
+  0%   { transform: rotate(var(--base-rotate, 0deg)) translateX(0); }
+  20%  { transform: rotate(calc(var(--base-rotate, 0deg) + 14deg)) translateX(8px); }
+  45%  { transform: rotate(calc(var(--base-rotate, 0deg) - 9deg)) translateX(-4px); }
+  65%  { transform: rotate(calc(var(--base-rotate, 0deg) + 5deg)) translateX(2px); }
+  82%  { transform: rotate(calc(var(--base-rotate, 0deg) - 2deg)) translateX(-1px); }
+  100% { transform: rotate(var(--base-rotate, 0deg)) translateX(0); }
+}
+.workspace-tweak {
+  animation: workspace-tweak 900ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
 /* ── Nav pill ───────────────────────────────────────── */
 .site-nav {
   width: 100%;
