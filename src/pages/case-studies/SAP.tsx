@@ -227,17 +227,17 @@ export default function SAP() {
       </section>
 
       {/* Manager quote */}
-      <section id="section-testimonial" className="px-[10%] py-20 border-b border-[#252525] max-md:px-[5vw] max-md:py-16">
+      <section id="section-testimonial" className="px-[10%] py-20 border-t-2 border-[#252525] max-md:px-[5vw] max-md:py-16">
         <p className="text-[11px] tracking-[0.08em] uppercase text-[#888] mb-10">
           KIND WORDS FROM MY MANAGER
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(40px,6vw,96px)] items-center">
           {/* Left — manager photo + name + title (composed image) */}
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-12">
             <img
               src="/assets/sap/manager-info.png"
               alt="Christopher Siwinski — Senior IT Product Owner @ SAP"
-              className="w-full max-w-[280px] h-auto block"
+              className="w-[62px] h-auto block"
             />
           </div>
           <div className="flex flex-col gap-4">
@@ -263,7 +263,7 @@ She turns every complex technical concepts into clear, actionable
       </section>
 
       {/* Halloween photos collage */}
-      <section id="section-photos" className="px-[10%] py-24 border-b border-[#252525] max-md:px-[5vw] max-md:py-16">
+      <section id="section-photos" className="px-[10%] py-24 max-md:px-[5vw] max-md:py-16">
         <div className="relative h-[480px] max-w-[1300px] mx-auto">
           {HALLOWEEN_PHOTOS.map((p, i) => (
             <img
