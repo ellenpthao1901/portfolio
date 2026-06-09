@@ -1894,3 +1894,576 @@ figcaption {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================
+   SAP case study — Figma design conversion
+   ============================================ */
+
+/* Hero banner with SAP logo + 3 cards */
+.sap-hero {
+  padding: 72px 10% 96px;
+  border-bottom: 1px solid var(--line);
+}
+
+.sap-hero-banner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 6.5;
+  border-radius: 18px;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(98, 64, 255, 0.55), transparent 55%),
+    radial-gradient(ellipse at 85% 70%, rgba(64, 90, 255, 0.5), transparent 60%),
+    linear-gradient(135deg, #1d2bb4 0%, #2548d6 50%, #5036c4 100%);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: clamp(32px, 4vw, 56px);
+}
+
+.sap-hero-logo {
+  position: absolute;
+  top: clamp(20px, 3vw, 36px);
+  left: clamp(24px, 3vw, 40px);
+  width: clamp(60px, 6vw, 100px);
+  height: auto;
+}
+
+.sap-hero-cards {
+  display: flex;
+  gap: clamp(16px, 2vw, 28px);
+  align-items: center;
+  width: 100%;
+  max-width: 720px;
+}
+
+.sap-hero-card {
+  flex: 1;
+  aspect-ratio: 9 / 16;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+}
+
+.sap-hero-card-1 {
+  background: linear-gradient(180deg, #6e5fd6 0%, #5847c8 100%);
+}
+
+.sap-hero-card-2 {
+  flex: 1.4;
+  background: linear-gradient(180deg, #f5e9ff 0%, #e3d4ff 100%);
+}
+
+.sap-hero-card-3 {
+  background: linear-gradient(180deg, #ffffff 0%, #ede4f8 100%);
+}
+
+.sap-hero-card-title {
+  margin: 0;
+  color: #1f1235;
+  font-size: clamp(11px, 1.05vw, 14px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.32px;
+}
+
+/* Mission section copy refinement */
+.sap-mission {
+  padding-bottom: 96px;
+}
+
+.sap-mission-copy p {
+  color: var(--muted);
+  font-size: 20.6px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: -0.44px;
+  margin: 0;
+}
+
+.sap-mission-copy p + p {
+  margin-top: 24px;
+}
+
+.sap-mission-copy span {
+  color: var(--ink);
+}
+
+/* Project list — 4 projects with info on left, preview on right */
+.sap-projects {
+  padding: 0 10% 96px;
+  display: grid;
+  gap: clamp(64px, 7vw, 96px);
+  border-bottom: 1px solid var(--line);
+}
+
+.sap-project {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(40px, 5vw, 80px);
+  align-items: center;
+}
+
+.sap-project-info {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.sap-project-eyebrow {
+  margin: 0;
+  color: var(--meta);
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.sap-project-title {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.6px;
+  max-width: none;
+}
+
+.sap-project-body {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: -0.32px;
+  margin: 0;
+  max-width: 460px;
+}
+
+.sap-project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.sap-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(235, 235, 235, 0.18);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.26px;
+  background: transparent;
+}
+
+.sap-project-preview {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 12px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(235, 235, 235, 0.08);
+  filter: blur(0.5px);
+}
+
+.sap-project-preview-phones {
+  background: transparent;
+  border: 0;
+  filter: none;
+  display: flex;
+  gap: clamp(12px, 1.6vw, 24px);
+  aspect-ratio: auto;
+}
+
+.sap-project-phone {
+  flex: 1;
+  aspect-ratio: 9 / 16;
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(140, 100, 220, 0.18), rgba(60, 40, 120, 0.05));
+  border: 1px solid rgba(235, 235, 235, 0.06);
+}
+
+/* Confidential card */
+.sap-confidential {
+  padding: 96px 10%;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: center;
+}
+
+.sap-confidential-card {
+  width: 100%;
+  max-width: 640px;
+  padding: 48px clamp(32px, 4vw, 56px);
+  border-radius: 18px;
+  background: rgba(20, 20, 20, 0.5);
+  border: 1px solid var(--line);
+  display: grid;
+  gap: 20px;
+  justify-items: center;
+  text-align: center;
+}
+
+.sap-confidential-icon {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(235, 235, 235, 0.08);
+  color: var(--ink);
+}
+
+.sap-confidential-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.sap-confidential-text {
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.32px;
+  margin: 0;
+}
+
+.sap-confidential-text a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: rgba(235, 235, 235, 0.6);
+}
+
+.sap-confidential-form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 6px 6px 18px;
+  border-radius: 999px;
+  background: rgba(35, 35, 35, 0.7);
+  border: 1px solid var(--line);
+}
+
+.sap-confidential-form input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  padding: 10px 4px;
+  outline: none;
+}
+
+.sap-confidential-form input::placeholder {
+  color: var(--muted);
+}
+
+.sap-confidential-form button {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(235, 235, 235, 0.18);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 160ms ease;
+}
+
+.sap-confidential-form button:hover {
+  background: rgba(235, 235, 235, 0.06);
+}
+
+.sap-confidential-form button svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Manager quote */
+.sap-quote {
+  padding: 96px 10%;
+  border-bottom: 1px solid var(--line);
+}
+
+.sap-quote-eyebrow {
+  margin: 0 0 48px;
+  color: var(--meta);
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.sap-quote-content {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: clamp(48px, 6vw, 96px);
+  align-items: start;
+}
+
+.sap-quote-author {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.sap-quote-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.18), rgba(35, 35, 35, 0.6));
+  border: 1px solid rgba(235, 235, 235, 0.1);
+}
+
+.sap-quote-name {
+  margin: 0;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.32px;
+}
+
+.sap-quote-title {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: -0.28px;
+}
+
+.sap-quote-body {
+  position: relative;
+}
+
+.sap-quote-mark {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-family: Georgia, serif;
+  font-size: 36px;
+  line-height: 1;
+}
+
+.sap-quote-body blockquote {
+  margin: 0;
+  color: var(--ink);
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: -0.36px;
+}
+
+.sap-quote-readmore {
+  display: inline-block;
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: -0.28px;
+  transition: color 160ms ease;
+}
+
+.sap-quote-readmore:hover {
+  color: var(--ink);
+}
+
+/* Halloween photo collage */
+.sap-photos {
+  padding: 96px 10% 48px;
+  display: grid;
+  gap: 32px;
+  justify-items: center;
+}
+
+.sap-photos-collage {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 0.9fr;
+  gap: 12px;
+  width: 100%;
+  max-width: 880px;
+  height: clamp(160px, 22vw, 280px);
+}
+
+.sap-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 200, 120, 0.12), rgba(120, 80, 40, 0.05));
+  border: 1px solid rgba(235, 235, 235, 0.06);
+  filter: brightness(0.5);
+}
+
+.sap-photos-caption {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: -0.28px;
+}
+
+/* Workspace photo + team avatars */
+.sap-workspace {
+  padding: 48px 10% 96px;
+  border-bottom: 1px solid var(--line);
+}
+
+.sap-workspace-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: clamp(48px, 6vw, 96px);
+  align-items: center;
+}
+
+.sap-workspace-photo {
+  display: grid;
+  gap: 14px;
+}
+
+.sap-workspace-photo-image {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  border-radius: 6px;
+  background:
+    linear-gradient(135deg, rgba(120, 140, 180, 0.12), rgba(60, 70, 90, 0.05));
+  border: 1px solid rgba(235, 235, 235, 0.06);
+  transform: rotate(-2deg);
+}
+
+.sap-workspace-caption {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: -0.28px;
+}
+
+.sap-team {
+  position: relative;
+  display: grid;
+  gap: 24px;
+}
+
+.sap-team-avatars {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  justify-content: start;
+  gap: 8px;
+}
+
+.sap-team-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.16), rgba(45, 45, 45, 0.5));
+  border: 2px solid var(--bg);
+}
+
+.sap-team-avatar:nth-child(even) {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(180, 200, 255, 0.18), rgba(35, 50, 80, 0.5));
+}
+
+.sap-team-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: 14px;
+  background: rgba(35, 35, 35, 0.7);
+  border: 1px solid var(--line);
+  max-width: 460px;
+}
+
+.sap-team-emoji {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.sap-team-message p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+}
+
+.sap-team-portrait {
+  position: absolute;
+  top: 50%;
+  right: -8%;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(220, 180, 200, 0.2), rgba(80, 50, 70, 0.5));
+  border: 2px solid var(--bg);
+  transform: translateY(-50%);
+}
+
+@media (max-width: 900px) {
+  .sap-hero {
+    padding: 48px 5vw 64px;
+  }
+
+  .sap-mission,
+  .sap-projects {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  .sap-project {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .sap-confidential,
+  .sap-quote,
+  .sap-photos,
+  .sap-workspace {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  .sap-quote-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: left;
+    justify-items: start;
+  }
+
+  .sap-quote-author {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .sap-photos-collage {
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+
+  .sap-photo-3 {
+    display: none;
+  }
+
+  .sap-workspace-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .sap-team-portrait {
+    position: static;
+    transform: none;
+    margin-top: 8px;
+  }
+}
