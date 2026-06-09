@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en"> <!-- SSH key test -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thao Nguyen | Portfolio</title>
+    <meta
+      name="description"
+      content="Minimal portfolio homepage for Thao Nguyen."
+    />
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="cursor-dot" aria-hidden="true"></div>
+
+    <main class="home" aria-label="Thao Nguyen portfolio homepage">
+      <section class="intro" aria-label="Introduction">
+        <div class="identity">
+          <h1>Thao Nguyen</h1>
+          <p>Local time <span aria-hidden="true">—</span> <time id="local-time">--:--</time> Seattle, WA. <span class="live-dot" aria-label="online"></span></p>
+        </div>
+        <p class="statement">
+          I designed alongside with data and crafted products that actually matters. Shipping live products at SAP and Viettel Digital.
+        </p>
+      </section>
+
+      <header class="nav-row" aria-label="Primary navigation">
+        <nav class="site-nav">
+          <a class="is-active" href="#work">Work</a>
+          <a href="#play">Play</a>
+          <a href="about.html">About</a>
+        </nav>
+      </header>
+
+      <section class="work-list" id="work" aria-label="Selected work">
+        <a class="work-row" href="sap.html" data-hover-video="assets/sap-hover.mov" data-hover-default>
+          <span class="work-title">SAP <span class="title-divider">|</span> SaaS Analytics Dashboard</span>
+          <span class="work-meta">2025 • Internship</span>
+        </a>
+        <a class="work-row" href="viettel-digital.html" data-hover-video="assets/viettel-digital-hover.mov">
+          <span class="work-title">Viettel Digital <span class="title-divider">|</span> B2C Car Renting Mobile App</span>
+          <span class="work-meta">2024 • Internship</span>
+        </a>
+        <a class="work-row" href="pods.html">
+          <span class="work-title">AI to transform any documents into personalized podcasts</span>
+          <span class="work-meta">2025 • Project</span>
+        </a>
+        <a class="work-row" href="#">
+          <span class="work-title">Instagram <span class="title-divider">|</span> Event Discorvery</span>
+          <span class="work-meta">2026 • Project</span>
+        </a>
+        <a class="work-row" href="kitsap.html">
+          <span class="work-title">Kitsap Transit <span class="title-divider">|</span> Mix-method Research</span>
+          <span class="work-meta">2026 • Capstone</span>
+        </a>
+      </section>
+
+      <div class="work-hover-preview" aria-hidden="true">
+        <video class="work-hover-video" muted loop playsinline autoplay preload="auto"></video>
+      </div>
+
+      <footer class="footer">
+        <p>Let's write up the next story through designs!</p>
+        <nav aria-label="Contact links">
+          <a href="mailto:hello@example.com">Gmail</a>
+          <span>·</span>
+          <a href="#">LinkedIn</a>
+          <span>·</span>
+          <a href="#">Resume</a>
+        </nav>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
