@@ -62,13 +62,16 @@ const PROJECTS = [
   },
 ]
 
+// 5 portrait photos + 1 landscape (#4) for variety. Varied positions and z-index
+// for a real scattered-collage feel.
 const HALLOWEEN_PHOTOS = [
-  { src: '/assets/sap/halloween-1.png', rotate: '4.58deg', top: 0, left: '0%' },
-  { src: '/assets/sap/halloween-2.png', rotate: '-10.11deg', top: 24, left: '14%' },
-  { src: '/assets/sap/halloween-3.png', rotate: '7.99deg', top: 8, left: '30%' },
-  { src: '/assets/sap/halloween-4.png', rotate: '-2.67deg', top: 16, left: '48%' },
-  { src: '/assets/sap/halloween-5.png', rotate: '4.47deg', top: 56, left: '60%' },
-  { src: '/assets/sap/halloween-6.png', rotate: '11.41deg', top: 48, left: '76%' },
+  { src: '/assets/sap/halloween-1.png', rotate: '4.58deg',   top: 0,   left: '4%',  width: 250, height: 350, z: 3 },
+  { src: '/assets/sap/halloween-2.png', rotate: '-10.11deg', top: 130, left: '20%', width: 230, height: 350, z: 2 },
+  { src: '/assets/sap/halloween-3.png', rotate: '7.99deg',   top: 30,  left: '36%', width: 250, height: 330, z: 1 },
+  // 4: landscape — wider than tall
+  { src: '/assets/sap/halloween-4.png', rotate: '-2.67deg',  top: 250, left: '51%', width: 260, height: 200, z: 5 },
+  { src: '/assets/sap/halloween-5.png', rotate: '4.47deg',   top: 50,  left: '68%', width: 195, height: 300, z: 3 },
+  { src: '/assets/sap/halloween-6.png', rotate: '11.41deg',  top: 130, left: '83%', width: 255, height: 335, z: 2 },
 ]
 
 // Team avatars positioned roughly like the Figma cluster
@@ -280,23 +283,23 @@ export default function SAP() {
         <p className="text-[11px] tracking-[0.08em] uppercase text-[#888] mb-10">
           KIND WORDS FROM MY MANAGER
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-[clamp(40px,6vw,80px)] items-start">
-          <div className="flex flex-col items-center md:items-start gap-3">
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-[clamp(40px,6vw,80px)] items-start max-w-[920px] mx-auto">
+          <div className="flex flex-col items-center gap-3">
             <img
               src="/assets/sap/team-1.png"
               alt="Christopher Siwinski"
               className="w-[140px] h-[140px] rounded-full object-cover bg-[#2a2a2a]"
             />
-            <div className="text-center md:text-left">
+            <div className="text-center">
               <p className="text-[15px] text-[#ebebeb]">Christopher Siwinski</p>
               <p className="text-[13px] text-[#888]">Senior IT Product Owner @ SAP</p>
             </div>
           </div>
-          <div className="flex flex-col gap-4 max-w-[680px]">
+          <div className="flex flex-col gap-4">
             <span className="font-serif text-[48px] leading-none text-[#888]">"</span>
-            <blockquote className="text-[20.6px] italic leading-[1.55] tracking-[-0.44px] text-[#ebebeb] m-0">
+            <blockquote className="text-[20.6px] w-full italic leading-[1.55] tracking-[-0.44px] text-[#ebebeb] m-0">
               Thao brings curiosity and rigor into every challenge she takes on.
-              She turns every complex technical concepts into clear, actionable
+She turns every complex technical concepts into clear, actionable
               solutions. Her work not only supported SAP.com's monitoring and
               optimization efforts, but also helped the team better understand
               AI bot behavior and the broader business impact of digital
@@ -316,26 +319,25 @@ export default function SAP() {
 
       {/* Halloween photos collage */}
       <section id="section-photos" className="px-[10%] py-24 border-b border-[#252525] max-md:px-[5vw] max-md:py-16">
-        <div className="relative h-[280px] max-w-[720px] mx-auto">
+        <div className="relative h-[480px] max-w-[1300px] mx-auto">
           {HALLOWEEN_PHOTOS.map((p, i) => (
-            <div
+            <img
               key={i}
-              className="absolute w-[120px] h-[160px] bg-white rounded-[4px] p-2 shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
+              src={p.src}
+              alt=""
+              className="absolute object-cover rounded-[4px]"
               style={{
                 top: `${p.top}px`,
                 left: p.left,
+                width: `${p.width}px`,
+                height: `${p.height}px`,
                 transform: `rotate(${p.rotate})`,
+                zIndex: p.z,
               }}
-            >
-              <img
-                src={p.src}
-                alt=""
-                className="w-full h-full object-cover rounded-[2px]"
-              />
-            </div>
+            />
           ))}
         </div>
-        <p className="text-center text-[12px] text-[#888] mt-8">
+        <p className="text-center text-[18px] text-[#888] mt-8 pt-8">
           Halloween'25 at the office
         </p>
       </section>
@@ -355,7 +357,7 @@ export default function SAP() {
                 className="w-full h-full object-cover rounded-[4px]"
               />
             </div>
-            <p className="text-[12px] text-[#888] mt-6">My favorite working spots &lt;3</p>
+            <p className="text-[18px] text-[#888] mt-6 pt-10">My favorite working spots &lt;3</p>
           </div>
 
           {/* Team avatars + thank you */}
