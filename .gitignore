@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Large media files — ignore SAP mov (>100MB), allow others
+public/assets/sap-hover.mov
