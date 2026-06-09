@@ -36,10 +36,9 @@ const PROJECTS = [
     body:
       'Designed an AI chatbot that helps users navigate product content issues and answer workflow questions.',
     tags: ['AI Chatbot', 'User Support'],
-    image: null, // 3 phone mockups
-    blurred: true,
+    image: '/assets/sap/project-02.png',
+    blurred: false,
     imageOnRight: true,
-    isPhones: true,
   },
   {
     eyebrow: 'PROJECT 03',
@@ -170,11 +169,16 @@ export default function SAP() {
                 {p.tags.map(t => (
                   <span
                     key={t}
-                    className="
-                      px-7 py-3 rounded-full
-                      bg-[#161616] text-[15px] text-[#ebebeb]
-                      shadow-[inset_2px_2px_6px_rgba(0,0,0,0.7),inset_-2px_-2px_6px_rgba(255,255,255,0.06)]
-                    "
+                    className="px-7 py-2 text-[15px] text-[#ebebeb]"
+                    style={{
+                      borderRadius: '9999px',
+                      // padding-box: subtle dark surface; border-box: bright top/bottom, dark sides
+                      background:
+                        'linear-gradient(180deg, #1c1c1c 0%, #161616 50%, #1c1c1c 100%) padding-box, linear-gradient(190deg, rgba(255,255,255,0.55) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.4) 60%, rgba(255,255,255,0.40) 100%) border-box',
+                      border: '1.5px solid transparent',
+                      boxShadow:
+                        '0 20.716px 51.791px 0 rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
+                    }}
                   >
                     {t}
                   </span>
@@ -237,7 +241,7 @@ export default function SAP() {
             <img
               src="/assets/sap/manager-info.png"
               alt="Christopher Siwinski — Senior IT Product Owner @ SAP"
-              className="w-[62px] h-auto block"
+              className="w-[350px] h-auto block"
             />
           </div>
           <div className="flex flex-col gap-4">
