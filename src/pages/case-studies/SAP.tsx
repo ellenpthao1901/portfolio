@@ -217,17 +217,85 @@ export default function SAP() {
 
       {/* Confidential card */}
       <section id="section-confidential" className="px-[10%] py-20 border-b border-[#252525] flex justify-center max-md:px-[5vw] max-md:py-16">
-        <a
-          href="mailto:ellenpthao19012004@gmail.com"
-          aria-label="This work is confidential — email me"
-          className="block w-full max-w-[760px] hover:opacity-95 transition-opacity"
+        <div
+          className="w-full max-w-[760px] p-12 max-md:p-8 bg-[#1a1a1a] rounded-[32px] border border-[#2A2A2B]"
         >
-          <img
-            src="/assets/sap/confidential-card.png"
-            alt="This work is confidential. Please email me or drop me a message below if you'd like to chat!"
-            className="w-full h-auto block"
-          />
-        </a>
+          {/* Lock icon circle */}
+          <div
+            className="w-[64px] h-[64px] flex items-center justify-center mb-10"
+            style={{
+              borderRadius: '9999px',
+              background:
+                'linear-gradient(180deg, #1c1c1c 0%, #161616 90%, rgba(255,255,255,0.10) 99%, #1c1c1c 100%) padding-box, linear-gradient(190deg, rgba(255,255,255,0.55) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.4) 60%, rgba(255,255,255,0.40) 100%) border-box',
+              border: '1.5px solid transparent',
+              boxShadow: '0 12px 32px 0 rgba(0, 0, 0, 0.45)',
+            }}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              className="w-6 h-6 text-[#ebebeb]"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5Zm-3 8V7a3 3 0 1 1 6 0v3H9Z" />
+            </svg>
+          </div>
+
+          {/* Body text */}
+          <p className="text-[18px] leading-[1.55] text-[#ebebeb] mb-16">
+            This work is confidential.
+            <br />
+            Please{' '}
+            <a
+              href="mailto:ellenpthao19012004@gmail.com"
+              className="underline underline-offset-[4px] hover:opacity-70 transition-opacity"
+            >
+              email me
+            </a>{' '}
+            or drop me a message below if you'd like to chat!
+          </p>
+
+          {/* Enter pill input */}
+          <form
+            onSubmit={e => e.preventDefault()}
+            className="flex items-center gap-2 pl-6 pr-2 mt-7 py-2 w-full"
+            style={{
+              borderRadius: '9999px',
+              background:
+                'linear-gradient(180deg, #1c1c1c 0%, #161616 90%, rgba(255,255,255,0.08) 99%, #1c1c1c 100%) padding-box, linear-gradient(190deg, rgba(255,255,255,0.55) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.4) 60%, rgba(255,255,255,0.40) 100%) border-box',
+              border: '1.5px solid transparent',
+              boxShadow: '0 12px 32px 0 rgba(0, 0, 0, 0.35)',
+            }}
+          >
+            <input
+              type="text"
+              placeholder="Enter…"
+              aria-label="Message"
+              className="flex-1 bg-transparent border-0 outline-none text-[15px] text-[#ebebeb] placeholder:text-[#888] py-1"
+            />
+            <button
+              type="submit"
+              aria-label="Send message"
+              className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-white/5 transition-colors"
+              style={{
+                border: '1.2px solid rgba(255, 255, 255, 0.55)',
+              }}
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="w-4 h-4 text-[#ebebeb]"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="13 6 19 12 13 18" />
+              </svg>
+            </button>
+          </form>
+        </div>
       </section>
 
       {/* Manager quote */}
