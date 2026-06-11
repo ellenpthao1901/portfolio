@@ -73,6 +73,25 @@ Initialized with env vars `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`.
 
 ---
 
+## Footer "Last Visitor" Component
+
+**Rendered inside:** `src/components/Footer.tsx`
+
+On mount, fetches the single most recent row from `visitors` (ordered by `visited_at` desc, limit 1). This fetch happens independently of the tracking hook — it always shows the **previous** visitor, not the current user.
+
+**Display format:**
+```
+• last visited in seattle, washington, united states  🟢
+```
+- Text is lowercase
+- A small green dot on the right pulses continuously (`animate-pulse` via Tailwind)
+- If no rows exist yet (fresh DB), the component renders nothing
+- If the fetch fails, the component renders nothing (silent fail)
+
+The RLS anon `SELECT` policy must also cover this query (allow anon to read the single latest row). Since the admin dashboard uses authenticated role for full reads, a separate anon read policy scoped to `LIMIT 1` ordered by `visited_at` is needed — or simply allow anon `SELECT` with no row filter (the component only ever reads one row anyway).
+
+---
+
 ## New Files
 
 - `src/lib/supabase.ts` — Supabase client singleton
@@ -82,3 +101,4 @@ Initialized with env vars `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`.
 ## Modified Files
 
 - `src/App.tsx` — call `useVisitorTracking()`, add `/admin` route
+- `src/components/Footer.tsx` — add last visitor display component
