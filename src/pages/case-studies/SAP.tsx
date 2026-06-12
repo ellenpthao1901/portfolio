@@ -19,7 +19,16 @@ const META = [
   { label: 'With', value: 'Product Manager\nSoftware Engineer\nUX Researcher' },
 ]
 
-const PROJECTS = [
+const PROJECTS: {
+  eyebrow: string
+  title: string
+  body: string
+  tags: string[]
+  image: string
+  blurred: boolean
+  imageOnRight: boolean
+  isPhones?: boolean
+}[] = [
   {
     eyebrow: 'PROJECT 01',
     title: '✨ AI Product Health Scoring & Content Optimization',

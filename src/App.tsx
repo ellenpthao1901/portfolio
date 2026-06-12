@@ -8,8 +8,12 @@ import SAP from './pages/case-studies/SAP'
 import ViettelDigital from './pages/case-studies/ViettelDigital'
 import Pods from './pages/case-studies/Pods'
 import Kitsap from './pages/case-studies/Kitsap'
+import Admin from './pages/Admin'
+import { useVisitorTracking } from './hooks/useVisitorTracking'
 
 export default function App() {
+  useVisitorTracking()
+
   return (
     <BrowserRouter>
       <Cursor />
@@ -23,6 +27,7 @@ export default function App() {
           <Route path="/pods" element={<Pods />} />
           <Route path="/kitsap" element={<Kitsap />} />
         </Route>
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   )

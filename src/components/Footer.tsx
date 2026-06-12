@@ -1,3 +1,43 @@
+import { useEffect, useState } from 'react'
+import { supabase } from '../lib/supabase'
+
+type LastVisitor = {
+  city: string | null
+  region: string | null
+  country: string | null
+}
+
+function LastVisitorBadge() {
+  const [visitor, setVisitor] = useState<LastVisitor | null>(null)
+
+  useEffect(() => {
+    supabase
+      .from('visitors')
+      .select('city, region, country')
+      .order('visited_at', { ascending: false })
+      .limit(1)
+      .single()
+      .then(({ data }) => {
+        if (data) setVisitor(data)
+      })
+  }, [])
+
+  if (!visitor) return null
+
+  const parts = [visitor.city, visitor.region, visitor.country].filter(Boolean)
+  if (parts.length === 0) return null
+
+  return (
+    <span className="flex items-center gap-2 text-quiet text-[14px] tracking-[-0.28px]">
+      last visited in {parts.join(', ').toLowerCase()}
+      <span className="relative flex h-3 w-3">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-50" />
+        <span className="relative inline-flex rounded-full h-3 w-3 bg-white" />
+      </span>
+    </span>
+  )
+}
+
 export default function Footer() {
   return (
     <footer
@@ -11,23 +51,27 @@ export default function Footer() {
       "
     >
       <p>Let's write up the next story through designs!</p>
-      <nav className="flex items-center gap-[15px]" aria-label="Contact links">
-        <a
-          href="mailto:ellenpthao19012004@gmail.com"
-          className="transition-colors duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:text-[#dfdfdf]"
-        >
-          Gmail
-        </a>
-        <span>·</span>
-        <a
-          href="https://www.linkedin.com/in/thaongx/"
-          target="_blank"
-          rel="noreferrer"
-          className="transition-colors duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:text-[#dfdfdf]"
-        >
-          LinkedIn
-        </a>
-      </nav>
+      <div className="flex items-center gap-[15px]">
+        <nav className="flex items-center gap-[15px]" aria-label="Contact links">
+          <a
+            href="mailto:ellenpthao19012004@gmail.com"
+            className="transition-colors duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:text-[#dfdfdf]"
+          >
+            Gmail
+          </a>
+          <span>·</span>
+          <a
+            href="https://www.linkedin.com/in/thaongx/"
+            target="_blank"
+            rel="noreferrer"
+            className="transition-colors duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:text-[#dfdfdf]"
+          >
+            LinkedIn
+          </a>
+        </nav>
+        <span className="text-[#4e4e4e]">·</span>
+        <LastVisitorBadge />
+      </div>
     </footer>
   )
 }
