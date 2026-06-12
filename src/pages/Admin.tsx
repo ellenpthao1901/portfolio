@@ -19,6 +19,7 @@ type Message = {
   email: string | null
   message: string | null
   page: string | null
+  read: boolean
 }
 
 type Range = 'all' | '1y' | '6m' | '3m' | '1m' | '1w'
