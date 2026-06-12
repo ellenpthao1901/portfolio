@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 
@@ -49,63 +49,6 @@ function StatCard({ label, value }: { label: string; value: number }) {
         {value.toLocaleString()}
       </p>
       <p className="text-[11px] tracking-[0.1em] uppercase text-[#4e4e4e] mt-1">{label}</p>
-    </div>
-  )
-}
-
-function BarChart({ visitors, range }: { visitors: Visitor[]; range: Range }) {
-  const filtered = filterByRange(visitors, range)
-
-  const buckets = useMemo(() => {
-    if (filtered.length === 0) return []
-    const c = cutoff(range)
-    const start = c ?? new Date(filtered[filtered.length - 1].visited_at)
-    const end = new Date()
-    const diffMs = end.getTime() - start.getTime()
-    const diffDays = Math.ceil(diffMs / 86400000)
-    const bucketCount = Math.min(diffDays, 60)
-    const bucketMs = diffMs / bucketCount
-
-    const counts = Array(bucketCount).fill(0)
-    filtered.forEach(v => {
-      const idx = Math.min(
-        Math.floor((new Date(v.visited_at).getTime() - start.getTime()) / bucketMs),
-        bucketCount - 1
-      )
-      if (idx >= 0) counts[idx]++
-    })
-
-    const startLabel = start.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit' })
-    const endLabel = end.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit' })
-    return { counts, startLabel, endLabel }
-  }, [filtered, range])
-
-  if (!Array.isArray(buckets) && buckets.counts) {
-    const { counts, startLabel, endLabel } = buckets as { counts: number[]; startLabel: string; endLabel: string }
-    const max = Math.max(...counts, 1)
-    return (
-      <div>
-        <div className="flex items-end gap-[2px] h-32">
-          {counts.map((c, i) => (
-            <div
-              key={i}
-              className="flex-1 bg-[#d8d8d8] rounded-[1px] min-h-[2px] transition-all"
-              style={{ height: `${Math.max((c / max) * 100, c > 0 ? 4 : 1)}%`, opacity: c === 0 ? 0.15 : 1 }}
-            />
-          ))}
-        </div>
-        <div className="flex justify-between mt-2 text-[11px] text-[#4e4e4e]">
-          <span>{startLabel}</span>
-          <span>{endLabel}</span>
-        </div>
-      </div>
-    )
-  }
-
-  // fallback: no data
-  return (
-    <div className="h-32 flex items-center justify-center text-[#4e4e4e] text-sm">
-      no data
     </div>
   )
 }
