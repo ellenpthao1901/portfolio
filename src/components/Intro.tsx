@@ -108,9 +108,9 @@ function ContactPill() {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         onClick={e => { e.stopPropagation(); setOpen(true) }}
-        className="inline-flex items-center gap-2 text-[13px] cursor-pointer"
+        className="inline-flex items-center text-[13px] cursor-pointer"
         style={{
-          color: 'rgba(134,239,172,0.9)',
+          color: '#d8d8d8',
           pointerEvents: 'auto',
           background: 'none',
           border: 'none',
@@ -118,11 +118,13 @@ function ContactPill() {
           lineHeight: 'inherit',
         }}
       >
-        <span
-          className="w-[7px] h-[7px] rounded-full flex-shrink-0"
-          style={{ background: 'rgba(134,239,172,0.9)', boxShadow: '0 0 6px rgba(134,239,172,0.6)' }}
-        />
-        <span style={{ display: 'inline-block', width: '11ch', textAlign: 'left' }}>
+        <span style={{
+          display: 'inline-block',
+          width: '11ch',
+          textAlign: 'left',
+          textDecoration: hovered ? 'underline' : 'none',
+          textUnderlineOffset: '3px',
+        }}>
           {hovered ? "Let's get in touch" : 'Working on something cool?'}
         </span>
       </button>
