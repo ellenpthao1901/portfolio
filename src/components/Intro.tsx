@@ -215,13 +215,13 @@ export default function Intro() {
         </span>
       </div>
 
-      <div className="identity" style={{ position: 'relative', zIndex: 1 }}>
+      <div className="identity" style={{ position: 'relative', zIndex: 1, pointerEvents: 'none' }}>
         <h1 style={{ pointerEvents: 'none' }}>Thao Nguyen</h1>
         <p style={{ pointerEvents: 'none' }}>
           Local time — <LocalTime /> Seattle, WA.{' '}
           <span className="live-dot" aria-label="online" />
         </p>
-        <p style={{ pointerEvents: 'auto', margin: 0 }}>
+        <p style={{ pointerEvents: 'auto', margin: 0, width:"fit-content"}}>
           <ContactPill />
         </p>
       </div>
