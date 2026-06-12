@@ -8,9 +8,22 @@ const IMAGE_URL = '/assets/black.png'
 
 function ContactModal({ onClose }: { onClose: () => void }) {
   const { fields, status, setField, submit } = useContactForm()
+  const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({})
+
+  function validate() {
+    const e: typeof errors = {}
+    if (!fields.name.trim()) e.name = 'Name is required'
+    if (!fields.email.trim()) e.email = 'Email is required'
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) e.email = 'Enter a valid email'
+    if (!fields.message.trim()) e.message = 'Message is required'
+    return e
+  }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    const e2 = validate()
+    if (Object.keys(e2).length > 0) { setErrors(e2); return }
+    setErrors({})
     submit('home')
   }
 
@@ -53,33 +66,39 @@ function ContactModal({ onClose }: { onClose: () => void }) {
             </div>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-              <input
-                type="text"
-                placeholder="Your name"
-                required
-                disabled={status === 'sending'}
-                value={fields.name}
-                onChange={e => setField('name', e.target.value)}
-                className="bg-[#111] text-[#d8d8d8] text-[14px] px-4 py-3 rounded-xl border border-[#252525] outline-none focus:border-[#4e4e4e] transition-colors placeholder:text-[#4e4e4e] disabled:opacity-50"
-              />
-              <input
-                type="email"
-                placeholder="Your email"
-                required
-                disabled={status === 'sending'}
-                value={fields.email}
-                onChange={e => setField('email', e.target.value)}
-                className="bg-[#111] text-[#d8d8d8] text-[14px] px-4 py-3 rounded-xl border border-[#252525] outline-none focus:border-[#4e4e4e] transition-colors placeholder:text-[#4e4e4e] disabled:opacity-50"
-              />
-              <textarea
-                placeholder="What's on your mind?"
-                required
-                rows={4}
-                disabled={status === 'sending'}
-                value={fields.message}
-                onChange={e => setField('message', e.target.value)}
-                className="bg-[#111] text-[#d8d8d8] text-[14px] px-4 py-3 rounded-xl border border-[#252525] outline-none focus:border-[#4e4e4e] transition-colors placeholder:text-[#4e4e4e] resize-none disabled:opacity-50"
-              />
+              <div className="flex flex-col gap-1">
+                <input
+                  type="text"
+                  placeholder="Your name"
+                  disabled={status === 'sending'}
+                  value={fields.name}
+                  onChange={e => { setField('name', e.target.value); setErrors(p => ({ ...p, name: undefined })) }}
+                  className={`bg-[#111] text-[#d8d8d8] text-[14px] px-4 py-3 rounded-xl border outline-none transition-colors placeholder:text-[#4e4e4e] disabled:opacity-50 ${errors.name ? 'border-red-400/60' : 'border-[#252525] focus:border-[#4e4e4e]'}`}
+                />
+                {errors.name && <p className="text-red-400 text-[11px] pl-1">{errors.name}</p>}
+              </div>
+              <div className="flex flex-col gap-1">
+                <input
+                  type="email"
+                  placeholder="Your email"
+                  disabled={status === 'sending'}
+                  value={fields.email}
+                  onChange={e => { setField('email', e.target.value); setErrors(p => ({ ...p, email: undefined })) }}
+                  className={`bg-[#111] text-[#d8d8d8] text-[14px] px-4 py-3 rounded-xl border outline-none transition-colors placeholder:text-[#4e4e4e] disabled:opacity-50 ${errors.email ? 'border-red-400/60' : 'border-[#252525] focus:border-[#4e4e4e]'}`}
+                />
+                {errors.email && <p className="text-red-400 text-[11px] pl-1">{errors.email}</p>}
+              </div>
+              <div className="flex flex-col gap-1">
+                <textarea
+                  placeholder="What's on your mind?"
+                  rows={4}
+                  disabled={status === 'sending'}
+                  value={fields.message}
+                  onChange={e => { setField('message', e.target.value); setErrors(p => ({ ...p, message: undefined })) }}
+                  className={`bg-[#111] text-[#d8d8d8] text-[14px] px-4 py-3 rounded-xl border outline-none transition-colors placeholder:text-[#4e4e4e] resize-none disabled:opacity-50 ${errors.message ? 'border-red-400/60' : 'border-[#252525] focus:border-[#4e4e4e]'}`}
+                />
+                {errors.message && <p className="text-red-400 text-[11px] pl-1">{errors.message}</p>}
+              </div>
               {status === 'error' && (
                 <p className="text-red-400 text-[12px]">Something went wrong, try again.</p>
               )}
