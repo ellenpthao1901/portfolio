@@ -73,7 +73,7 @@ function ContactModal({ onClose }: { onClose: () => void }) {
                   disabled={status === 'sending'}
                   value={fields.name}
                   onChange={e => { setField('name', e.target.value); setErrors(p => ({ ...p, name: undefined })) }}
-                  className={`bg-[#111] text-[#d8d8d8] text-[14px] px-4 py-3 rounded-xl border outline-none transition-colors placeholder:text-[#4e4e4e] disabled:opacity-50 ${errors.name ? 'border-red-400/60' : 'border-[#252525] focus:border-[#4e4e4e]'}`}
+                  className={`bg-[#111] text-[#e6e6e6] text-[15px] px-4 py-3 rounded-xl border outline-none transition-colors placeholder:text-[#555] disabled:opacity-50 ${errors.name ? 'border-red-400/60' : 'border-[#333] focus:border-[#666]'}`}
                 />
                 {errors.name && <p className="text-red-400 text-[11px] pl-1">{errors.name}</p>}
               </div>
@@ -84,7 +84,7 @@ function ContactModal({ onClose }: { onClose: () => void }) {
                   disabled={status === 'sending'}
                   value={fields.email}
                   onChange={e => { setField('email', e.target.value); setErrors(p => ({ ...p, email: undefined })) }}
-                  className={`bg-[#111] text-[#d8d8d8] text-[14px] px-4 py-3 rounded-xl border outline-none transition-colors placeholder:text-[#4e4e4e] disabled:opacity-50 ${errors.email ? 'border-red-400/60' : 'border-[#252525] focus:border-[#4e4e4e]'}`}
+                  className={`bg-[#111] text-[#e6e6e6] text-[15px] px-4 py-3 rounded-xl border outline-none transition-colors placeholder:text-[#555] disabled:opacity-50 ${errors.email ? 'border-red-400/60' : 'border-[#333] focus:border-[#666]'}`}
                 />
                 {errors.email && <p className="text-red-400 text-[11px] pl-1">{errors.email}</p>}
               </div>
@@ -95,7 +95,7 @@ function ContactModal({ onClose }: { onClose: () => void }) {
                   disabled={status === 'sending'}
                   value={fields.message}
                   onChange={e => { setField('message', e.target.value); setErrors(p => ({ ...p, message: undefined })) }}
-                  className={`bg-[#111] text-[#d8d8d8] text-[14px] px-4 py-3 rounded-xl border outline-none transition-colors placeholder:text-[#4e4e4e] resize-none disabled:opacity-50 ${errors.message ? 'border-red-400/60' : 'border-[#252525] focus:border-[#4e4e4e]'}`}
+                  className={`bg-[#111] text-[#e6e6e6] text-[15px] px-4 py-3 rounded-xl border outline-none transition-colors placeholder:text-[#555] resize-none disabled:opacity-50 ${errors.message ? 'border-red-400/60' : 'border-[#333] focus:border-[#666]'}`}
                 />
                 {errors.message && <p className="text-red-400 text-[11px] pl-1">{errors.message}</p>}
               </div>
