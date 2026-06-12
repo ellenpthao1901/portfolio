@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import AdminNav from '../components/AdminNav'
 import { supabase } from '../lib/supabase'
 
 type Visitor = {
@@ -243,22 +243,10 @@ export default function Admin() {
   return (
     <div className="min-h-screen bg-[#111] text-[#d8d8d8] font-sans">
 
-      {/* Admin navbar */}
-      <nav className="border-b border-[#252525] px-8 h-[52px] flex items-center justify-between">
-        <div className="flex items-center gap-5 text-[13px] text-[#4e4e4e]">
-          <Link to="/" className="hover:text-[#7b7b7b] transition-colors">Work</Link>
-          <Link to="/about" className="hover:text-[#7b7b7b] transition-colors">About</Link>
-        </div>
-        <button
-          onClick={() => {
-            sessionStorage.removeItem('admin_authed')
-            setAuthed(false)
-          }}
-          className="text-[12px] text-[#4e4e4e] hover:text-[#d8d8d8] transition-colors"
-        >
-          Log out
-        </button>
-      </nav>
+      <AdminNav onLogout={() => {
+        sessionStorage.removeItem('admin_authed')
+        setAuthed(false)
+      }} />
 
       <div className="p-8">
       <div className="max-w-5xl mx-auto flex flex-col gap-5">
