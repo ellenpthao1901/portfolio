@@ -15,7 +15,7 @@ function ContactModal({ onClose }: { onClose: () => void }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 z-[10000] flex items-center justify-center p-4"
       style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(6px)' }}
       onClick={onClose}
     >
@@ -182,12 +182,14 @@ export default function Intro() {
         </span>
       </div>
 
-      <div className="identity" style={{ position: 'relative', zIndex: 1, pointerEvents: 'none' }}>
-        <h1>Thao Nguyen</h1>
-        <p>
+      <div className="identity" style={{ position: 'relative', zIndex: 1 }}>
+        <h1 style={{ pointerEvents: 'none' }}>Thao Nguyen</h1>
+        <p style={{ pointerEvents: 'none' }}>
           Local time — <LocalTime /> Seattle, WA.{' '}
-          <ContactPill />{' '}
-          <span className="live-dot" aria-label="online" />
+          <span style={{ pointerEvents: 'auto', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+            <ContactPill />{' '}
+            <span className="live-dot" aria-label="online" />
+          </span>
         </p>
       </div>
       <p className="statement" style={{ position: 'relative', zIndex: 1, pointerEvents: 'none' }}>
