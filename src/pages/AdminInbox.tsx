@@ -37,7 +37,12 @@ export default function AdminInbox() {
     setMessages(prev => prev.map(m => m.id === id ? { ...m, read: true } : m))
   }
 
-  async function deleteMessage(id: string) {
+  async function markUnread(id: string) {
+    await supabase.from('inbox').update({ read: false }).eq('id', id)
+    setMessages(prev => prev.map(m => m.id === id ? { ...m, read: false } : m))
+  }
+
+
     await supabase.from('inbox').delete().eq('id', id)
     setMessages(prev => prev.filter(m => m.id !== id))
   }
@@ -107,12 +112,28 @@ export default function AdminInbox() {
                       </td>
                       <td className="py-3 pr-6 text-[#4e4e4e]">{m.page ?? '—'}</td>
                       <td className="py-3">
-                        <button
-                          onClick={e => { e.stopPropagation(); deleteMessage(m.id) }}
-                          className="text-[11px] text-[#4e4e4e] hover:text-red-400 transition-colors px-2 py-1"
-                        >
-                          Delete
-                        </button>
+                        <div className="flex items-center gap-2">
+                          {m.read && (
+                            <button
+                              onClick={e => { e.stopPropagation(); markUnread(m.id) }}
+                              className="text-[11px] text-[#4e4e4e] hover:text-[#7b7b7b] transition-colors px-2 py-1 border border-[#252525] rounded"
+                            >
+                              Unread
+                            </button>
+                          )}
+                          <button
+                            onClick={e => { e.stopPropagation(); deleteMessage(m.id) }}
+                            className="text-[#4e4e4e] hover:text-red-400 transition-colors p-1"
+                            aria-label="Delete message"
+                          >
+                            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                              <polyline points="3 6 5 6 21 6" />
+                              <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                              <path d="M10 11v6M14 11v6" />
+                              <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+                            </svg>
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))}
