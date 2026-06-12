@@ -54,8 +54,8 @@ function ContactModal({ onClose }: { onClose: () => void }) {
           <>
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-[#d8d8d8] text-[16px] tracking-tight font-medium">Let's get in touch</p>
-                <p className="text-[#7b7b7b] text-[13px] mt-1">
+                <p className="text-[#d8d8d8] text-[20px] tracking-tight font-medium">Let's get in touch</p>
+                <p className="text-[#7b7b7b] text-[15px] mt-1">
                   Drop a message below or{' '}
                   <a
                     href="mailto:ellenpthao19012004@gmail.com"
