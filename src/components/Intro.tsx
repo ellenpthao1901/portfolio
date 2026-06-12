@@ -108,19 +108,23 @@ function ContactPill() {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         onClick={e => { e.stopPropagation(); setOpen(true) }}
-        className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[13px] transition-all duration-200 cursor-pointer"
+        className="inline-flex items-center gap-2 text-[13px] cursor-pointer"
         style={{
-          background: hovered ? 'rgba(134,239,172,0.15)' : 'rgba(134,239,172,0.08)',
-          border: '1px solid rgba(134,239,172,0.2)',
           color: 'rgba(134,239,172,0.9)',
           pointerEvents: 'auto',
+          background: 'none',
+          border: 'none',
+          padding: 0,
+          lineHeight: 'inherit',
         }}
       >
         <span
           className="w-[7px] h-[7px] rounded-full flex-shrink-0"
           style={{ background: 'rgba(134,239,172,0.9)', boxShadow: '0 0 6px rgba(134,239,172,0.6)' }}
         />
-        {hovered ? "Let's get in touch" : 'Working on something cool?'}
+        <span style={{ display: 'inline-block', width: '11ch', textAlign: 'left' }}>
+          {hovered ? "Let's get in touch" : 'Working on something cool?'}
+        </span>
       </button>
       {open && <ContactModal onClose={() => setOpen(false)} />}
     </>
