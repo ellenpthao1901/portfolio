@@ -1,22 +1,10 @@
 import PhotoShuffle from '../components/PhotoShuffle'
+import ToolBubbles from '../components/ToolBubbles'
 
 // ── Figma image assets ────────────────────────────────────────────────────────
 const IMG_HERO        = '/assets/about/hero.jpg'
 
 // Tool icons
-const TOOL_MIRO       = '/assets/about/tool-miro.png'
-const TOOL_MSFT       = '/assets/about/tool-figma.png'
-const TOOL_AI         = '/assets/about/tool-ai.png'
-const TOOL_PS         = '/assets/about/tool-ps.png'
-const TOOL_GG         = '/assets/about/tool-google.png'
-const TOOL_CANVA      = '/assets/about/tool-canva.png'
-const TOOL_MIRO2      = '/assets/about/tool-figjam.png'
-const TOOL_PROTOPIE   = '/assets/about/tool-protopie.png'
-const TOOL_CLAUDE     = '/assets/about/tool-claude.png'
-const TOOL_BLENDER    = '/assets/about/tool-blender.png'
-const TOOL_CODEX      = '/assets/about/tool-codex.png'
-const TOOL_ADOBE      = '/assets/about/tool-adobe.png'
-const TOOL_GITHUB     = '/assets/about/tool-github.png'
 
 // Web Impact photos
 const WI_LOGO         = '/assets/about/wi-logo.png'
@@ -46,22 +34,6 @@ const HOBBY_IMG2      = '/assets/about/hobby2.jpg'
 const HOBBY_IMG3      = '/assets/about/hobby3.jpg'
 
 // ── Tool bubble data ──────────────────────────────────────────────────────────
-const TOOLS = [
-  { src: TOOL_CLAUDE,   label: 'Claude' },
-  { src: TOOL_ADOBE,    label: 'Adobe' },
-  { src: TOOL_MSFT,     label: 'Figma' },
-  { src: TOOL_BLENDER,  label: 'Blender' },
-  { src: TOOL_AI,       label: 'AI' },
-  { src: TOOL_PROTOPIE, label: 'ProtoPie' },
-  { src: TOOL_MIRO,     label: 'Miro' },
-  { src: TOOL_CODEX,    label: 'Codex' },
-  { src: TOOL_PS,       label: 'Photoshop' },
-  { src: TOOL_GG,       label: 'Google' },
-  { src: TOOL_CANVA,    label: 'Canva' },
-  { src: TOOL_MIRO2,    label: 'FigJam' },
-  { src: TOOL_GITHUB,   label: 'GitHub' },
-]
-
 // ── Main component ─────────────────────────────────────────────────────────────
 export default function About() {
   return (
@@ -98,20 +70,10 @@ export default function About() {
       </section>
 
       {/* ── 3. TOOLS + WORK SPANS ───────────────────────────────────────────── */}
-      <section className="grid grid-cols-2 gap-16 items-start px-[10%] py-20 border-b border-[#252525]">
-        {/* Tool bubbles grid — centered in left half */}
+      <section className="grid grid-cols-2 gap-16 items-center px-[10%] py-20 border-b border-[#252525]">
+        {/* Tool bubbles — Figma-positioned with mouse repulsion */}
         <div className="flex justify-center">
-          <div className="grid grid-cols-3 gap-3">
-            {TOOLS.map(t => (
-              <div
-                key={t.label}
-                className="w-14 h-14 rounded-full bg-[#222] flex items-center justify-center overflow-hidden"
-                title={t.label}
-              >
-                <img src={t.src} alt={t.label} className="w-8 h-8 object-contain" />
-              </div>
-            ))}
-          </div>
+          <ToolBubbles />
         </div>
 
         {/* Work spans */}

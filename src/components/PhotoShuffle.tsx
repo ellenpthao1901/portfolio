@@ -119,7 +119,10 @@ export default function PhotoShuffle({ images }: PhotoShuffleProps) {
               ? to([springs[i].scale, hoverSpring.hoverScale], (s: number, hs: number) => s * hs)
               : springs[i].scale,
             opacity: springs[i].opacity,
-            zIndex: springs[i].zIndex,
+            
+            // FIX: Round the zIndex so the browser never drops it mid-animation
+            zIndex: springs[i].zIndex.to(z => Math.round(z)),
+            
             boxShadow: isFront
               ? '0 28px 64px rgba(0,0,0,0.55), 0 8px 20px rgba(0,0,0,0.3)'
               : '0 8px 24px rgba(0,0,0,0.3)',
