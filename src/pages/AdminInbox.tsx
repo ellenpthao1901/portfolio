@@ -10,6 +10,7 @@ type Message = {
   email: string | null
   message: string | null
   page: string | null
+  read: boolean
 }
 
 const AUTH_KEY = 'admin_authed'
@@ -31,6 +32,16 @@ export default function AdminInbox() {
       })
   }, [authed])
 
+  async function markRead(id: string) {
+    await supabase.from('inbox').update({ read: true }).eq('id', id)
+    setMessages(prev => prev.map(m => m.id === id ? { ...m, read: true } : m))
+  }
+
+  async function deleteMessage(id: string) {
+    await supabase.from('inbox').delete().eq('id', id)
+    setMessages(prev => prev.filter(m => m.id !== id))
+  }
+
   if (!authed) return <Navigate to="/admin" replace />
 
   if (loading) {
@@ -41,6 +52,8 @@ export default function AdminInbox() {
     )
   }
 
+  const unread = messages.filter(m => !m.read).length
+
   return (
     <div className="min-h-screen bg-[#111] text-[#d8d8d8] font-sans">
       <AdminNav onLogout={() => {
@@ -50,7 +63,10 @@ export default function AdminInbox() {
       <div className="p-8">
         <div className="max-w-5xl mx-auto">
           <h1 className="text-lg font-medium mb-1 tracking-tight">Inbox</h1>
-          <p className="text-sm text-[#4e4e4e] mb-6">{messages.length} messages</p>
+          <p className="text-sm text-[#4e4e4e] mb-6">
+            {messages.length} messages
+            {unread > 0 && <span className="ml-2 text-[#d8d8d8]">· {unread} unread</span>}
+          </p>
           {messages.length === 0 ? (
             <p className="text-sm text-[#4e4e4e]">No messages yet</p>
           ) : (
@@ -62,19 +78,42 @@ export default function AdminInbox() {
                     <th className="pb-2 pr-6 font-normal">Name</th>
                     <th className="pb-2 pr-6 font-normal">Email</th>
                     <th className="pb-2 pr-6 font-normal">Message</th>
-                    <th className="pb-2 font-normal">Page</th>
+                    <th className="pb-2 pr-6 font-normal">Page</th>
+                    <th className="pb-2 font-normal"></th>
                   </tr>
                 </thead>
                 <tbody>
                   {messages.map(m => (
-                    <tr key={m.id} className="border-b border-[#1d1d1d] hover:bg-white/[0.02]">
-                      <td className="py-3 pr-6 text-[#4e4e4e] whitespace-nowrap">
-                        {new Date(m.sent_at).toLocaleString()}
+                    <tr
+                      key={m.id}
+                      onClick={() => { if (!m.read) markRead(m.id) }}
+                      className={`border-b border-[#1d1d1d] cursor-pointer transition-colors ${
+                        m.read ? 'hover:bg-white/[0.02]' : 'bg-white/[0.03] hover:bg-white/[0.05]'
+                      }`}
+                    >
+                      <td className="py-3 pr-6 whitespace-nowrap">
+                        <span className={m.read ? 'text-[#4e4e4e]' : 'text-[#d8d8d8]'}>
+                          {new Date(m.sent_at).toLocaleString()}
+                        </span>
                       </td>
-                      <td className="py-3 pr-6">{m.name ?? '—'}</td>
-                      <td className="py-3 pr-6">{m.email ?? '—'}</td>
-                      <td className="py-3 pr-6 max-w-xs">{m.message ?? '—'}</td>
-                      <td className="py-3 text-[#4e4e4e]">{m.page ?? '—'}</td>
+                      <td className={`py-3 pr-6 ${m.read ? 'text-[#4e4e4e]' : 'text-[#d8d8d8] font-medium'}`}>
+                        {m.name ?? '—'}
+                      </td>
+                      <td className={`py-3 pr-6 ${m.read ? 'text-[#4e4e4e]' : 'text-[#d8d8d8]'}`}>
+                        {m.email ?? '—'}
+                      </td>
+                      <td className={`py-3 pr-6 max-w-xs ${m.read ? 'text-[#4e4e4e]' : 'text-[#d8d8d8]'}`}>
+                        {m.message ?? '—'}
+                      </td>
+                      <td className="py-3 pr-6 text-[#4e4e4e]">{m.page ?? '—'}</td>
+                      <td className="py-3">
+                        <button
+                          onClick={e => { e.stopPropagation(); deleteMessage(m.id) }}
+                          className="text-[11px] text-[#4e4e4e] hover:text-red-400 transition-colors px-2 py-1"
+                        >
+                          Delete
+                        </button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
