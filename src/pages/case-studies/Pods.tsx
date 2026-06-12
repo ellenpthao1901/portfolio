@@ -76,8 +76,8 @@ function ArrowRight() {
 
 // ─── persona data ─────────────────────────────────────────────────────────────
 const PERSONAS = [
-  { src: '/assets/pods/persona-lily.png', alt: 'Lily Ng — passionate PhD student persona', caption: 'Lily Ng — The passionate PhD Student, would like to minimize time in reading articles and doing her research' },
-  { src: '/assets/pods/persona-edward.png', alt: 'Edward White — tenure CS professor persona', caption: 'Edward White — That One Tenure CS Professor, likes to keep up with all the new breakthroughs' },
+  { src: '/assets/pods/persona-lily.webp', alt: 'Lily Ng — passionate PhD student persona', caption: 'Lily Ng — The passionate PhD Student, would like to minimize time in reading articles and doing her research' },
+  { src: '/assets/pods/persona-edward.webp', alt: 'Edward White — tenure CS professor persona', caption: 'Edward White — That One Tenure CS Professor, likes to keep up with all the new breakthroughs' },
 ]
 
 export default function Pods() {
@@ -98,7 +98,7 @@ export default function Pods() {
 
       {/* Cover image */}
       <section className="overflow-hidden border-b" style={{ background: bg, borderColor: line }}>
-        <img src="/assets/pods/cover.png" alt="Pods platform cover" className="block object-cover" style={{ width: '102%', margin: '-1% -1% -2%' }} />
+        <img src="/assets/pods/cover.webp" alt="Pods platform cover" className="block object-cover" style={{ width: '102%', margin: '-1% -1% -2%' }} />
       </section>
 
       {/* Details */}
@@ -159,7 +159,7 @@ export default function Pods() {
           <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Surveyed 50 students to validate the problem</h2>
           <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>We sent out a Google Form to 50 college, master's, and PhD students to gather data on their study difficulties and the platform features they wished existed.</p>
         </div>
-        <img className="col-span-2 block mx-auto rounded-[12px]" style={{ width: '61%', maxWidth: 880, marginTop: 56, background: bg }} src="/assets/pods/line-chart.png" alt="Survey data line chart" />
+        <img className="col-span-2 block mx-auto rounded-[12px]" style={{ width: '61%', maxWidth: 880, marginTop: 56, background: bg }} src="/assets/pods/line-chart.webp" alt="Survey data line chart" />
         {/* Survey bottom */}
         <div className="col-span-2 grid items-center mt-14 mx-auto" style={{ gridTemplateColumns: 'minmax(160px,220px) 1fr', gridTemplateRows: '1fr auto', gap: 'clamp(24px,3vw,48px)', width: '61%', maxWidth: 880 }}>
           {/* Pie */}
@@ -234,7 +234,7 @@ export default function Pods() {
           <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Considering between 12 ideas WAS a challenge!</h2>
           <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>Some outstanding ideas that our team has coming up with such as converting articles into comic-based formats or game-based learning with puzzle games.</p>
         </div>
-        <img className="col-span-2 block w-full mx-auto mt-14 rounded-[12px]" style={{ maxWidth: 1100, background: soft }} src="/assets/pods/brainstorming.png" alt="Brainstorming twelve actionable solutions" />
+        <img className="col-span-2 block w-full mx-auto mt-14 rounded-[12px]" style={{ maxWidth: 1100, background: soft }} src="/assets/pods/brainstorming.webp" alt="Brainstorming twelve actionable solutions" />
       </section>
 
       {/* Secondary research */}
@@ -275,7 +275,7 @@ export default function Pods() {
           </span>
           <img src="/assets/pods/notebooklm-card.webp" alt="NotebookLM card" className="block rounded-[16px]" style={{ width: '62%', maxWidth: 620 }} />
           <span className="absolute flex flex-col items-end text-right gap-1 z-10" style={{ bottom: '4%', right: 0, width: 'clamp(280px,26vw,360px)' }}>
-            <img src="/assets/pods/arrow-loop-br.png" alt="" className="block self-start order-first" style={{ width: 'clamp(110px,12vw,170px)', marginBottom: 12, marginLeft: -36 }} aria-hidden="true" />
+            <img src="/assets/pods/arrow-loop-br.webp" alt="" className="block self-start order-first" style={{ width: 'clamp(110px,12vw,170px)', marginBottom: 12, marginLeft: -36 }} aria-hidden="true" />
             <span className="text-[clamp(14px,1.05vw,17px)] font-semibold leading-[1.35] tracking-[-0.32px]" style={{ color: ink }}>No seamless integration for creating user-specific content formats</span>
           </span>
         </div>
@@ -297,7 +297,7 @@ export default function Pods() {
               ))}
             </ul>
           </div>
-          <img src="/assets/pods/usp-vertical.png" alt="Unique selling points visual" className="block justify-self-center" style={{ maxWidth: 440, background: 'transparent' }} />
+          <img src="/assets/pods/usp-vertical.webp" alt="Unique selling points visual" className="block justify-self-center" style={{ maxWidth: 440, background: 'transparent' }} />
           <div className="flex flex-col gap-3 self-end pb-10">
             <h3 className="text-[clamp(14px,1.05vw,17px)] font-semibold leading-[1.35] m-0" style={{ color: ink }}>Customization Features</h3>
             <ul className="m-0 pl-5 flex flex-col gap-3">
@@ -342,7 +342,7 @@ export default function Pods() {
           <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>A simplified 4-step user flow</h2>
           <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>I distilled the experience into four essential steps: upload sources, prompt the AI with additional context, fine-tune preferences, and generate.</p>
         </div>
-        <img className="col-span-2 block w-full mt-14 rounded-[12px]" style={{ background: bg }} src="/assets/pods/user-flow.png" alt="Simplified 4-step user flow diagram" />
+        <img className="col-span-2 block w-full mt-14 rounded-[12px]" style={{ background: bg }} src="/assets/pods/user-flow.webp" alt="Simplified 4-step user flow diagram" />
       </section>
 
       {/* IA */}
@@ -352,7 +352,7 @@ export default function Pods() {
           <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Three main sections, designed for flow</h2>
           <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>The main navigation lives across "Create a podcast," "Recent Pods," and "Spaces." Users can upload up to 50 different types of sources simultaneously.</p>
         </div>
-        <img className="col-span-2 block w-full mt-14 rounded-[12px]" style={{ background: bg }} src="/assets/pods/information-architecture.png" alt="Information architecture diagram" />
+        <img className="col-span-2 block w-full mt-14 rounded-[12px]" style={{ background: bg }} src="/assets/pods/information-architecture.webp" alt="Information architecture diagram" />
       </section>
 
       {/* Core screens */}
@@ -369,12 +369,12 @@ export default function Pods() {
         </div>
         <div className="col-span-2 grid mt-14" style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 'clamp(24px,3vw,40px)' }}>
           {[
-            { src: '/assets/pods/pod-creation-lofi.png', caption: 'Pod creation — low fidelity' },
-            { src: '/assets/pods/pod-creation-v1.png', caption: 'Pod creation — v.1' },
-            { src: '/assets/pods/customization-lofi.png', caption: 'Customization — low fidelity' },
-            { src: '/assets/pods/customization-v1.png', caption: 'Customization — v.1' },
-            { src: '/assets/pods/latency-iter3.png', caption: 'Latency page — iteration 3' },
-            { src: '/assets/pods/design-detail-1.png', caption: 'Design system reference' },
+            { src: '/assets/pods/pod-creation-lofi.webp', caption: 'Pod creation — low fidelity' },
+            { src: '/assets/pods/pod-creation-v1.webp', caption: 'Pod creation — v.1' },
+            { src: '/assets/pods/customization-lofi.webp', caption: 'Customization — low fidelity' },
+            { src: '/assets/pods/customization-v1.webp', caption: 'Customization — v.1' },
+            { src: '/assets/pods/latency-iter3.webp', caption: 'Latency page — iteration 3' },
+            { src: '/assets/pods/design-detail-1.webp', caption: 'Design system reference' },
           ].map(fig => (
             <figure key={fig.src} className="m-0 grid gap-4">
               <img src={fig.src} alt={fig.caption} className="w-full block rounded-[12px]" style={{ background: soft }} />
@@ -421,8 +421,8 @@ export default function Pods() {
         style={{ gridTemplateColumns: '1fr 1fr', width: '75%', maxWidth: 1250 }}>
         <div className="absolute left-1/2 bottom-0 -translate-x-1/2 h-px" style={{ width: '100vw', background: line }} />
         {[
-          { before: { src: '/assets/pods/homepage-v1.png', alt: 'Homepage v1' }, after: { src: '/assets/pods/homepage-v2.png', alt: 'Homepage v2' }, caption: 'Limited the homepage navigation to 3 clear sections and refined "Recent Pods"' },
-          { before: { src: '/assets/pods/customization-v1.png', alt: 'Customization v1' }, after: { src: '/assets/pods/customization-v2.png', alt: 'Customization v2' }, caption: 'Reduced fine-tuning to the 2 most used features and added breathing room for clickability' },
+          { before: { src: '/assets/pods/homepage-v1.webp', alt: 'Homepage v1' }, after: { src: '/assets/pods/homepage-v2.webp', alt: 'Homepage v2' }, caption: 'Limited the homepage navigation to 3 clear sections and refined "Recent Pods"' },
+          { before: { src: '/assets/pods/customization-v1.webp', alt: 'Customization v1' }, after: { src: '/assets/pods/customization-v2.webp', alt: 'Customization v2' }, caption: 'Reduced fine-tuning to the 2 most used features and added breathing room for clickability' },
         ].map((pair, i) => (
           <figure key={i} className="m-0 flex flex-col gap-4">
             <div className="grid items-center gap-[clamp(16px,2.5vw,32px)]" style={{ gridTemplateColumns: '1fr auto 1fr' }}>
@@ -437,11 +437,11 @@ export default function Pods() {
 
       {/* Final galleries */}
       {[
-        { label: 'DASHBOARD & HOMEPAGE', images: [{ src: '/assets/pods/dashboard.png', alt: 'Dashboard' }, { src: '/assets/pods/desktop-1.png', alt: 'Desktop home' }] },
-        { label: 'CREATE A PODCAST', images: [{ src: '/assets/pods/create-podcast-final.png', alt: 'Create podcast final' }, { src: '/assets/pods/create-podcast-alt.png', alt: 'Create podcast alt' }, { src: '/assets/pods/create-podcast.png', alt: 'Create podcast' }] },
-        { label: 'CUSTOMIZATION & LATENCY', images: [{ src: '/assets/pods/latency-v2.png', alt: 'Latency v2' }, { src: '/assets/pods/latency-iter4.png', alt: 'Latency iter4' }, { src: '/assets/pods/latency-iter3b.png', alt: 'Latency iter3' }] },
-        { label: 'LISTEN TO PODCAST', images: [{ src: '/assets/pods/listen-transcript-final.png', alt: 'Listen final' }, { src: '/assets/pods/listen-transcript-1.png', alt: 'Listen 1' }, { src: '/assets/pods/listen-transcript-2.png', alt: 'Listen 2' }] },
-        { label: 'TIMELINE', images: [{ src: '/assets/pods/timeline-v2.png', alt: 'Timeline v2' }, { src: '/assets/pods/timeline-v2-1.png', alt: 'Timeline v2-1' }] },
+        { label: 'DASHBOARD & HOMEPAGE', images: [{ src: '/assets/pods/dashboard.webp', alt: 'Dashboard' }, { src: '/assets/pods/desktop-1.webp', alt: 'Desktop home' }] },
+        { label: 'CREATE A PODCAST', images: [{ src: '/assets/pods/create-podcast-final.webp', alt: 'Create podcast final' }, { src: '/assets/pods/create-podcast-alt.webp', alt: 'Create podcast alt' }, { src: '/assets/pods/create-podcast.webp', alt: 'Create podcast' }] },
+        { label: 'CUSTOMIZATION & LATENCY', images: [{ src: '/assets/pods/latency-v2.webp', alt: 'Latency v2' }, { src: '/assets/pods/latency-iter4.webp', alt: 'Latency iter4' }, { src: '/assets/pods/latency-iter3b.webp', alt: 'Latency iter3' }] },
+        { label: 'LISTEN TO PODCAST', images: [{ src: '/assets/pods/listen-transcript-final.webp', alt: 'Listen final' }, { src: '/assets/pods/listen-transcript-1.webp', alt: 'Listen 1' }, { src: '/assets/pods/listen-transcript-2.webp', alt: 'Listen 2' }] },
+        { label: 'TIMELINE', images: [{ src: '/assets/pods/timeline-v2.webp', alt: 'Timeline v2' }, { src: '/assets/pods/timeline-v2-1.webp', alt: 'Timeline v2-1' }] },
       ].map(gallery => (
         <section key={gallery.label} className="py-24 px-[5vw] border-b" style={{ borderColor: line, background: bg }}>
           <p className="text-[13px] tracking-[0.06em] uppercase text-center m-0" style={{ color: ink }}>{gallery.label}</p>

@@ -65,7 +65,7 @@ const SOLUTIONS = [
       'Hotline access to car insurance support',
     ],
     footer: 'A comprehensive FAQ section also helps users quickly resolve common questions without contacting support directly.',
-    images: [{ src: '/assets/solution-hotline.png', alt: 'Quick support center feature preview' }],
+    images: [{ src: '/assets/solution-hotline.webp', alt: 'Quick support center feature preview' }],
     visualClass: 'items-center justify-center',
   },
   {
@@ -74,7 +74,7 @@ const SOLUTIONS = [
     body: 'To improve the transaction page experience, I structured information into clearly defined categories:',
     list: ['Car rental policies', 'Rental requirements', 'Important notices', 'Change and cancellation policies', 'Potential additional fees'],
     footer: 'Each category is presented in a dedicated section so users can locate relevant information quickly and understand key details with less effort.',
-    images: [{ src: '/assets/solution-transaction.png', alt: 'Streamlined transaction page preview' }],
+    images: [{ src: '/assets/solution-transaction.webp', alt: 'Streamlined transaction page preview' }],
     visualClass: 'items-center justify-center',
   },
   {
@@ -84,8 +84,8 @@ const SOLUTIONS = [
     list: [],
     footer: 'This diverse selection empowers users to choose a vehicle that aligns with their preferences and specific requirements in different circumstances.',
     images: [
-      { src: '/assets/solution-filter-default.png', alt: 'Default detailed filter screen' },
-      { src: '/assets/solution-filter-selected.png', alt: 'Selected detailed filter screen' },
+      { src: '/assets/solution-filter-default.webp', alt: 'Default detailed filter screen' },
+      { src: '/assets/solution-filter-selected.webp', alt: 'Selected detailed filter screen' },
     ],
     visualClass: 'items-center justify-center gap-6',
   },
@@ -211,7 +211,7 @@ export default function ViettelDigital() {
           </p>
         </div>
         <div className="col-span-2 grid grid-cols-2 gap-[clamp(40px,5vw,80px)] pt-[59px]" style={{ justifyItems: 'center' }}>
-          {[{ title: 'Pros', src: '/assets/pros.png', alt: 'Pros of leading car-renting apps' }, { title: 'Cons', src: '/assets/cons.png', alt: 'Cons of leading car-renting apps' }].map(item => (
+          {[{ title: 'Pros', src: '/assets/pros.webp', alt: 'Pros of leading car-renting apps' }, { title: 'Cons', src: '/assets/cons.webp', alt: 'Cons of leading car-renting apps' }].map(item => (
             <article key={item.title} className="flex flex-col items-center gap-[42px] w-full">
               <h3 className="text-[36px] font-normal leading-[30px] tracking-[-0.44px] text-center m-0" style={{ color: ink }}>{item.title}</h3>
               <img src={item.src} alt={item.alt} className="w-full rounded-none" style={{ background: '#000' }} />
@@ -229,7 +229,7 @@ export default function ViettelDigital() {
         <img
           className="col-span-2 block mx-auto mt-5"
           style={{ width: '69%', maxWidth: 990 }}
-          src="/assets/customer-interviews.png"
+          src="/assets/customer-interviews.webp"
           alt="Customer interview insights from three targeted audiences"
         />
       </section>
@@ -304,7 +304,7 @@ export default function ViettelDigital() {
             style={{ opacity: carousel.index === 0 ? 0 : 1, pointerEvents: carousel.index === 0 ? 'none' : 'auto' }}
             aria-label="Previous solution"
           >
-            <img src="/assets/arrow-left.png" alt="" className="w-full h-full block" />
+            <img src="/assets/arrow-left.webp" alt="" className="w-full h-full block" />
           </button>
 
           {/* Slides */}
@@ -363,7 +363,7 @@ export default function ViettelDigital() {
             style={{ opacity: carousel.index === SOLUTIONS.length - 1 ? 0 : 1, pointerEvents: carousel.index === SOLUTIONS.length - 1 ? 'none' : 'auto' }}
             aria-label="Next solution"
           >
-            <img src="/assets/arrow-right.png" alt="" className="w-full h-full block" />
+            <img src="/assets/arrow-right.webp" alt="" className="w-full h-full block" />
           </button>
 
           {/* Dots */}
@@ -393,7 +393,7 @@ export default function ViettelDigital() {
             Inspired by the standard user flow that current car-renting platforms utilize right now, we has optimized the user flow to five steps and incorporated a driver license verification step for enhancing auditing.
           </p>
         </div>
-        <img className="col-span-2 block w-full mt-9 rounded-sm" style={{ background: bg }} src="/assets/user-flow-dark.png" alt="A seamless 5-step car renting user flow" />
+        <img className="col-span-2 block w-full mt-9 rounded-sm" style={{ background: bg }} src="/assets/user-flow-dark.webp" alt="A seamless 5-step car renting user flow" />
       </section>
 
       {/* Wireframes */}
@@ -408,10 +408,10 @@ export default function ViettelDigital() {
           {/* Row 1 */}
           <div className="grid grid-cols-4 gap-[clamp(22px,3vw,48px)] items-start">
             {[
-              { title: 'Step 1: Choose location, pick-up, and drop-off date', src: '/assets/wireframe-home-v12.png', alt: 'Wireframe home screen' },
-              { title: '', src: '/assets/wireframe-choose-location.png', alt: 'Wireframe choose destination' },
-              { title: '', src: '/assets/wireframe-pickup-date.png', alt: 'Wireframe pick-up date' },
-              { title: '', src: '/assets/wireframe-dropoff-date.png', alt: 'Wireframe drop-off date' },
+              { title: 'Step 1: Choose location, pick-up, and drop-off date', src: '/assets/wireframe-home-v12.webp', alt: 'Wireframe home screen' },
+              { title: '', src: '/assets/wireframe-choose-location.webp', alt: 'Wireframe choose destination' },
+              { title: '', src: '/assets/wireframe-pickup-date.webp', alt: 'Wireframe pick-up date' },
+              { title: '', src: '/assets/wireframe-dropoff-date.webp', alt: 'Wireframe drop-off date' },
             ].map((item, i) => (
               <figure key={i} className="m-0 flex flex-col gap-[9px] items-center w-full max-w-[230px] mx-auto">
                 <p className="w-full text-left text-base leading-[1.72] tracking-[-0.44px] m-0" style={{ color: muted, minHeight: 55, whiteSpace: i === 0 ? 'nowrap' : undefined }}>{item.title}</p>
@@ -422,11 +422,11 @@ export default function ViettelDigital() {
           {/* Row 2 */}
           <div className="grid grid-cols-5 gap-[clamp(22px,3vw,48px)] items-start">
             {[
-              { title: 'Step 2: Choose the car', src: '/assets/wireframe-car-list.png', alt: 'Wireframe car list' },
-              { title: 'Step 3: Confirm the car', src: '/assets/wireframe-confirm-car.png', alt: 'Wireframe car confirmation' },
-              { title: 'Step 4: Fill in personal information', src: '/assets/wireframe-personal-info.png', alt: 'Wireframe personal info' },
-              { title: 'Step 5: Make a payment', src: '/assets/wireframe-payment-review.png', alt: 'Wireframe payment' },
-              { title: '', src: '/assets/wireframe-final-step.png', alt: 'Wireframe payment success' },
+              { title: 'Step 2: Choose the car', src: '/assets/wireframe-car-list.webp', alt: 'Wireframe car list' },
+              { title: 'Step 3: Confirm the car', src: '/assets/wireframe-confirm-car.webp', alt: 'Wireframe car confirmation' },
+              { title: 'Step 4: Fill in personal information', src: '/assets/wireframe-personal-info.webp', alt: 'Wireframe personal info' },
+              { title: 'Step 5: Make a payment', src: '/assets/wireframe-payment-review.webp', alt: 'Wireframe payment' },
+              { title: '', src: '/assets/wireframe-final-step.webp', alt: 'Wireframe payment success' },
             ].map((item, i) => (
               <figure key={i} className="m-0 flex flex-col gap-[9px] items-center w-full max-w-[230px] mx-auto">
                 <p className="w-full text-left text-base leading-[1.72] tracking-[-0.44px] m-0" style={{ color: muted, minHeight: 55 }}>{item.title}</p>
@@ -473,8 +473,8 @@ export default function ViettelDigital() {
       >
         <div className="absolute left-1/2 bottom-0 -translate-x-1/2 h-px" style={{ width: '100vw', background: line }} />
         {[
-          { src: '/assets/testing-photo-2.png', alt: 'User testing session photo 2' },
-          { src: '/assets/testing-photo-1.png', alt: 'User testing session photo 1' },
+          { src: '/assets/testing-photo-2.webp', alt: 'User testing session photo 2' },
+          { src: '/assets/testing-photo-1.webp', alt: 'User testing session photo 1' },
         ].map(p => (
           <img key={p.src} src={p.src} alt={p.alt} className="w-full block rounded-[24px] object-cover" style={{ aspectRatio: '16/4.5' }} />
         ))}
@@ -532,34 +532,34 @@ export default function ViettelDigital() {
         {
           label: 'APP LOADING & HOMEPAGE',
           images: [
-            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/ebbc2001-1001-460c-9b39-99059a2b822c/page+loading.png', alt: 'App loading splash' },
-            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/359ec3f9-fc8e-4790-97f4-a80fbd40559a/Home-final.png', alt: 'Car rental homepage' },
+            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/ebbc2001-1001-460c-9b39-99059a2b822c/page+loading.webp', alt: 'App loading splash' },
+            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/359ec3f9-fc8e-4790-97f4-a80fbd40559a/Home-final.webp', alt: 'Car rental homepage' },
           ],
         },
         {
           label: 'CAR RENTING PROCESS',
           images: [
-            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/96a1e315-33e5-45aa-8ff4-1d52292f3b1a/So+cho+final.png', alt: 'Car list results screen' },
-            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/53e001df-76ea-46fb-9531-655633b57672/filter-final1.png', alt: 'Detailed filter screen' },
-            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/77918caf-4806-44e1-8d41-42a07ba7713d/Xa%CC%81c+nha%CC%A3%CC%82n+tho%CC%82ng+tin+thue%CC%82+xe111.png', alt: 'Car rental confirmation' },
-            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/2bf91d1e-61fd-41bb-a166-3ed68d62c24f/%C4%90ie%CC%82%CC%80n+tho%CC%82ng+tin-final.png', alt: 'Tenant information form' },
-            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/4d32d012-3a7a-40c5-8f19-595955c74ea3/Xa%CC%81c+thu%CC%9B%CC%A3c+OTP.png', alt: 'OTP authentication screen' },
+            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/96a1e315-33e5-45aa-8ff4-1d52292f3b1a/So+cho+final.webp', alt: 'Car list results screen' },
+            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/53e001df-76ea-46fb-9531-655633b57672/filter-final1.webp', alt: 'Detailed filter screen' },
+            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/77918caf-4806-44e1-8d41-42a07ba7713d/Xa%CC%81c+nha%CC%A3%CC%82n+tho%CC%82ng+tin+thue%CC%82+xe111.webp', alt: 'Car rental confirmation' },
+            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/2bf91d1e-61fd-41bb-a166-3ed68d62c24f/%C4%90ie%CC%82%CC%80n+tho%CC%82ng+tin-final.webp', alt: 'Tenant information form' },
+            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/4d32d012-3a7a-40c5-8f19-595955c74ea3/Xa%CC%81c+thu%CC%9B%CC%A3c+OTP.webp', alt: 'OTP authentication screen' },
           ],
         },
         {
           label: 'TRANSACTION STATUS',
           images: [
-            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/5adb4ea6-a130-4f2d-b5bd-3f8ef963f10f/Giao+di%CC%A3ch+tha%CC%80nh+co%CC%82ng-final.png', alt: 'Payment successful' },
-            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/7b276faf-d30d-478d-af43-98a495d23f2a/Giao+di%CC%A3ch+xu+ly.png', alt: 'Payment in process' },
-            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/b2d2aab3-a3c0-4f92-b318-25f0fdc3d3cc/Giao+di%CC%A3ch+that+bai.png', alt: 'Payment failed' },
+            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/5adb4ea6-a130-4f2d-b5bd-3f8ef963f10f/Giao+di%CC%A3ch+tha%CC%80nh+co%CC%82ng-final.webp', alt: 'Payment successful' },
+            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/7b276faf-d30d-478d-af43-98a495d23f2a/Giao+di%CC%A3ch+xu+ly.webp', alt: 'Payment in process' },
+            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/b2d2aab3-a3c0-4f92-b318-25f0fdc3d3cc/Giao+di%CC%A3ch+that+bai.webp', alt: 'Payment failed' },
           ],
         },
         {
           label: 'CAR RENTING MANAGEMENT & HOTLINE',
           images: [
-            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/be3a346e-ded7-4536-a7d2-89b9ac2bd1e8/Qua%CC%89n+ly%CC%81+thue%CC%82+xe-final.png', alt: 'Car rental management' },
-            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/256a0aee-bcf0-4978-8b79-a25db3ea5d08/Chi+tie%CC%82%CC%81t+thue%CC%82+xe-FINAL.png', alt: 'Rental booking detail' },
-            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/e71e214d-651a-47ff-88d1-e171c8c1aeba/Ho%CC%82%CC%83+tro%CC%9B%CC%A3-final.png', alt: 'Quick Support Center' },
+            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/be3a346e-ded7-4536-a7d2-89b9ac2bd1e8/Qua%CC%89n+ly%CC%81+thue%CC%82+xe-final.webp', alt: 'Car rental management' },
+            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/256a0aee-bcf0-4978-8b79-a25db3ea5d08/Chi+tie%CC%82%CC%81t+thue%CC%82+xe-FINAL.webp', alt: 'Rental booking detail' },
+            { src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/e71e214d-651a-47ff-88d1-e171c8c1aeba/Ho%CC%82%CC%83+tro%CC%9B%CC%A3-final.webp', alt: 'Quick Support Center' },
           ],
         },
       ].map(gallery => (

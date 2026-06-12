@@ -36,7 +36,7 @@ const PROJECTS: {
     body:
       'Designed an AI-powered workflow that scores product health, identifies content gaps, and recommends actions to improve product quality and commerce readiness.',
     tags: ['Commerce', 'B2B SaaS', 'AI Workflow'],
-    image: '/assets/sap/project-01.png',
+    image: '/assets/sap/project-01.webp',
     blurred: true,
     imageOnRight: true,
   },
@@ -46,7 +46,7 @@ const PROJECTS: {
     body:
       'Designed an AI chatbot that helps users navigate product content issues and answer workflow questions.',
     tags: ['AI Chatbot', 'User Support'],
-    image: '/assets/sap/project-02.png',
+    image: '/assets/sap/project-02.webp',
     blurred: false,
     imageOnRight: true,
   },
@@ -56,7 +56,7 @@ const PROJECTS: {
     body:
       'Improved AI bot handling and search engine optimization across SAP.com by analyzing bot traffic, site speed, and performance data to enhance crawl visibility and accelerate the detection of issues over all user experience.',
     tags: ['SEO', 'Site Speed Performance'],
-    image: '/assets/sap/project-03.png',
+    image: '/assets/sap/project-03.webp',
     blurred: true,
     imageOnRight: true,
   },
@@ -66,7 +66,7 @@ const PROJECTS: {
     body:
       'Redesigned content structure, information hierarchy, and communication flow to centralize team news and key accomplishments across SAP.com Digital Platforms.',
     tags: ['Internal Tools', 'Content Strategy', 'Information Architecture'],
-    image: '/assets/sap/project-04.png',
+    image: '/assets/sap/project-04.webp',
     blurred: true,
     imageOnRight: true,
   },
@@ -75,13 +75,13 @@ const PROJECTS: {
 // 5 portrait photos + 1 landscape (#4) for variety. Varied positions and z-index
 // for a real scattered-collage feel.
 const HALLOWEEN_PHOTOS = [
-  { src: '/assets/sap/halloween-4.png', rotate: '4.58deg',   top: 0,   left: '4%',  width: 250, height: 350, z: 3 },
-  { src: '/assets/sap/halloween-2.png', rotate: '-10.11deg', top: 130, left: '20%', width: 230, height: 350, z: 2 },
-  { src: '/assets/sap/halloween-3.png', rotate: '7.99deg',   top: 30,  left: '36%', width: 250, height: 330, z: 1 },
+  { src: '/assets/sap/halloween-4.webp', rotate: '4.58deg',   top: 0,   left: '4%',  width: 250, height: 350, z: 3 },
+  { src: '/assets/sap/halloween-2.webp', rotate: '-10.11deg', top: 130, left: '20%', width: 230, height: 350, z: 2 },
+  { src: '/assets/sap/halloween-3.webp', rotate: '7.99deg',   top: 30,  left: '36%', width: 250, height: 330, z: 1 },
   // 4: landscape — wider than tall
-  { src: '/assets/sap/halloween-6.png', rotate: '-2.67deg',  top: 250, left: '51%', width: 260, height: 200, z: 5 },
-  { src: '/assets/sap/halloween-5.png', rotate: '4.47deg',   top: 50,  left: '68%', width: 195, height: 300, z: 3 },
-  { src: '/assets/sap/halloween-1.png', rotate: '11.41deg',  top: 130, left: '83%', width: 255, height: 335, z: 2 },
+  { src: '/assets/sap/halloween-6.webp', rotate: '-2.67deg',  top: 250, left: '51%', width: 260, height: 200, z: 5 },
+  { src: '/assets/sap/halloween-5.webp', rotate: '4.47deg',   top: 50,  left: '68%', width: 195, height: 300, z: 3 },
+  { src: '/assets/sap/halloween-1.webp', rotate: '11.41deg',  top: 130, left: '83%', width: 255, height: 335, z: 2 },
 ]
 
 export default function SAP() {
@@ -334,7 +334,7 @@ export default function SAP() {
           {/* Left — manager photo + name + title (composed image) */}
           <div className="flex justify-center mt-12">
             <img
-              src="/assets/sap/manager-info.png"
+              src="/assets/sap/manager-info.webp"
               alt="Christopher Siwinski — Senior IT Product Owner @ SAP"
               className="w-[350px] h-auto block"
             />
@@ -404,7 +404,7 @@ She turns every complex technical concepts into clear, actionable
               }
             >
               <img
-                src="/assets/sap/workspace.png"
+                src="/assets/sap/workspace.webp"
                 alt="My favorite working spot"
                 className="w-full h-full object-cover rounded-[4px] pointer-events-none"
               />
@@ -416,13 +416,13 @@ She turns every complex technical concepts into clear, actionable
           <div className="min-h-[280px] -ml-8">
             <div className="flex flex-wrap gap-2">
               <img
-                src="/assets/sap/team.png"
+                src="/assets/sap/team.webp"
                 alt=""
                 className="w-full h-auto object-contain"
               />
             </div>
             <img
-              src="/assets/sap/thank-you-chat.png"
+              src="/assets/sap/thank-you-chat.webp"
               alt="Thank you my amazing team for a wonderful internship!"
               className="mt-8 ml-auto w-4/5 max-w-[680px] h-auto block"
             />
