@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 
 type Visitor = {
@@ -302,8 +303,8 @@ export default function Admin() {
       {/* Admin navbar */}
       <nav className="border-b border-[#252525] px-8 h-[52px] flex items-center justify-between">
         <div className="flex items-center gap-5 text-[13px] text-[#4e4e4e]">
-          <a href="/" className="hover:text-[#7b7b7b] transition-colors">Work</a>
-          <a href="/about" className="hover:text-[#7b7b7b] transition-colors">About</a>
+          <Link to="/" className="hover:text-[#7b7b7b] transition-colors">Work</Link>
+          <Link to="/about" className="hover:text-[#7b7b7b] transition-colors">About</Link>
         </div>
         <button
           onClick={() => {
