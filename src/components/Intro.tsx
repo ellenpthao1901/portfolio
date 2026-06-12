@@ -192,10 +192,10 @@ export default function Intro() {
         <h1 style={{ pointerEvents: 'none' }}>Thao Nguyen</h1>
         <p style={{ pointerEvents: 'none' }}>
           Local time — <LocalTime /> Seattle, WA.{' '}
-          <span style={{ pointerEvents: 'auto', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-            <ContactPill />{' '}
-            <span className="live-dot" aria-label="online" />
-          </span>
+          <span className="live-dot" aria-label="online" />
+        </p>
+        <p style={{ pointerEvents: 'auto', margin: 0 }}>
+          <ContactPill />
         </p>
       </div>
       <p className="statement" style={{ position: 'relative', zIndex: 1, pointerEvents: 'none' }}>
