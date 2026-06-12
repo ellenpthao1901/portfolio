@@ -286,6 +286,16 @@ export default function Admin() {
     .sort((a, b) => b[1] - a[1])
     .map(([label, count]) => ({ label, count }))
 
+  const byDevice = Object.entries(
+    visitors.reduce<Record<string, number>>((acc, v) => {
+      const key = v.device ?? 'unknown'
+      acc[key] = (acc[key] ?? 0) + 1
+      return acc
+    }, {})
+  )
+    .sort((a, b) => b[1] - a[1])
+    .map(([label, count]) => ({ label, count }))
+
   return (
     <div className="min-h-screen bg-[#111] text-[#d8d8d8] p-8 font-sans">
       <div className="max-w-5xl mx-auto flex flex-col gap-5">
@@ -300,11 +310,13 @@ export default function Admin() {
         {/* Activity chart */}
         <ActivityChart visitors={visitors} />
 
-        {/* Bottom two panels */}
+        {/* Bottom panels */}
         <div className="flex gap-4">
           <TopList title="Top Locations" items={topLocations} />
           <TopList title="By Country" items={byCountry} />
         </div>
+
+        <TopList title="By Device" items={byDevice} />
 
       </div>
     </div>
