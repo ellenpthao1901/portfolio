@@ -299,14 +299,17 @@ export default function Admin() {
 
         <TopList title="By Device" items={byDevice} />
 
-        {recentMessages.length > 0 && (
-          <div className="border border-[#252525] rounded-xl p-6">
-            <div className="flex items-center justify-between mb-5">
-              <p className="text-[11px] tracking-[0.1em] uppercase text-[#4e4e4e]">Recent Messages</p>
-              <Link to="/admin/inbox" className="text-[12px] text-[#4e4e4e] hover:text-[#7b7b7b] transition-colors">
-                View all →
-              </Link>
-            </div>
+        {/* Recent Messages */}
+        <div className="border border-[#252525] rounded-xl p-6">
+          <div className="flex items-center justify-between mb-5">
+            <p className="text-[11px] tracking-[0.1em] uppercase text-[#4e4e4e]">Recent Messages</p>
+            <Link to="/admin/inbox" className="text-[12px] text-[#4e4e4e] hover:text-[#7b7b7b] transition-colors">
+              View all →
+            </Link>
+          </div>
+          {recentMessages.length === 0 ? (
+            <p className="text-[13px] text-[#4e4e4e]">No messages yet</p>
+          ) : (
             <div className="flex flex-col gap-3">
               {recentMessages.map(m => (
                 <div key={m.id} className="flex items-baseline justify-between gap-4 border-b border-[#1d1d1d] pb-3 last:border-0 last:pb-0">
@@ -320,8 +323,8 @@ export default function Admin() {
                 </div>
               ))}
             </div>
-          </div>
-        )}
+          )}
+        </div>
 
       </div>
       </div>
