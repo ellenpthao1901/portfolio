@@ -52,7 +52,6 @@ export default function Footer() {
     >
       <p>Let's write up the next story through designs!</p>
       <div className="flex items-center gap-[15px]">
-        <LastVisitorBadge />
         <nav className="flex items-center gap-[15px]" aria-label="Contact links">
           <a
             href="mailto:ellenpthao19012004@gmail.com"
@@ -70,6 +69,8 @@ export default function Footer() {
             LinkedIn
           </a>
         </nav>
+        <span className="text-[#4e4e4e]">·</span>
+        <LastVisitorBadge />
       </div>
     </footer>
   )
