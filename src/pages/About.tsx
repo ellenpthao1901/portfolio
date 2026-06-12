@@ -41,7 +41,7 @@ export default function About() {
         </div>
         <div className="rounded-3xl overflow-hidden bg-[#1d1d1d] aspect-[4/5]">
           <img
-            src="https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/2e1622f2-9c2e-425f-826b-adaba6d3254f/IMG_2613.png"
+            src="https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/2e1622f2-9c2e-425f-826b-adaba6d3254f/IMG_2613.webp"
             alt="Portrait of Thao Nguyen"
             className="w-full h-full object-cover"
           />

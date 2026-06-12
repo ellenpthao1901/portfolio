@@ -4,7 +4,7 @@ import LocalTime from './LocalTime'
 import { ShadertoyWaterEffect } from './ShadertoyWaterEffect'
 import { useContactForm } from '../hooks/useContactForm'
 
-const IMAGE_URL = '/assets/black.png'
+const IMAGE_URL = '/assets/black.webp'
 
 function ContactModal({ onClose }: { onClose: () => void }) {
   const { fields, status, setField, submit } = useContactForm()
