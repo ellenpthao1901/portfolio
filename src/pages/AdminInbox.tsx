@@ -42,7 +42,7 @@ export default function AdminInbox() {
     setMessages(prev => prev.map(m => m.id === id ? { ...m, read: false } : m))
   }
 
-
+  async function deleteMessage(id: string) {
     await supabase.from('inbox').delete().eq('id', id)
     setMessages(prev => prev.filter(m => m.id !== id))
   }
