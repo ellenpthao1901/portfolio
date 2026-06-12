@@ -18,11 +18,10 @@ export default function Admin() {
   const [input, setInput] = useState('')
   const [error, setError] = useState(false)
   const [visitors, setVisitors] = useState<Visitor[]>([])
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(authed)
 
   useEffect(() => {
     if (!authed) return
-    setLoading(true)
     supabase
       .from('visitors')
       .select('*')
