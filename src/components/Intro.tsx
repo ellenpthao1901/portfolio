@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import LocalTime from './LocalTime'
 import { ShadertoyWaterEffect } from './ShadertoyWaterEffect'
 import { useContactForm } from '../hooks/useContactForm'
@@ -127,7 +128,7 @@ function ContactPill() {
           <span style={{ textDecoration: 'underline', textUnderlineOffset: '3px' }}>touch</span>
         </span>
       </button>
-      {open && <ContactModal onClose={() => setOpen(false)} />}
+      {open && createPortal(<ContactModal onClose={() => setOpen(false)} />, document.body)}
     </>
   )
 }
