@@ -297,7 +297,26 @@ export default function Admin() {
     .map(([label, count]) => ({ label, count }))
 
   return (
-    <div className="min-h-screen bg-[#111] text-[#d8d8d8] p-8 font-sans">
+    <div className="min-h-screen bg-[#111] text-[#d8d8d8] font-sans">
+
+      {/* Admin navbar */}
+      <nav className="border-b border-[#252525] px-8 h-[52px] flex items-center justify-between">
+        <div className="flex items-center gap-5 text-[13px] text-[#4e4e4e]">
+          <a href="/" className="hover:text-[#7b7b7b] transition-colors">Work</a>
+          <a href="/about" className="hover:text-[#7b7b7b] transition-colors">About</a>
+        </div>
+        <button
+          onClick={() => {
+            sessionStorage.removeItem('admin_authed')
+            setAuthed(false)
+          }}
+          className="text-[12px] text-[#4e4e4e] hover:text-[#d8d8d8] transition-colors"
+        >
+          Log out
+        </button>
+      </nav>
+
+      <div className="p-8">
       <div className="max-w-5xl mx-auto flex flex-col gap-5">
 
         {/* Stat cards */}
@@ -318,6 +337,7 @@ export default function Admin() {
 
         <TopList title="By Device" items={byDevice} />
 
+      </div>
       </div>
     </div>
   )
