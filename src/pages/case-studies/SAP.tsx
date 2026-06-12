@@ -3,6 +3,7 @@
 
 import { useState } from 'react'
 import TableOfContents from '../../components/TableOfContents'
+import { useContactForm } from '../../hooks/useContactForm'
 
 const TOC = [
   { id: 'section-mission', label: 'Mission' },
@@ -85,6 +86,9 @@ const HALLOWEEN_PHOTOS = [
 
 export default function SAP() {
   const [tweak, setTweak] = useState(false)
+  const { fields, status, setField, submit } = useContactForm({
+    message: 'I want to learn more about your SAP work',
+  })
 
   const playTweak = () => {
     if (tweak) return
@@ -264,46 +268,60 @@ export default function SAP() {
             or drop me a message below if you'd like to chat!
           </p>
 
-          {/* Enter pill input */}
-          <form
-            onSubmit={e => e.preventDefault()}
-            className="flex items-center gap-2 pl-6 pr-2 mt-7 py-2 w-full"
-            style={{
-              borderRadius: '9999px',
-              background:
-                'linear-gradient(180deg, #1c1c1c 0%, #161616 90%, rgba(255,255,255,0.08) 99%, #1c1c1c 100%) padding-box, linear-gradient(190deg, rgba(255,255,255,0.55) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.4) 60%, rgba(255,255,255,0.40) 100%) border-box',
-              border: '1.5px solid transparent',
-              boxShadow: '0 12px 32px 0 rgba(0, 0, 0, 0.35)',
-            }}
-          >
-            <input
-              type="text"
-              placeholder="Enter…"
-              aria-label="Message"
-              className="flex-1 bg-transparent border-0 outline-none text-[15px] text-[#ebebeb] placeholder:text-[#888] py-1"
-            />
-            <button
-              type="submit"
-              aria-label="Send message"
-              className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-white/5 transition-colors"
-              style={{
-                border: '1.2px solid rgba(255, 255, 255, 0.55)',
-              }}
-            >
-              <svg
-                viewBox="0 0 24 24"
-                className="w-4 h-4 text-[#ebebeb]"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+          {/* Contact form */}
+          {status === 'sent' ? (
+            <p className="text-[15px] text-[#ebebeb] mt-7">Message sent! I'll get back to you soon.</p>
+          ) : (
+            <div className="flex flex-col gap-3 mt-7">
+              <form
+                onSubmit={e => { e.preventDefault(); submit('sap') }}
+                className="flex items-center gap-2 pl-6 pr-2 py-2 w-full"
+                style={{
+                  borderRadius: '9999px',
+                  background:
+                    'linear-gradient(180deg, #1c1c1c 0%, #161616 90%, rgba(255,255,255,0.08) 99%, #1c1c1c 100%) padding-box, linear-gradient(190deg, rgba(255,255,255,0.55) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.4) 60%, rgba(255,255,255,0.40) 100%) border-box',
+                  border: '1.5px solid transparent',
+                  boxShadow: '0 12px 32px 0 rgba(0, 0, 0, 0.35)',
+                }}
               >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="13 6 19 12 13 18" />
-              </svg>
-            </button>
-          </form>
+                <input
+                  type="email"
+                  placeholder="Your email…"
+                  aria-label="Email"
+                  required
+                  disabled={status === 'sending'}
+                  value={fields.email}
+                  onChange={e => setField('email', e.target.value)}
+                  className="flex-1 bg-transparent border-0 outline-none text-[15px] text-[#ebebeb] placeholder:text-[#888] py-1"
+                />
+                <button
+                  type="submit"
+                  aria-label="Send message"
+                  disabled={status === 'sending'}
+                  className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-white/5 transition-colors disabled:opacity-50"
+                  style={{ border: '1.2px solid rgba(255, 255, 255, 0.55)' }}
+                >
+                  {status === 'sending' ? (
+                    <svg className="w-4 h-4 animate-spin text-[#ebebeb]" viewBox="0 0 24 24" fill="none">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8h4z" />
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#ebebeb]" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="13 6 19 12 13 18" />
+                    </svg>
+                  )}
+                </button>
+              </form>
+              <p className="text-[13px] text-[#555] pl-6 italic">
+                "{fields.message}"
+              </p>
+              {status === 'error' && (
+                <p className="text-red-400 text-[13px] pl-6">Something went wrong, try again.</p>
+              )}
+            </div>
+          )}
         </div>
       </section>
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import AdminNav from '../components/AdminNav'
 import { supabase } from '../lib/supabase'
 
 type Visitor = {
@@ -9,6 +10,16 @@ type Visitor = {
   region: string | null
   country: string | null
   device: string | null
+}
+
+type Message = {
+  id: string
+  sent_at: string
+  name: string | null
+  email: string | null
+  message: string | null
+  page: string | null
+  read: boolean
 }
 
 type Range = 'all' | '1y' | '6m' | '3m' | '1m' | '1w'
@@ -142,12 +153,22 @@ function TopList({ title, items }: { title: string; items: { label: string; coun
   )
 }
 
+function timeAgo(dateStr: string): string {
+  const diff = Date.now() - new Date(dateStr).getTime()
+  const mins = Math.floor(diff / 60000)
+  if (mins < 60) return `${mins}m ago`
+  const hrs = Math.floor(mins / 60)
+  if (hrs < 24) return `${hrs}h ago`
+  return `${Math.floor(hrs / 24)}d ago`
+}
+
 export default function Admin() {
   const [authed, setAuthed] = useState(() => sessionStorage.getItem(AUTH_KEY) === 'true')
   const [input, setInput] = useState('')
   const [error, setError] = useState(false)
   const [visitors, setVisitors] = useState<Visitor[]>([])
   const [loading, setLoading] = useState(authed)
+  const [recentMessages, setRecentMessages] = useState<Message[]>([])
 
   useEffect(() => {
     if (!authed) return
@@ -159,6 +180,16 @@ export default function Admin() {
         setVisitors(data ?? [])
         setLoading(false)
       })
+  }, [authed])
+
+  useEffect(() => {
+    if (!authed) return
+    supabase
+      .from('inbox')
+      .select('*')
+      .order('sent_at', { ascending: false })
+      .limit(5)
+      .then(({ data }) => setRecentMessages(data ?? []))
   }, [authed])
 
   function handleSubmit(e: React.FormEvent) {
@@ -243,22 +274,10 @@ export default function Admin() {
   return (
     <div className="min-h-screen bg-[#111] text-[#d8d8d8] font-sans">
 
-      {/* Admin navbar */}
-      <nav className="border-b border-[#252525] px-8 h-[52px] flex items-center justify-between">
-        <div className="flex items-center gap-5 text-[13px] text-[#4e4e4e]">
-          <Link to="/" className="hover:text-[#7b7b7b] transition-colors">Work</Link>
-          <Link to="/about" className="hover:text-[#7b7b7b] transition-colors">About</Link>
-        </div>
-        <button
-          onClick={() => {
-            sessionStorage.removeItem('admin_authed')
-            setAuthed(false)
-          }}
-          className="text-[12px] text-[#4e4e4e] hover:text-[#d8d8d8] transition-colors"
-        >
-          Log out
-        </button>
-      </nav>
+      <AdminNav onLogout={() => {
+        sessionStorage.removeItem('admin_authed')
+        setAuthed(false)
+      }} />
 
       <div className="p-8">
       <div className="max-w-5xl mx-auto flex flex-col gap-5">
@@ -280,6 +299,33 @@ export default function Admin() {
         </div>
 
         <TopList title="By Device" items={byDevice} />
+
+        {/* Recent Messages */}
+        <div className="border border-[#252525] rounded-xl p-6">
+          <div className="flex items-center justify-between mb-5">
+            <p className="text-[11px] tracking-[0.1em] uppercase text-[#4e4e4e]">Recent Messages</p>
+            <Link to="/admin/inbox" className="text-[12px] text-[#4e4e4e] hover:text-[#7b7b7b] transition-colors">
+              View all →
+            </Link>
+          </div>
+          {recentMessages.length === 0 ? (
+            <p className="text-[13px] text-[#4e4e4e]">No messages yet</p>
+          ) : (
+            <div className="flex flex-col gap-3">
+              {recentMessages.map(m => (
+                <div key={m.id} className="flex items-baseline justify-between gap-4 border-b border-[#1d1d1d] pb-3 last:border-0 last:pb-0">
+                  <div className="min-w-0">
+                    <span className="text-[13px] text-[#7b7b7b] truncate block">{m.email ?? '—'}</span>
+                    <span className="text-[12px] text-[#4e4e4e] truncate block">
+                      {m.message ? m.message.slice(0, 60) + (m.message.length > 60 ? '…' : '') : '—'}
+                    </span>
+                  </div>
+                  <span className="text-[11px] text-[#4e4e4e] shrink-0">{timeAgo(m.sent_at)}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
 
       </div>
       </div>
