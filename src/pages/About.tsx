@@ -48,14 +48,16 @@ export default function About() {
         </div>
         <div className="flex flex-col gap-5 pt-4 justify-center h-full">
           <p className="text-[clamp(28px,3vw,44px)] font-medium tracking-[-1.32px] text-white leading-[1.15]">
-            Hi, I'm Thao Nguyen!
+            Hi, I'm <span className="italic">Thao Nguyen</span> !
           </p>
-          <p className="text-[20.6px] font-normal tracking-[-0.44px] text-[#888] leading-[1.6]">
-            B.S in Informatics | University of Washington
-          </p>
-          <p className="text-[20.6px] font-normal tracking-[-0.44px] text-[#888] leading-[1.6]">
-            in Vietnamese, "Thao" means "Aromatic grass"
-          </p>
+          <div className="flex flex-col gap-2">
+            <p className="text-[20.6px] font-normal tracking-[-0.44px] text-[#888] leading-[1.6]">
+              B.S in Informatics | University of Washington
+            </p>
+            <p className="text-[20.6px] font-normal tracking-[-0.44px] text-[#888] leading-[1.6]">
+              in Vietnamese, "Thao" means "Aromatic grass"
+            </p>
+          </div>
           <p className="text-[20.6px] font-normal tracking-[-0.44px] text-[#ebebeb] leading-[1.6]">
             Traveling 7,000 miles from home to study design in one of the most inspiring tech cities in the world — Seattle — has opened my eyes to so many new perspectives. It's pushed me to design with empathy, not just to solve problems, but to tell stories that often go unheard.
           </p>
@@ -64,13 +66,13 @@ export default function About() {
 
       {/* ── 2. STATEMENT ────────────────────────────────────────────────────── */}
       <section className="px-[10%] py-16 border-[#252525]">
-        <p className="text-[20.6px] font-normal tracking-[-0.44px] text-[#888] leading-[1.6]">
-          I design platforms that help people make sense of complexity ✦
+        <p className="text-[14px] font-normal tracking-[-0.44px] text-[#888] leading-[1.6]">
+          I DESIGN PLATFORMS THAT HELP PEOPLE MAKE SENSE OF COMPLEXITY ✦
         </p>
       </section>
 
       {/* ── 3. TOOLS + WORK SPANS ───────────────────────────────────────────── */}
-      <section className="grid grid-cols-2 gap-16 items-center px-[10%] py-20 border-b border-[#252525]">
+      <section className="grid grid-cols-2 gap-16 items-center px-[10%] py-10 border-b border-[#252525]">
         {/* Tool bubbles — Figma-positioned with mouse repulsion */}
         <div className="flex justify-center">
           <ToolBubbles />
@@ -102,7 +104,7 @@ export default function About() {
 
       {/* ── 4. COMMUNITIES ──────────────────────────────────────────────────── */}
       <section className="px-[10%] py-20 border-b border-[#252525] flex flex-col gap-20">
-        <p className="text-[11px] tracking-[0.08em] uppercase text-[#888]">
+        <p className="text-[14px] tracking-[0.08em] uppercase text-[#888]">
           Building amazing communities at UW ✦
         </p>
 
@@ -116,9 +118,12 @@ export default function About() {
                 <p className="text-[14px] font-normal tracking-[-0.28px] text-[#888] leading-[1.5]">Design Officer</p>
               </div>
             </div>
-            <p className="text-[14px] font-normal tracking-[-0.28px] text-[#888] text-right leading-[1.5] max-w-[280px]">
-              9-month weekly Coding & Design workshops, open to all levels
+            <div>
+
+            <p className="text-[16px] font-normal tracking-[-0.28px] text-[#888] text-right leading-[1.5] w-[40vw]">
+              As one of 3 Design Officers, we host weekly workshops for 9 months to foster communication about UX Design, AR, AI, and accessibility principles. We mentor 30+ designers to successfully deliver their client-sponsored projects. <a className="text-[#FFF] group inline-flex items-center gap-0 overflow-hidden" href="https://webimpactuw.org/about" target="_blank" rel="noopener noreferrer">View more<span className="inline-block max-w-0 overflow-hidden opacity-0 group-hover:max-w-[2em] group-hover:opacity-100 transition-all duration-300 ease-in-out whitespace-nowrap"> →</span></a>
             </p>
+            </div>
           </div>
           <div className="relative overflow-visible mx-auto" style={{ width: 900, height: 500 }}>
             <div className="absolute rounded-[20px] overflow-hidden shadow-[20px_15px_50px_0px_rgba(255,255,255,0.15)]"
@@ -158,8 +163,8 @@ export default function About() {
                 <p className="text-[14px] font-normal tracking-[-0.28px] text-[#888] leading-[1.5]">Director of Design</p>
               </div>
             </div>
-            <p className="text-[14px] font-normal tracking-[-0.28px] text-[#888] text-right leading-[1.5] max-w-[280px]">
-              Husky Hold'em poker coding tournament 2025
+            <p className="text-[16px] font-normal tracking-[-0.28px] text-[#888] text-right leading-[1.5] w-[40vw]">
+              I led the arcade-style website design and marketing campaign for a competitive coding tournament where students code their own AI bots to play poker against one another. <a className="text-[#FFF] group inline-flex items-center gap-0 overflow-hidden" href="https://huskyholdem.atcuw.org/" target="_blank" rel="noopener noreferrer">View more<span className="inline-block max-w-0 overflow-hidden opacity-0 group-hover:max-w-[2em] group-hover:opacity-100 transition-all duration-300 ease-in-out whitespace-nowrap"> →</span></a>
             </p>
           </div>
           <div className="relative overflow-visible mx-auto" style={{ width: 900, height: 500 }}>
@@ -193,7 +198,7 @@ export default function About() {
 
       {/* ── 5. BEYOND DESIGN ────────────────────────────────────────────────── */}
       <section className="px-[10%] py-20 flex flex-col gap-24 border-b border-[#252525]">
-        <p className="text-[11px] tracking-[0.08em] uppercase text-[#888]">
+        <p className="text-[14px] tracking-[0.08em] uppercase text-[#888]">
           Beyond Design, you can also find me at ✦
         </p>
 
