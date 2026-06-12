@@ -4,6 +4,8 @@ import { supabase } from '../lib/supabase'
 const SESSION_KEY = 'visitor_tracked_at'
 const SESSION_DURATION_MS = 24 * 60 * 60 * 1000
 
+let tracking = false
+
 function getDevice(): 'mobile' | 'tablet' | 'desktop' {
   const ua = navigator.userAgent
   if (/Mobi|Android|iPhone|iPod/.test(ua)) return 'mobile'
@@ -12,9 +14,11 @@ function getDevice(): 'mobile' | 'tablet' | 'desktop' {
 }
 
 async function trackVisitor() {
+  if (tracking) return
   const lastTracked = localStorage.getItem(SESSION_KEY)
   if (lastTracked && Date.now() - Number(lastTracked) < SESSION_DURATION_MS) return
 
+  tracking = true
   try {
     const res = await fetch('http://ip-api.com/json/')
     if (!res.ok) return
@@ -33,6 +37,8 @@ async function trackVisitor() {
     }
   } catch {
     // silently fail — tracking should never break the app
+  } finally {
+    tracking = false
   }
 }
 
