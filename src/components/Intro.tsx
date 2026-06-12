@@ -55,7 +55,15 @@ function ContactModal({ onClose }: { onClose: () => void }) {
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-[#d8d8d8] text-[16px] tracking-tight font-medium">Let's get in touch</p>
-                <p className="text-[#4e4e4e] text-[13px] mt-1">Drop me a message and I'll get back to you.</p>
+                <p className="text-[#7b7b7b] text-[13px] mt-1">
+                  Drop a message below or{' '}
+                  <a
+                    href="mailto:ellenpthao19012004@gmail.com"
+                    className="text-[#d8d8d8] underline underline-offset-[3px] hover:text-white transition-colors"
+                  >
+                    send me an email
+                  </a>
+                </p>
               </div>
               <button onClick={onClose} className="text-[#4e4e4e] hover:text-[#7b7b7b] transition-colors mt-1">
                 <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
