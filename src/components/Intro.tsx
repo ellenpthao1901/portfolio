@@ -1,15 +1,18 @@
+import { useState } from 'react'
 import LocalTime from './LocalTime'
 import { ShadertoyWaterEffect } from './ShadertoyWaterEffect'
 
-// Empty string — ShadertoyWaterEffect uses its own dark #1a1a1a placeholder
 const IMAGE_URL = '/assets/black.png'
 
 export default function Intro() {
+  const [clicked, setClicked] = useState(false)
+
   return (
     <section
       className="intro"
       aria-label="Introduction"
-      style={{ cursor: 'default', position: 'relative', overflow: 'hidden' }}
+      style={{ cursor: 'crosshair', position: 'relative', overflow: 'hidden' }}
+      onClick={() => setClicked(true)}
     >
       <div
         aria-hidden="true"
@@ -27,6 +30,34 @@ export default function Intro() {
           chromaticAberrationStrength={0.0}
           chromaticAberrationDispersal={0.005}
         />
+      </div>
+
+      {/* Click hint — fades out after first interaction */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 2,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 6,
+          pointerEvents: 'none',
+          opacity: clicked ? 0 : 1,
+          transition: 'opacity 600ms ease',
+        }}
+      >
+        {/* Ripple icon */}
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="7" cy="7" r="2" fill="rgba(255,255,255,0.5)" />
+          <circle cx="7" cy="7" r="4.5" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+          <circle cx="7" cy="7" r="6.5" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+        </svg>
+        <span style={{ fontSize: 11, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)' }}>
+          click to interact
+        </span>
       </div>
 
       <div className="identity" style={{ position: 'relative', zIndex: 1, pointerEvents: 'none' }}>
