@@ -9,6 +9,7 @@ import ViettelDigital from './pages/case-studies/ViettelDigital'
 import Pods from './pages/case-studies/Pods'
 import Kitsap from './pages/case-studies/Kitsap'
 import Admin from './pages/Admin'
+import AdminInbox from './pages/AdminInbox'
 import { useVisitorTracking } from './hooks/useVisitorTracking'
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/kitsap" element={<Kitsap />} />
         </Route>
         <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/inbox" element={<AdminInbox />} />
       </Routes>
     </BrowserRouter>
   )
