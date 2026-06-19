@@ -2,7 +2,7 @@ import { useEffect, useState, type CSSProperties } from 'react'
 import LoaderRipple from './LoaderRipple'
 
 const SITE_LOADER_TEXT_DURATION = 1200
-const SITE_LOADER_REVEAL_DURATION = 2400
+const SITE_LOADER_REVEAL_DURATION = 6500
 const SITE_LOADER_TOTAL_DURATION = SITE_LOADER_TEXT_DURATION * 2 + SITE_LOADER_REVEAL_DURATION
 const LOADER_RIPPLE_STYLE = {
   '--site-loader-reveal-duration': `${SITE_LOADER_REVEAL_DURATION}ms`,

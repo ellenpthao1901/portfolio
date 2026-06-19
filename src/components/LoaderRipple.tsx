@@ -16,7 +16,7 @@ const VERTEX_SHADER = `
 `
 
 const FRAGMENT_SHADER = `
-  precision mediump float;
+  precision highp float;
 
   uniform vec2 u_resolution;
   uniform float u_time;
@@ -24,31 +24,72 @@ const FRAGMENT_SHADER = `
   uniform float u_duration;
   varying vec2 v_uv;
 
-  float easeOutCubic(float t) {
-    return 1.0 - pow(1.0 - t, 3.0);
-  }
-
   void main() {
     float t = clamp((u_time - u_startTime) / u_duration, 0.0, 1.0);
-    float eased = easeOutCubic(t);
 
     vec2 p = v_uv - 0.5;
     p.x *= u_resolution.x / u_resolution.y;
 
-    float dist = length(p);
-    float radius = eased * 1.18;
+    float dist = max(length(p), 0.0001);
+    vec2 dir = p / dist;
+    float radius = t * 1.18;
     float edge = dist - radius;
 
-    float front = exp(-pow(edge * 26.0, 2.0));
-    float wake = exp(-abs(edge) * 12.0);
-    float wave = sin(edge * 118.0 - t * 14.0) * 0.5 + 0.5;
-    float shimmer = pow(max(0.0, sin((dist + t * 0.2) * 84.0)), 4.0) * wake;
-    float fade = 1.0 - smoothstep(0.82, 1.0, t);
+    float front = exp(-pow(edge * 24.0, 2.0));
+    float wake = exp(-abs(edge) * 7.0);
+    float innerWake = exp(-abs(edge + 0.13) * 7.2);
+    float outerWake = exp(-abs(edge - 0.055) * 10.0);
+    float damping = exp(-t * 0.52);
+    float fade = 1.0 - smoothstep(0.9, 1.0, t);
 
-    float alpha = (front * 0.42 + wave * wake * 0.13 + shimmer * 0.17) * fade;
-    vec3 color = mix(vec3(0.45, 0.58, 0.62), vec3(1.0, 0.98, 0.9), front);
+    float pressure = sin(edge * 62.0 - t * 0.72) * wake;
+    float velocity = cos(edge * 62.0 - t * 0.72) * wake;
+    float spring = sin((edge + 0.13) * 86.0 - t * 0.58) * innerWake * 0.42;
+    float capillary = sin((dist + dot(dir, vec2(0.36, -0.22)) * 0.02) * 118.0 - t * 0.65) * front * 0.1;
+    float height = (pressure + spring + capillary) * damping * fade;
 
-    gl_FragColor = vec4(color, alpha);
+    float grad = (
+      cos(edge * 62.0 - t * 0.72) * 62.0 * wake +
+      cos((edge + 0.13) * 86.0 - t * 0.58) * 36.12 * innerWake +
+      cos((dist + dot(dir, vec2(0.36, -0.22)) * 0.02) * 118.0 - t * 0.65) * 11.8 * front
+    ) * 0.013 * damping * fade;
+
+    vec3 normal = normalize(vec3(-dir.x * grad, 0.38, -dir.y * grad));
+    vec3 lightDir = normalize(vec3(-0.42, 0.86, 0.28));
+    vec3 viewDir = vec3(0.0, 0.0, 1.0);
+    vec3 halfDir = normalize(lightDir + viewDir);
+    vec3 reflected = reflect(-viewDir, normal);
+
+    float lambert = clamp(dot(normal, lightDir), 0.0, 1.0);
+    float fresnel = pow(1.0 - max(dot(normal, viewDir), 0.0), 3.0);
+    float specular = pow(max(dot(normal, halfDir), 0.0), 105.0) * front * 0.78;
+    float broadReflection = pow(max(reflected.y * 0.5 + 0.5, 0.0), 2.4) * outerWake;
+    float trough = smoothstep(0.02, 0.35, -height);
+    float crest = smoothstep(0.015, 0.34, height);
+    float refraction = (velocity * 0.5 + pressure * 0.28) * damping * wake;
+    float caustic = pow(max(0.0, sin(dist * 92.0 - t * 0.7 + height * 1.4)), 6.0) * wake * damping;
+
+    vec3 shadowColor = vec3(0.018, 0.018, 0.017);
+    vec3 displacementColor = vec3(0.18, 0.18, 0.17);
+    vec3 reflectionColor = vec3(0.74, 0.72, 0.66);
+    vec3 highlightColor = vec3(1.0, 0.96, 0.86);
+
+    vec3 color = displacementColor;
+    color = mix(color, shadowColor, trough * 0.68 + max(-refraction, 0.0) * 0.36);
+    color = mix(color, reflectionColor, broadReflection * 0.34 + fresnel * front * 0.2);
+    color = mix(color, highlightColor, crest * 0.28 + specular);
+    color += highlightColor * caustic * 0.12;
+    color += vec3(0.08, 0.075, 0.065) * lambert * front;
+
+    float alpha = (
+      front * 0.38 +
+      abs(refraction) * 0.42 +
+      broadReflection * 0.3 +
+      caustic * 0.16 +
+      specular * 0.58
+    ) * fade;
+
+    gl_FragColor = vec4(color, clamp(alpha, 0.0, 0.72));
   }
 `
 
