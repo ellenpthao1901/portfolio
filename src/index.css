@@ -240,7 +240,7 @@ h1 {
 }
 
 .site-loader {
-  --site-loader-reveal-duration: 6500ms;
+  --site-loader-reveal-duration: 5000ms;
   position: fixed;
   inset: 0;
   z-index: 10001;
@@ -253,7 +253,7 @@ h1 {
 }
 
 body.site-loader-active {
-  --site-loader-reveal-duration: 6500ms;
+  --site-loader-reveal-duration: 5000ms;
 }
 
 .site-loader-curtain {
