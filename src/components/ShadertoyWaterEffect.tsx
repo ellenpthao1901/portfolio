@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react';
+import React, { useRef, useEffect, useState, useCallback, useMemo } from 'react';
 
 interface ShadertoyWaterEffectProps {
   imageUrl: string;
@@ -51,7 +51,7 @@ export function ShadertoyWaterEffect({
   const transitionStartRef = useRef(0);
 
   // Vertex shader (shared)
-  const vertexShaderSource = `
+  const vertexShaderSource = useMemo(() => `
     attribute vec2 a_position;
     varying vec2 v_texCoord;
     
@@ -59,10 +59,10 @@ export function ShadertoyWaterEffect({
       gl_Position = vec4(a_position, 0.0, 1.0);
       v_texCoord = (a_position + 1.0) * 0.5;
     }
-  `;
+  `, []);
 
   // Water simulation fragment shader (first pass)
-  const waterFragmentShaderSource = `
+  const waterFragmentShaderSource = useMemo(() => `
     precision highp float;
     
     uniform sampler2D u_texture;
@@ -131,10 +131,10 @@ export function ShadertoyWaterEffect({
         }
       }
     }
-  `;
+  `, []);
 
   // Enhanced image rendering fragment shader with improved chromatic aberration
-  const imageFragmentShaderSource = `
+  const imageFragmentShaderSource = useMemo(() => `
     precision highp float;
     
     uniform sampler2D u_waterTexture;
@@ -220,7 +220,7 @@ export function ShadertoyWaterEffect({
 
       gl_FragColor = vec4(color + glint * glintColor, 1.0);
     }
-  `;
+  `, []);
 
   const createShader = useCallback((gl: WebGLRenderingContext, type: number, source: string) => {
     const shader = gl.createShader(type);
@@ -303,7 +303,6 @@ export function ShadertoyWaterEffect({
     const image = new Image();
     image.crossOrigin = 'anonymous';
     image.onload = () => {
-      console.log('Image loaded successfully:', url);
       gl.bindTexture(gl.TEXTURE_2D, texture);
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
@@ -389,7 +388,7 @@ export function ShadertoyWaterEffect({
     setIsInitialized(true);
   }, [createProgram, createFramebuffer, loadImage, imageUrl, vertexShaderSource, waterFragmentShaderSource, imageFragmentShaderSource]);
 
-  const render = useCallback(() => {
+  const drawFrame = useCallback(() => {
     const gl = glRef.current;
     const canvas = canvasRef.current;
     if (!gl || !canvas || !isInitialized) return;
@@ -465,8 +464,6 @@ export function ShadertoyWaterEffect({
     gl.vertexAttribPointer(imagePositionLocation, 2, gl.FLOAT, false, 0, 0);
 
     gl.drawArrays(gl.TRIANGLES, 0, 6);
-
-    animationRef.current = requestAnimationFrame(render);
   }, [isInitialized, waveSpeed, springStrength, velocityDamping, pressureDamping, rippleSize, rippleStrength, distortionStrength, chromaticAberrationStrength, chromaticAberrationDispersal]);
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -491,15 +488,21 @@ export function ShadertoyWaterEffect({
   }, [initWebGL]);
 
   useEffect(() => {
-    if (isInitialized) {
-      render();
-    }
+    if (!isInitialized) return;
+
+    const tick = () => {
+      drawFrame();
+      animationRef.current = requestAnimationFrame(tick);
+    };
+
+    animationRef.current = requestAnimationFrame(tick);
+
     return () => {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [render, isInitialized]);
+  }, [drawFrame, isInitialized]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -527,8 +530,6 @@ export function ShadertoyWaterEffect({
   // Handle image URL changes with smooth transition
   useEffect(() => {
     if (!isInitialized || !glRef.current || currentImageUrl === imageUrl) return;
-    
-    console.log('Image URL changed from', currentImageUrl, 'to', imageUrl);
     
     // Store the current texture as previous
     previousImageTextureRef.current = imageTextureRef.current;
