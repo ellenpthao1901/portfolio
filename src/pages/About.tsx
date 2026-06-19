@@ -1,3 +1,4 @@
+import { useEffect, useState, type CSSProperties, type MouseEvent as ReactMouseEvent } from 'react'
 import PhotoShuffle from '../components/PhotoShuffle'
 import ToolBubbles from '../components/ToolBubbles'
 
@@ -34,6 +35,104 @@ const HOBBY_IMG2      = '/assets/about/hobby2.jpg'
 const HOBBY_IMG3      = '/assets/about/hobby3.jpg'
 
 // ── Tool bubble data ──────────────────────────────────────────────────────────
+function TweakPhoto({
+  src,
+  alt,
+  className,
+  style,
+  imageClassName = '',
+  cursorZoom = false,
+}: {
+  src: string
+  alt: string
+  className: string
+  style: CSSProperties
+  imageClassName?: string
+  cursorZoom?: boolean
+}) {
+  const [tweak, setTweak] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
+  const [transformOrigin, setTransformOrigin] = useState('50% 50%')
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+
+  const playTweak = () => {
+    if (tweak) return
+    setTweak(true)
+    setTimeout(() => setTweak(false), 900)
+  }
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches)
+
+    updatePreference()
+    mediaQuery.addEventListener('change', updatePreference)
+
+    return () => mediaQuery.removeEventListener('change', updatePreference)
+  }, [])
+
+  const baseRotate = typeof style.transform === 'string'
+    ? style.transform.match(/rotate\(([^)]+)\)/)?.[1] ?? '0deg'
+    : '0deg'
+
+  const handleMouseMove = (event: ReactMouseEvent<HTMLButtonElement>) => {
+    if (!cursorZoom || prefersReducedMotion) return
+
+    const rect = event.currentTarget.getBoundingClientRect()
+    const cursorX = event.clientX - rect.left
+    const cursorY = event.clientY - rect.top
+    const xPercent = (cursorX / rect.width) * 100
+    const yPercent = (cursorY / rect.height) * 100
+
+    setTransformOrigin(`${xPercent}% ${yPercent}%`)
+  }
+
+  const handleMouseEnter = (event: ReactMouseEvent<HTMLButtonElement>) => {
+    if (!cursorZoom || prefersReducedMotion) return
+    handleMouseMove(event)
+    setIsHovered(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovered(false)
+    setTransformOrigin('50% 50%')
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={playTweak}
+      onMouseEnter={handleMouseEnter}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      aria-label="Tweak the photo"
+      className={`${className} group cursor-pointer focus:outline-none ${tweak ? 'workspace-tweak' : ''}`}
+      style={
+        {
+          ...style,
+          ['--base-rotate' as string]: baseRotate,
+        } as CSSProperties
+      }
+    >
+      <img
+        src={src}
+        alt={alt}
+        className={`w-full h-full object-cover pointer-events-none ${imageClassName}`}
+        style={
+          cursorZoom
+            ? {
+                transform: !prefersReducedMotion && isHovered ? 'scale(1.5)' : 'scale(1)',
+                transformOrigin,
+                transition: 'transform 520ms cubic-bezier(0.22, 1, 0.36, 1), transform-origin 520ms cubic-bezier(0.22, 1, 0.36, 1)',
+                willChange: 'transform',
+              }
+            : undefined
+        }
+      />
+    </button>
+  )
+}
+
 // ── Main component ─────────────────────────────────────────────────────────────
 export default function About() {
   return (
@@ -42,15 +141,19 @@ export default function About() {
       {/* ── 1. HERO ─────────────────────────────────────────────────────────── */}
       <section className="grid grid-cols-2 gap-16 items-start px-[10%] py-20 border-b border-[#252525]">
         <div className="flex justify-center">
-          <div className="rounded-[20px] overflow-hidden" style={{ width: 360, aspectRatio: '3/4' }}>
-            <img src={IMG_HERO} alt="Thao Nguyen" className="w-full h-full object-cover" />
-          </div>
+          <TweakPhoto
+            src={IMG_HERO}
+            alt="Thao Nguyen"
+            className="rounded-[20px] overflow-hidden"
+            style={{ width: 360, aspectRatio: '3/4' }}
+            cursorZoom
+          />
         </div>
         <div className="flex flex-col gap-5 pt-4 justify-center h-full">
           <p className="text-[clamp(28px,3vw,44px)] font-medium tracking-[-1.32px] text-white leading-[1.15]">
             Hi, I'm <span className="italic">Thao Nguyen</span> !
           </p>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-0.5">
             <p className="text-[20.6px] font-normal tracking-[-0.44px] text-[#888] leading-[1.6]">
               B.S in Informatics | University of Washington
             </p>
@@ -126,18 +229,24 @@ export default function About() {
             </div>
           </div>
           <div className="relative overflow-visible mx-auto" style={{ width: 900, height: 500 }}>
-            <div className="absolute rounded-[20px] overflow-hidden shadow-[20px_15px_50px_0px_rgba(255,255,255,0.15)]"
+            <TweakPhoto
+              src={WI_IMG1}
+              alt="Web Impact workshop group photo"
+              className="absolute rounded-[20px] overflow-hidden shadow-[20px_15px_50px_0px_rgba(255,255,255,0.15)]"
               style={{ width: 400, height: 300, left: 260, top: 0, transform: 'rotate(5.06deg)', zIndex: 3 }}>
-              <img src={WI_IMG1} alt="" className="w-full h-full object-cover" />
-            </div>
-            <div className="absolute rounded-[20px] overflow-hidden shadow-[20px_15px_50px_0px_rgba(255,255,255,0.15)]"
+            </TweakPhoto>
+            <TweakPhoto
+              src={WI_IMG2}
+              alt="Web Impact officers together"
+              className="absolute rounded-[20px] overflow-hidden shadow-[20px_15px_50px_0px_rgba(255,255,255,0.15)]"
               style={{ width: 370, height: 290, left: -30, top: 70, transform: 'rotate(-7deg)', zIndex: 4 }}>
-              <img src={WI_IMG2} alt="" className="w-full h-full object-cover" />
-            </div>
-            <div className="absolute rounded-[20px] overflow-hidden shadow-[20px_15px_50px_0px_rgba(255,255,255,0.15)]"
+            </TweakPhoto>
+            <TweakPhoto
+              src={WI_IMG3}
+              alt="Web Impact Figma collaboration workshop"
+              className="absolute rounded-[20px] overflow-hidden shadow-[20px_15px_50px_0px_rgba(255,255,255,0.15)]"
               style={{ width: 300, height: 320, left: 650, top: 40, transform: 'rotate(-6.55deg)', zIndex: 5 }}>
-              <img src={WI_IMG3} alt="" className="w-full h-full object-cover" />
-            </div>
+            </TweakPhoto>
             <p className="absolute text-[14px] text-[#888] text-center leading-[1.4]"
               style={{ left: 50, bottom: 60, transform: 'rotate(-6.4deg)', maxWidth: 220 }}>
               Our 9-month weekly Coding & Design workshops
@@ -168,18 +277,24 @@ export default function About() {
             </p>
           </div>
           <div className="relative overflow-visible mx-auto" style={{ width: 900, height: 500 }}>
-            <div className="absolute rounded-[20px] overflow-hidden shadow-[20px_15px_50px_0px_rgba(255,255,255,0.15)]"
+            <TweakPhoto
+              src={ATC_IMG2}
+              alt="Algorithm Trading Club meeting"
+              className="absolute rounded-[20px] overflow-hidden shadow-[20px_15px_50px_0px_rgba(255,255,255,0.15)]"
               style={{ width: 400, height: 300, left: 260, top: 0, transform: 'rotate(-5.68deg)', zIndex: 3 }}>
-              <img src={ATC_IMG2} alt="" className="w-full h-full object-cover" />
-            </div>
-            <div className="absolute rounded-[20px] overflow-hidden shadow-[20px_15px_50px_0px_rgba(255,255,255,0.15)]"
+            </TweakPhoto>
+            <TweakPhoto
+              src={ATC_IMG3}
+              alt="Algorithm Trading Club social event"
+              className="absolute rounded-[20px] overflow-hidden shadow-[20px_15px_50px_0px_rgba(255,255,255,0.15)]"
               style={{ width: 370, height: 290, left: -30, top: 70, transform: 'rotate(7.47deg)', zIndex: 4 }}>
-              <img src={ATC_IMG3} alt="" className="w-full h-full object-cover" />
-            </div>
-            <div className="absolute rounded-[20px] overflow-hidden shadow-[20px_15px_50px_0px_rgba(255,255,255,0.15)]"
+            </TweakPhoto>
+            <TweakPhoto
+              src={ATC_IMG1}
+              alt="Husky Hold'em website visual"
+              className="absolute rounded-[20px] overflow-hidden shadow-[20px_15px_50px_0px_rgba(255,255,255,0.15)]"
               style={{ width: 400, height: 280, left: 650, top: 40, transform: 'rotate(6.38deg)', zIndex: 1 }}>
-              <img src={ATC_IMG1} alt="" className="w-full h-full object-cover" />
-            </div>
+            </TweakPhoto>
             <p className="absolute text-[14px] text-[#888] text-center leading-[1.4]"
               style={{ left: 50, bottom: 100, transform: 'rotate(8.07deg)', maxWidth: 220 }}>
               Our social events

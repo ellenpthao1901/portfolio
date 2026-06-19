@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 type WorkItem = {
@@ -7,31 +7,41 @@ type WorkItem = {
   meta: string
   href: string
   preview: string | null
-  isDefault?: boolean
+  description?: string
+  tags?: string[]
+  statusBadge?: string
 }
 
 const WORK_ITEMS: WorkItem[] = [
   {
     title: 'SAP',
-    subtitle: 'SaaS Analytics Dashboard',
+    subtitle: 'AI for SaaS Analytics Dashboard',
     meta: '2025 • Internship',
     href: '/sap',
     preview: '/assets/sap-hover.webm',
-    isDefault: true,
+    description:
+      'Designed AI experiences across multiple CMMS/EAM products.',
+    tags: ['B2B SaaS', 'AI Workflows', 'Data Dashboard', 'Commerce UX'],
   },
   {
     title: 'Viettel Digital',
     subtitle: 'B2C Car Renting Mobile App',
     meta: '2024 • Internship',
     href: '/viettel-digital',
-    preview: '/assets/viettel-digital-hover.mov',
+    preview: '/assets/vietteldigital-cover1.mov',
+    description:
+      'Designed a 0-1 car-rental experiences for the top 1 fintech app in Vietnam, serving nearly 20M users and 1000+ ecosystem partners.',
+    tags: ['0-1 Design', 'Car Booking Flow', 'Payment Flow', 'Fintech Super App'],
   },
   {
     title: 'AI to transform any documents into personalized podcasts',
     subtitle: null,
     meta: '2025 • Project',
     href: '/pods',
-    preview: null,
+    preview: '/assets/pods-cover.png',
+    description:
+      'Benchmarked with Google NotebookLM to make podcasts more personalized.',
+    tags: ['EdTech', 'Learning Through Conversation', 'Flashcard Generated'],
   },
   {
     title: 'Instagram',
@@ -39,38 +49,26 @@ const WORK_ITEMS: WorkItem[] = [
     meta: '2026 • Project',
     href: '#',
     preview: null,
+    statusBadge: 'CURRENTLY BUILDING',
   },
   {
     title: 'Kitsap Transit',
     subtitle: 'Mix-method Research',
     meta: '2026 • Capstone',
     href: '/kitsap',
-    preview: null,
+    preview: '/assets/kitsapcover.png',
+    description:
+      'Raise awareness of the federal mobile-supported program.',
+    tags: ['1-1 Interview', 'Data Synthesize', 'A/B Testing', 'Usability Testing'],
   },
 ]
 
-const defaultItem = WORK_ITEMS.find(i => i.isDefault && i.preview) ?? null
-
 export default function Home() {
-  const [activeSrc, setActiveSrc] = useState<string | null>(defaultItem?.preview ?? null)
-  const [activeIndex, setActiveIndex] = useState<number | null>(
-    defaultItem ? WORK_ITEMS.indexOf(defaultItem) : null,
-  )
-  const [visible, setVisible] = useState(!!defaultItem?.preview)
-  // tracks whether we are currently showing the default (auto) state vs. a user-driven hover
-  const [defaultActive, setDefaultActive] = useState(!!defaultItem?.preview)
-
-  useEffect(() => {
-    if (defaultItem?.preview) {
-      setActiveSrc(defaultItem.preview)
-      setActiveIndex(WORK_ITEMS.indexOf(defaultItem))
-      setVisible(true)
-      setDefaultActive(true)
-    }
-  }, [])
+  const [activeSrc, setActiveSrc] = useState<string | null>(null)
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const [visible, setVisible] = useState(false)
 
   const handleEnter = (item: WorkItem, index: number) => {
-    if (item !== defaultItem) setDefaultActive(false)
     if (item.preview) {
       setActiveSrc(item.preview)
       setActiveIndex(index)
@@ -83,15 +81,9 @@ export default function Home() {
   }
 
   const handleLeave = () => {
-    if (defaultItem?.preview) {
-      setActiveSrc(defaultItem.preview)
-      setActiveIndex(WORK_ITEMS.indexOf(defaultItem))
-      setVisible(true)
-      setDefaultActive(true)
-    } else {
-      setActiveIndex(null)
-      setVisible(false)
-    }
+    setActiveSrc(null)
+    setActiveIndex(null)
+    setVisible(false)
   }
 
   const isVideo = activeSrc
@@ -103,7 +95,7 @@ export default function Home() {
       <div className="work-band">
         <section className="work-list" id="work" aria-label="Selected work">
           {WORK_ITEMS.map((item, i) => {
-            const isActive = activeIndex === i && (defaultActive ? item === defaultItem : true)
+            const isActive = activeIndex === i
             return (
               <Link
                 key={i}
@@ -114,20 +106,46 @@ export default function Home() {
                 onFocus={() => handleEnter(item, i)}
                 onBlur={handleLeave}
               >
-                <span className="work-title">
-                  {item.subtitle ? (
-                    <>
-                      {item.title}
-                      <span className="title-divider"> | </span>
-                      {item.subtitle}
-                    </>
-                  ) : (
-                    item.title
-                  )}
+                <span className="work-row-main">
+                  <span className="work-title-line">
+                    <span className="work-title">
+                      {item.subtitle ? (
+                        <>
+                          {item.title}
+                          <span className="title-divider"> | </span>
+                          {item.subtitle}
+                        </>
+                      ) : (
+                        item.title
+                      )}
+                    </span>
+
+                    {isActive && item.statusBadge ? (
+                      <span className="work-status-badge">{item.statusBadge}</span>
+                    ) : null}
+                  </span>
+
+                  {isActive && item.description && item.tags?.length ? (
+                    <span className="work-details">
+                      <span className="work-description">{item.description}</span>
+                      <span className="work-tags" aria-label={`${item.title} topics`}>
+                        {item.tags.map((tag) => (
+                          <span key={tag} className="work-tag">
+                            {tag}
+                          </span>
+                        ))}
+                      </span>
+                    </span>
+                  ) : null}
                 </span>
+
                 <span className="work-row-right">
-                  <span className="work-active-dot" aria-hidden="true" />
-                  <span className="work-meta">{item.meta}</span>
+                  {!(isActive && item.statusBadge) ? (
+                    <>
+                      <span className="work-active-dot" aria-hidden="true" />
+                      <span className="work-meta">{item.meta}</span>
+                    </>
+                  ) : null}
                 </span>
               </Link>
             )

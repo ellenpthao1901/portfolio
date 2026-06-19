@@ -43,15 +43,15 @@ function Label({ children }: { children: React.ReactNode }) {
   return <p className="text-[11px] tracking-[0.04em] uppercase leading-4 m-0 pt-[6px]" style={{ color: meta }}>{children}</p>
 }
 
-function Split({ id, number, title, body }: { id?: string; number: string; title: string; body: string }) {
+function Split({ id, number, title, body }: { id?: string; number?: string; title: string; body?: string }) {
   return (
     <section id={id} className="grid gap-[clamp(32px,7vw,96px)] py-[112px] px-[5vw] border-b"
       style={{ gridTemplateColumns: '0.9fr 1fr', borderColor: line }}>
       <div>
-        <p className="text-[13px] tracking-[0.06em] uppercase mb-[14px] m-0" style={{ color: ink }}>{number}</p>
+        {number ? (<p className="text-[13px] tracking-[0.06em] uppercase mb-[14px] m-0" style={{ color: ink }}>{number}</p>) : null}
         <h2 className="text-[clamp(32px,4vw,58px)] font-bold leading-[1.05] m-0" style={{ color: ink }}>{title}</h2>
       </div>
-      <p className="self-end max-w-[720px] text-base leading-[1.72] m-0" style={{ color: muted }}>{body}</p>
+      {body ? (<p className="self-end max-w-[720px] text-base leading-[1.72] m-0" style={{ color: muted }}>{body}</p>) : <div />}
     </section>
   )
 }
@@ -149,8 +149,7 @@ export default function Pods() {
       </section>
 
       {/* 01 Discovery */}
-      <Split id="section-discovery" number="01. DISCOVERY" title="Understand who is struggling and why"
-        body="My team started this project from our own struggle as college students — drowning in dense readings I couldn't keep up with on the go. Through research, we realized there were many more people out there facing the same challenge." />
+      <Split id="section-discovery" title="01. DISCOVERY"/>
 
       {/* Survey */}
       <section className="grid gap-10 py-[72px] px-[10%] pb-24 border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
@@ -224,8 +223,7 @@ export default function Pods() {
       </section>
 
       {/* 02 Ideate */}
-      <Split id="section-ideate" number="02. IDEATE" title="Brainstorm broadly, then narrow with intent"
-        body="The core issue surfaced clearly: the lack of customization to user needs, such as personalized audio summaries. From there, I brainstormed twelve actionable directions before narrowing them down." />
+      <Split id="section-ideate" title="02. IDEATE" />
 
       {/* Ideation */}
       <section className="grid items-start gap-10 py-[72px] px-[10%] pb-6" style={{ gridTemplateColumns: '1fr 1fr', background: bg }}>
@@ -254,8 +252,7 @@ export default function Pods() {
       </section>
 
       {/* 03 Define */}
-      <Split id="section-define" number="03. DEFINE" title="Finding the unique selling points"
-        body="There's an existing platform Google NotebookLM that has the same mission with ours so our team has conducted competitive analysis and found out aspects that we could improve." />
+      <Split id="section-define" title="03. DEFINE" />
 
       {/* Competitive analysis */}
       <section className="grid items-start gap-10 pt-24 pb-[120px] px-[10%] border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
@@ -281,40 +278,12 @@ export default function Pods() {
         </div>
       </section>
 
-      {/* USP */}
+      {/* Vision */}
       <section className="grid gap-10 py-[72px] px-[10%] pb-24 border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
         <Label>Unique Selling Points</Label>
         <div>
           <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>So… What makes our product stand out?</h2>
-          <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>The product is designed to give users complete control over your audio experience from fine-tuning preferences before generating a podcast to adjusting the tone, length, and even the number of hosts.</p>
-        </div>
-        <div className="col-span-2 grid items-stretch mt-14 mx-auto" style={{ gridTemplateColumns: '1fr auto 1fr', gap: 8, maxWidth: 1000, width: '85%' }}>
-          <div className="flex flex-col gap-3 self-start pt-10">
-            <h3 className="text-[clamp(14px,1.05vw,17px)] font-semibold leading-[1.35] m-0" style={{ color: ink }}>Input's Personalization</h3>
-            <ul className="m-0 pl-5 flex flex-col gap-3">
-              {['Enhanced control', 'Users can refine preferences before generating the podcast'].map(t => (
-                <li key={t} className="text-[clamp(14px,1.05vw,17px)] font-semibold leading-[1.35]" style={{ color: ink }}>{t}</li>
-              ))}
-            </ul>
-          </div>
-          <img src="/assets/pods/usp-vertical.webp" alt="Unique selling points visual" className="block justify-self-center" style={{ maxWidth: 440, background: 'transparent' }} />
-          <div className="flex flex-col gap-3 self-end pb-10">
-            <h3 className="text-[clamp(14px,1.05vw,17px)] font-semibold leading-[1.35] m-0" style={{ color: ink }}>Customization Features</h3>
-            <ul className="m-0 pl-5 flex flex-col gap-3">
-              {['Edit the length of audio summaries', 'Adjust the tone (formal/conversational)', 'Choose the number of hosts'].map(t => (
-                <li key={t} className="text-[clamp(14px,1.05vw,17px)] font-semibold leading-[1.35]" style={{ color: ink }}>{t}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Vision */}
-      <section className="grid gap-10 py-[72px] px-[10%] pb-24 border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
-        <Label>Our Vision</Label>
-        <div>
-          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Empowering users to create podcasts that truly feel their own</h2>
-          <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>With this comprehensive vision, we expect to see this platform make the reading experience more accessible and easier for everyone.</p>
+          <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>We empower users to create podcasts that truly feel their own with the assistance of AI.</p>
         </div>
         <div className="col-span-2 grid grid-cols-3 mt-14" style={{ gap: 'clamp(32px,4vw,56px)' }}>
           {[
@@ -332,8 +301,7 @@ export default function Pods() {
       </section>
 
       {/* 04 Design */}
-      <Split id="section-design" number="04. DESIGN" title="Design an intuitive content-to-audio experience"
-        body="The vision: a platform where every user can engage with content in a way that feels intuitive and efficient — AI-powered audio summaries and flashcards built around accessibility for everyone." />
+      <Split id="section-design" title="04. DESIGN" />
 
       {/* User flow */}
       <section className="grid gap-10 py-[72px] px-[10%] pb-24 border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
@@ -357,9 +325,9 @@ export default function Pods() {
 
       {/* Core screens */}
       <section className="grid gap-10 py-[72px] px-[10%] pb-24 border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
-        <Label>Core Screens</Label>
+        <Label>Four core screens shape the product</Label>
         <div>
-          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Four core screens shape the product</h2>
+          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Home Dashboard — an organized overview with pinned and recent items.</h2>
           <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>
             <strong style={{ color: ink }}>Home Dashboard</strong> — an organized overview with pinned and recent items.<br /><br />
             <strong style={{ color: ink }}>Create a New Pod</strong> — input any source and get real-time recommendations.<br /><br />
@@ -385,8 +353,7 @@ export default function Pods() {
       </section>
 
       {/* 05 Validate */}
-      <Split id="section-validate" number="05. VALIDATE" title="Cognitive walkthrough and design improvements"
-        body="I ran in-person and remote testing sessions over Zoom with Washington students. Two key feedback themes emerged that shaped the next iteration." />
+      <Split id="section-validate" title="05. VALIDATE" />
 
       {/* Feedback cards */}
       <div className="grid grid-cols-2 gap-6 pb-24 mx-auto" style={{ width: '69%', maxWidth: 990 }}>

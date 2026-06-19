@@ -1,7 +1,7 @@
 // Built from Figma design (file S4wa2P3oA7OANLvxjcglAy, node 1:2)
 // All images live in /public/assets/sap/
 
-import { useState } from 'react'
+import { useState, type CSSProperties } from 'react'
 import TableOfContents from '../../components/TableOfContents'
 import { useContactForm } from '../../hooks/useContactForm'
 
@@ -83,6 +83,47 @@ const HALLOWEEN_PHOTOS = [
   { src: '/assets/sap/halloween-5.webp', rotate: '4.47deg',   top: 50,  left: '68%', width: 195, height: 300, z: 3 },
   { src: '/assets/sap/halloween-1.webp', rotate: '11.41deg',  top: 130, left: '83%', width: 255, height: 335, z: 2 },
 ]
+
+function TweakPhoto({
+  src,
+  alt,
+  className,
+  style,
+}: {
+  src: string
+  alt: string
+  className: string
+  style: CSSProperties
+}) {
+  const [tweak, setTweak] = useState(false)
+
+  const playTweak = () => {
+    if (tweak) return
+    setTweak(true)
+    setTimeout(() => setTweak(false), 900)
+  }
+
+  const baseRotate = typeof style.transform === 'string'
+    ? style.transform.match(/rotate\(([^)]+)\)/)?.[1] ?? '0deg'
+    : '0deg'
+
+  return (
+    <button
+      type="button"
+      onClick={playTweak}
+      aria-label="Tweak the photo"
+      className={`${className} cursor-pointer focus:outline-none ${tweak ? 'workspace-tweak' : ''}`}
+      style={
+        {
+          ...style,
+          ['--base-rotate' as string]: baseRotate,
+        } as CSSProperties
+      }
+    >
+      <img src={src} alt={alt} className="w-full h-full object-cover pointer-events-none rounded-[4px]" />
+    </button>
+  )
+}
 
 export default function SAP() {
   const [tweak, setTweak] = useState(false)
@@ -365,11 +406,11 @@ She turns every complex technical concepts into clear, actionable
       <section id="section-photos" className="px-[10%] py-24 max-md:px-[5vw] max-md:py-16">
         <div className="relative h-[480px] max-w-[1300px] mx-auto">
           {HALLOWEEN_PHOTOS.map((p, i) => (
-            <img
+            <TweakPhoto
               key={i}
               src={p.src}
-              alt=""
-              className="absolute object-cover rounded-[4px]"
+              alt={`Halloween office photo ${i + 1}`}
+              className="absolute"
               style={{
                 top: `${p.top}px`,
                 left: p.left,
