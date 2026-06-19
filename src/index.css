@@ -311,7 +311,6 @@ body.site-loader-active {
 
 body.site-loader-active #root > :not(.site-loader):not(.cursor-dot):not(.page-fade) {
   opacity: 0;
-  transform: translateY(22px);
   filter: blur(8px);
 }
 
@@ -341,12 +340,10 @@ body.site-loader-revealing #root > :not(.site-loader):not(.cursor-dot):not(.page
 @keyframes site-content-reveal {
   0% {
     opacity: 0;
-    transform: translateY(22px);
     filter: blur(8px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
     filter: blur(0);
   }
 }
