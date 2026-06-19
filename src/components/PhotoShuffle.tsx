@@ -1,4 +1,4 @@
-import { useReducer, useRef } from 'react'
+import { useRef, useState } from 'react'
 import { useSprings, useSpring, to, animated } from '@react-spring/web'
 
 interface PhotoShuffleProps {
@@ -27,8 +27,9 @@ export default function PhotoShuffle({ images }: PhotoShuffleProps) {
   const n = images.length
   const visible = Math.min(4, n)
 
-  const orderRef    = useRef<number[]>(images.map((_, i) => i))
-  const [, forceUpdate] = useReducer((x: number) => x + 1, 0)
+  const [order, setOrder] = useState(() => images.map((_, i) => i))
+  const orderRef    = useRef<number[]>(order)
+  const [flipping, setFlipping] = useState(false)
   const flippingRef = useRef(false)
   const dirRef      = useRef<1 | -1>(1)
 
@@ -45,6 +46,7 @@ export default function PhotoShuffle({ images }: PhotoShuffleProps) {
   const handleClick = () => {
     if (flippingRef.current || n < 2) return
     flippingRef.current = true
+    setFlipping(true)
     hoverApi.start({ hoverScale: 1, hoverY: 0, immediate: true })
 
     const frontImg = orderRef.current[0]
@@ -80,6 +82,7 @@ export default function PhotoShuffle({ images }: PhotoShuffleProps) {
       })
 
       orderRef.current = newOrder
+      setOrder(newOrder)
 
       setTimeout(() => {
         api.start(i => {
@@ -87,7 +90,7 @@ export default function PhotoShuffle({ images }: PhotoShuffleProps) {
           return { ...restingStyle(backPos, visible), config: { mass: 1.1, tension: 140, friction: 28 } }
         })
         flippingRef.current = false
-        forceUpdate()
+        setFlipping(false)
       }, 32)
     }, 440)
   }
@@ -101,10 +104,10 @@ export default function PhotoShuffle({ images }: PhotoShuffleProps) {
       onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') handleClick() }}
       aria-label="Click to shuffle photos"
       style={{ position: 'relative', width: 260, height: 340,
-        cursor: flippingRef.current ? 'default' : 'pointer', userSelect: 'none' }}
+        cursor: flipping ? 'default' : 'pointer', userSelect: 'none' }}
     >
       {images.map((src, i) => {
-        const stackPos = orderRef.current.indexOf(i)
+        const stackPos = order.indexOf(i)
         if (stackPos >= visible) return null
         const isFront = stackPos === 0
         return (

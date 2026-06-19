@@ -218,10 +218,11 @@ const IntroRipple = forwardRef<IntroRippleHandle>(function IntroRipple(_props, r
       stateRef.current.rafId = requestAnimationFrame(render)
     }
 
-    stateRef.current.rafId = requestAnimationFrame(render)
+    const state = stateRef.current
+    state.rafId = requestAnimationFrame(render)
 
     return () => {
-      cancelAnimationFrame(stateRef.current.rafId)
+      cancelAnimationFrame(state.rafId)
       ro.disconnect()
     }
   }, [])
