@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Cursor from './components/Cursor'
 import PageTransition from './components/PageTransition'
+import SiteLoader from './components/SiteLoader'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -17,6 +18,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <SiteLoader />
       <Cursor />
       <PageTransition />
       <Routes>
