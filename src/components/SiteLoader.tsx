@@ -1,70 +1,32 @@
 import { useEffect, useState } from 'react'
 
-const SITE_LOADER_STORAGE_KEY = 'portfolio-site-loader-seen'
-const SITE_LOADER_DURATION = 2600
-const SITE_LOADER_REPEAT_DELAY = 15 * 60 * 1000
-
-function shouldShowSiteLoader() {
-  try {
-    const lastSeenAt = Number(window.localStorage.getItem(SITE_LOADER_STORAGE_KEY))
-    if (!Number.isFinite(lastSeenAt)) return true
-
-    return Date.now() - lastSeenAt > SITE_LOADER_REPEAT_DELAY
-  } catch {
-    return true
-  }
-}
-
-function markSiteLoaderSeen() {
-  try {
-    window.localStorage.setItem(SITE_LOADER_STORAGE_KEY, String(Date.now()))
-  } catch {
-    // localStorage can be unavailable in private or restricted browsing modes.
-  }
-}
+const SITE_LOADER_DURATION = 3200
+const SITE_LOADER_PHASE_DURATION = 1200
 
 function LoaderOverlay({ onDone }: { onDone: () => void }) {
-  const [progress, setProgress] = useState(0)
+  const [phase, setPhase] = useState<'COOKING...' | 'DESIGNING...'>('COOKING...')
 
   useEffect(() => {
-    markSiteLoaderSeen()
-
-    const startedAt = performance.now()
-    const interval = window.setInterval(() => {
-      const elapsed = performance.now() - startedAt
-      setProgress(Math.min(100, Math.round((elapsed / SITE_LOADER_DURATION) * 100)))
-    }, 40)
-
+    const phaseTimeout = window.setTimeout(() => setPhase('DESIGNING...'), SITE_LOADER_PHASE_DURATION)
     const timeout = window.setTimeout(onDone, SITE_LOADER_DURATION)
 
     return () => {
-      window.clearInterval(interval)
+      window.clearTimeout(phaseTimeout)
       window.clearTimeout(timeout)
     }
   }, [onDone])
 
   return (
     <div className="site-loader" role="status" aria-label="Loading portfolio">
-      <div className="site-loader-inner">
-        <div className="site-loader-topline">
-          <span>Thao Nguyen</span>
-          <span>{progress.toString().padStart(2, '0')}%</span>
-        </div>
-        <div className="site-loader-mark" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </div>
-        <div className="site-loader-progress" aria-hidden="true">
-          <span style={{ transform: `scaleX(${progress / 100})` }} />
-        </div>
-      </div>
+      <span key={phase} className="site-loader-text" data-text={phase} aria-live="polite">
+        {phase}
+      </span>
     </div>
   )
 }
 
 export default function SiteLoader() {
-  const [showLoader, setShowLoader] = useState(shouldShowSiteLoader)
+  const [showLoader, setShowLoader] = useState(true)
 
   useEffect(() => {
     if (!showLoader) return
