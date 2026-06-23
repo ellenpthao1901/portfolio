@@ -111,7 +111,7 @@ const IntroRipple = forwardRef<IntroRippleHandle>(function IntroRipple(_props, r
       // auto-evict after 5 s
       setTimeout(() => {
         stateRef.current.ripples = stateRef.current.ripples.filter(r => r.id !== id)
-      }, 5000)
+      }, 4000)
     },
   }), [])
 
