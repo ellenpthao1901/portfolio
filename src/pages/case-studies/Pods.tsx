@@ -158,35 +158,8 @@ export default function Pods() {
           <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Surveyed 50 students to validate the problem</h2>
           <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>We sent out a Google Form to 50 college, master's, and PhD students to gather data on their study difficulties and the platform features they wished existed.</p>
         </div>
-        <img className="col-span-2 block mx-auto rounded-[12px]" style={{ width: '61%', maxWidth: 880, marginTop: 56, background: bg }} src="/assets/pods/line-chart.webp" alt="Survey data line chart" />
-        {/* Survey bottom */}
-        <div className="col-span-2 grid items-center mt-14 mx-auto" style={{ gridTemplateColumns: 'minmax(160px,220px) 1fr', gridTemplateRows: '1fr auto', gap: 'clamp(24px,3vw,48px)', width: '61%', maxWidth: 880 }}>
-          {/* Pie */}
-          <div className="grid justify-items-center gap-5" style={{ gridRow: 'span 2', gridTemplateRows: 'subgrid' }}>
-            <div className="relative rounded-full" style={{ width: 'clamp(176px,17.6vw,256px)', aspectRatio: '1/1', background: 'conic-gradient(from 0deg,#e8b4f0 0% 84%,#b8c8f8 84% 100%)' }}>
-              <span className="absolute flex flex-col items-center gap-[2px] text-center z-10" style={{ top: '62%', left: '52%', transform: 'translate(-50%,-50%)' }}>
-                <span className="text-[14px] font-medium tracking-[-0.36px]" style={{ color: '#2a2050' }}>84.0%</span>
-                <span className="text-[18px] font-medium tracking-[-0.44px]" style={{ color: '#2a2050' }}>Yes</span>
-              </span>
-              <span className="absolute flex flex-col items-center gap-[2px] text-center z-10" style={{ top: '22%', left: '30%', transform: 'translate(-50%,-50%)' }}>
-                <span className="text-[11px] font-medium" style={{ color: '#2a2050' }}>16.0%</span>
-                <span className="text-[12px] font-medium" style={{ color: '#2a2050' }}>No</span>
-              </span>
-            </div>
-            <p className="text-[clamp(14px,1.05vw,17px)] leading-[1.35] tracking-[-0.32px] text-center m-0 max-w-[480px]" style={{ color: ink }}>Are you seeking a more effective learning way to increase your productivity?</p>
-          </div>
-          {/* Diamonds */}
-          <div className="grid gap-8" style={{ gridRow: 'span 2', gridTemplateRows: 'subgrid' }}>
-            <div className="grid justify-center gap-[clamp(32px,4vw,56px)]" style={{ gridTemplateColumns: 'repeat(3,minmax(96px,140px))' }}>
-              {['Organize all materials in one place', 'Summarize materials into key points', 'Offer features that let users explore and learn materials'].map(text => (
-                <div key={text} className="relative flex items-center justify-center w-full rounded-[14px]" style={{ aspectRatio: '1/1', padding: '16% 14%', textAlign: 'center', background: 'linear-gradient(135deg,#e8b4f0 0%,#b8c8f8 50%,#d0e8ff 100%)', border: '1px solid rgba(255,255,255,0.25)', transform: 'rotate(45deg)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3)' }}>
-                  <span className="inline-block text-[clamp(11px,0.88vw,14px)] font-medium leading-[1.35] tracking-[-0.32px]" style={{ transform: 'rotate(-45deg)', color: '#2a2050', maxWidth: '11ch' }}>{text}</span>
-                </div>
-              ))}
-            </div>
-            <p className="text-[clamp(14px,1.05vw,17px)] leading-[1.35] tracking-[-0.32px] text-center m-0 max-w-[720px] mx-auto" style={{ color: ink }}>Top three features users want to see in the new app</p>
-          </div>
-        </div>
+        <img className="col-span-2 block mx-auto rounded-[12px]" style={{ width: '80%', marginTop: 56, background: bg }} src="/public/assets/Group 11621.png" alt="Survey data line chart" />
+
       </section>
 
       {/* User personas */}
@@ -233,14 +206,6 @@ export default function Pods() {
           <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>Some outstanding ideas that our team has coming up with such as converting articles into comic-based formats or game-based learning with puzzle games.</p>
         </div>
         <img className="col-span-2 block w-full mx-auto mt-14 rounded-[12px]" style={{ maxWidth: 1100, background: soft }} src="/assets/pods/brainstorming.webp" alt="Brainstorming twelve actionable solutions" />
-      </section>
-
-      {/* Secondary research */}
-      <section className="grid gap-10 py-28 px-[10%] border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
-        <Label>Secondary Research</Label>
-        <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>
-          <span style={{ color: ink }}>Sound can help people retain information, connect words with facts or visualizations, and be a simple and effective way to obtain and retain information.</span>{' '}— Elocanc, 2021
-        </p>
       </section>
 
       {/* Our solution */}
@@ -307,10 +272,10 @@ export default function Pods() {
       <section className="grid gap-10 py-[72px] px-[10%] pb-24 border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
         <Label>User Flow</Label>
         <div>
-          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>A simplified 4-step user flow</h2>
+          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Inspired by Google NotebookLM, I came up with the user flow for the main page of Pods - Creating new Podcasts</h2>
           <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>I distilled the experience into four essential steps: upload sources, prompt the AI with additional context, fine-tune preferences, and generate.</p>
         </div>
-        <img className="col-span-2 block w-full mt-14 rounded-[12px]" style={{ background: bg }} src="/assets/pods/user-flow.webp" alt="Simplified 4-step user flow diagram" />
+        <img className="col-span-2 block w-full mt-14 rounded-[12px]" style={{ background: bg }} src="/public//assets/Group 301.png" alt="Simplified 4-step user flow diagram" />
       </section>
 
       {/* IA */}
@@ -318,7 +283,7 @@ export default function Pods() {
         <Label>Information Architecture</Label>
         <div>
           <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Three main sections, designed for flow</h2>
-          <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>The main navigation lives across "Create a podcast," "Recent Pods," and "Spaces." Users can upload up to 50 different types of sources simultaneously.</p>
+          <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>Since “Existing Podcasts” and “Create new Podcasts” are the two main sections that users utilize within the app, our team decided to add a shortcut making the navigation process between those two pages becomes more seamlessly and easily. </p>
         </div>
         <img className="col-span-2 block w-full mt-14 rounded-[12px]" style={{ background: bg }} src="/assets/pods/information-architecture.webp" alt="Information architecture diagram" />
       </section>
@@ -328,27 +293,32 @@ export default function Pods() {
         <Label>Four core screens shape the product</Label>
         <div>
           <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Home Dashboard — an organized overview with pinned and recent items.</h2>
-          <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>
-            <strong style={{ color: ink }}>Home Dashboard</strong> — an organized overview with pinned and recent items.<br /><br />
-            <strong style={{ color: ink }}>Create a New Pod</strong> — input any source and get real-time recommendations.<br /><br />
-            <strong style={{ color: ink }}>Customization</strong> — granular inputs before generating.<br /><br />
-            <strong style={{ color: ink }}>Latency Page</strong> — AI progress with contextual flashcards while waiting.
-          </p>
         </div>
-        <div className="col-span-2 grid mt-14" style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 'clamp(24px,3vw,40px)' }}>
-          {[
-            { src: '/assets/pods/pod-creation-lofi.webp', caption: 'Pod creation — low fidelity' },
-            { src: '/assets/pods/pod-creation-v1.webp', caption: 'Pod creation — v.1' },
-            { src: '/assets/pods/customization-lofi.webp', caption: 'Customization — low fidelity' },
-            { src: '/assets/pods/customization-v1.webp', caption: 'Customization — v.1' },
-            { src: '/assets/pods/latency-iter3.webp', caption: 'Latency page — iteration 3' },
-            { src: '/assets/pods/design-detail-1.webp', caption: 'Design system reference' },
-          ].map(fig => (
-            <figure key={fig.src} className="m-0 grid gap-4">
-              <img src={fig.src} alt={fig.caption} className="w-full block rounded-[12px]" style={{ background: soft }} />
-              <figcaption className="text-[14px] tracking-[-0.28px] leading-5" style={{ color: muted }}>{fig.caption}</figcaption>
-            </figure>
-          ))}
+
+        <div className="col-span-2 grid gap-x-0 gap-y-5 mt-5" style={{ gridTemplateColumns: 'minmax(280px,0.78fr) minmax(420px,1fr)', alignItems: 'stretch' }}>
+          <div className="flex items-center justify-center">
+            <img
+              src="/public/assets/homepage-v1.png"
+              className="block w-full h-auto"
+              style={{ width: '100%' }}
+            />
+          </div>
+          <div className="flex items-center justify-center">
+            <img
+              src="/public/assets/homepage-v2.png"
+              className="block w-full h-auto"
+              style={{ width: '80%' }}
+            />
+          </div>
+          <img
+            className="col-span-2 block mx-auto mt-5 rounded-[12px]"
+            style={{ width: '80%', maxWidth: 1120, background: bg }}
+            src="/public/assets/design-details-homepage.png"
+          />
+        </div>
+
+        <div>
+          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Home Dashboard — an organized overview with pinned and recent items.</h2>
         </div>
       </section>
 

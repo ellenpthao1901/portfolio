@@ -1,12 +1,12 @@
 import { useState, useCallback, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import TableOfContents from '../../components/TableOfContents'
 
 const TOC = [
   { id: 'section-discovery', label: 'Discovery' },
   { id: 'section-define', label: 'Define' },
-  { id: 'section-personas', label: 'Solution' },
-  { id: 'section-ethics', label: 'User Testing' },
-  { id: 'section-hmw', label: 'Memories' },
+  { id: 'section-personas', label: 'User Testing' },
+  { id: 'section-ethics', label: 'Deliverables' },
 ]
 
 const ink = '#ebebeb'
@@ -16,46 +16,11 @@ const line = '#2a2a2a'
 const soft = '#1a1a1a'
 const bg = '#141414'
 
-function DigitalLiteracyIcon() {
+function NextArrow() {
   return (
-    <svg viewBox="0 0 64 64" className="block" style={{ width: 48, height: 48 }} aria-hidden="true">
-      <path d="M18 10 H38 C41 10 44 13 44 16 V46 L35 40 L26 46 L18 40 Z" fill="none" stroke="#ebebeb" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M23 22 H34" stroke="#ff5a36" strokeWidth="4" strokeLinecap="round" />
-      <path d="M23 29 H31" stroke="#ff5a36" strokeWidth="4" strokeLinecap="round" />
-      <path d="M48 10 C53 10 56 14 56 19 V27 H44 V19 C44 14 47 10 52 10 Z" fill="#ff5a36" />
-    </svg>
-  )
-}
-
-function AwarenessIcon() {
-  return (
-    <svg viewBox="0 0 64 64" className="block" style={{ width: 48, height: 48 }} aria-hidden="true">
-      <path d="M27 12 C19 16 15 24 15 32 C15 40 19 48 22 52 H38 C38 46 40 42 44 39 C48 36 50 31 50 26 C50 17 43 10 34 10 C31 10 29 11 27 12 Z" fill="none" stroke="#ebebeb" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="33" cy="28" r="6" fill="none" stroke="#ff5a36" strokeWidth="3.5" />
-      <path d="M33 18 V22 M33 34 V38 M23 28 H27 M39 28 H43 M26 21 L29 24 M40 21 L37 24" stroke="#ff5a36" strokeWidth="3" strokeLinecap="round" />
-    </svg>
-  )
-}
-
-function TrustIcon() {
-  return (
-    <svg viewBox="0 0 64 64" className="block" style={{ width: 48, height: 48 }} aria-hidden="true">
-      <path d="M14 30 L28 16 L40 28 L26 42 Z" fill="none" stroke="#ebebeb" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" opacity="0.95" />
-      <path d="M28 24 L38 14 L52 28 L42 38" fill="none" stroke="#ff5a36" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M33 33 L37 37 L46 28" fill="none" stroke="#ff5a36" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
-function EligibilityIcon() {
-  return (
-    <svg viewBox="0 0 64 64" className="block" style={{ width: 48, height: 48 }} aria-hidden="true">
-      <path d="M18 18 L23 23 L31 15" fill="none" stroke="#ff5a36" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M18 31 L23 36 L31 28" fill="none" stroke="#ff5a36" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M18 44 L23 49 L31 41" fill="none" stroke="#ff5a36" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M40 20 H54" stroke="#ebebeb" strokeWidth="4" strokeLinecap="round" />
-      <path d="M40 33 H54" stroke="#ebebeb" strokeWidth="4" strokeLinecap="round" />
-      <path d="M40 46 H54" stroke="#ebebeb" strokeWidth="4" strokeLinecap="round" />
+    <svg viewBox="0 0 56 14" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+      <line x1="2" y1="7" x2="50" y2="7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <polyline points="42,2 52,7 42,12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
@@ -90,40 +55,40 @@ const BARRIERS = [
   {
     title: 'Digital Literacy',
     body: 'Text-heavy qualification content creates barriers for older adults and non-English speakers.',
-    icon: <DigitalLiteracyIcon />,
+    icon: <img src="/assets/digital_literacy.png" alt="" className="block" style={{ width: 48, height: 48 }} aria-hidden="true" />,
   },
   {
     title: 'Lack of Awareness',
     body: 'Limited understanding of program benefits despite name recognition among some residents.',
-    icon: <AwarenessIcon />,
+    icon: <img src="/assets/lack-of-awareness.png" alt="" className="block" style={{ width: 48, height: 48 }} aria-hidden="true" />,
   },
   {
     title: 'Trust',
     body: 'Skepticism about program legitimacy and concerns regarding data privacy discourage sign-ups.',
-    icon: <TrustIcon />,
+    icon: <img src="/assets/trust.png" alt="" className="block" style={{ width: 48, height: 48 }} aria-hidden="true" />,
   },
   {
     title: 'Eligibility',
     body: 'Confusion about qualification requirements; many residents do not realize SNAP or Medicaid can automatically qualify them.',
-    icon: <EligibilityIcon />,
+    icon: <img src="/assets/eligibility.png" alt="" className="block" style={{ width: 48, height: 48 }} aria-hidden="true" />,
   },
 ]
 
 const NEXT_STEPS = [
   {
     n: '1.',
-    title: 'Ideation & Concept Development',
-    body: 'Generate concepts that directly address digital literacy, trust, and enrollment clarity for the Lifeline program.',
+    title: 'There is a will, there is a way',
+    body: 'First approach to interview was a challenge but by coming up with an alternative way, we have successfully conducted 8 in-person interviews with the target population.',
   },
   {
     n: '2.',
-    title: 'Prototype & Usability Testing',
-    body: 'Build accessible prototypes and validate them with real users from the target community during Spring quarter.',
+    title: 'User testing takes longer time than I expected',
+    body: 'I will plan more time for user testing in the next project. I will also consider to conduct more remote testing sessions to save time and reach more participants.',
   },
   {
     n: '3.',
-    title: 'Stakeholder Handoff',
-    body: 'Deliver actionable design recommendations and assets to Kitsap Transit and partner nonprofits.',
+    title: 'Pay more attention to diversity',
+    body: 'I will pay more attention to design assets that represent diverse population and conduct more interviews with diverse participants to get more insights.',
   },
 ]
 
@@ -298,16 +263,16 @@ export default function Kitsap() {
       >
         <div>
           <p className="text-[20.6px] leading-[30px] tracking-[-0.44px] m-0" style={{ color: ink }}>Lifeline Program Awareness Campaign</p>
-          <p className="text-[20.6px] leading-[30px] tracking-[-0.44px] m-0" style={{ color: muted }}>Kitsap Transit • Mix-method Research • 2026</p>
+          <p className="text-[20.6px] leading-[30px] tracking-[-0.44px] m-0" style={{ color: muted }}>UX Researcher • 2026</p>
         </div>
       </section>
 
       <section className="py-14 px-[10%] border-b" style={{ borderColor: line, background: '#000' }} aria-label="Project cover">
         <img
-          src="/assets/kitsapcover.png"
+          src="/assets/kitsapcover2.png"
           alt="Kitsap Transit Lifeline campaign collage"
           className="block w-full rounded-sm object-contain"
-          style={{ maxHeight: '82vh' }}
+          style={{ maxHeight: '60vh' }}
         />
       </section>
 
@@ -412,9 +377,9 @@ export default function Kitsap() {
           </p>
         </div>
         <img
-          className="col-span-2 block mx-auto mt-5 rounded-[12px]"
-          style={{ width: '90%', maxWidth: 1120, background: bg }}
-          src="https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/30d63f18-c5f4-4069-9113-74d58c389424/4+key+research+insights+after+interview.png"
+          className="col-span-2 block mx-auto mt-5"
+          style={{ width: '100%', maxWidth: 1120, background: bg }}
+          src="/public/assets/Group 48095383.png"
           alt="Four key research insights after interviews"
         />
       </section>
@@ -529,12 +494,110 @@ export default function Kitsap() {
         </div>
       </section>
 
+       <section className="grid gap-10 pt-[92px] px-[10%] pb-24 border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
+        <div className="col-span-2 grid grid-cols-2 gap-6 pt-10" style={{ width: '100%'}}>
+        {[
+          { label: '— Solution 1', title: 'Bus Posters', body: 'Physical awareness campaign designed for transit hubs and community spaces.', cta: 'See the Poster →', href: 'https://www.canva.com/design/DAHGHg-6BMw/_fLm7zbkSduMFtmCE7uWow/edit' },
+          { label: '— Solution 2', title: 'Informational Lifeline Website', body: 'Centralized Lifeline resource hub with simplified eligibility and program information.', cta: 'See the Website →', href: 'https://dory-semicircle-72rd.squarespace.com/' },
+        ].map(c => (
+          <article key={c.label} className="p-7 border rounded-[24px] min-h-auto flex flex-col" style={{ borderColor: line, background: soft }}>
+            <p className="text-[12px] tracking-[0.06em] uppercase mb-[14px]" style={{ color: ink }}>{c.label}</p>
+            <h3 className="text-[24px] font-bold mb-3" style={{ color: ink }}>{c.title}</h3>
+            <p className="text-[18px] leading-[1.72] m-0" style={{ color: muted }}>{c.body}</p>
+
+          </article>
+        ))}
+      </div>
+
+      </section>
+
       <Split
         id="section-personas"
-        title="03. Solution"
+        title="03. User Testing"
       />
 
       <section className="grid gap-10 pt-[92px] px-[10%] pb-24 border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
+        <Label>Poster Design - version beta 1</Label>
+        <div>
+          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>
+            Exploring the first poster concepts
+          </h2>
+          <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>
+            These posters focused on communicating the Lifeline program clearly and quickly. Each concept used a prominent QR code that directed users to a streamlined website with eligibility requirements and guidance on how to qualify.
+          </p>
+        </div>
+        <div className="col-span-2 grid grid-cols-3 gap-6 mt-5">
+          {[
+            { src: '/assets/kitsap-poster-2.png', alt: 'Kitsap poster design beta version 2', label: 'Version 1' },
+            { src: '/assets/kitsap-poster-3.png', alt: 'Kitsap poster design beta version 3', label: 'Version 2' },
+            { src: '/assets/kitsap-poster-4.png', alt: 'Kitsap poster design beta version 4', label: 'Version 3' },
+          ].map((poster) => (
+            <div key={poster.src} className="grid gap-4">
+              <img
+                src={poster.src}
+                alt={poster.alt}
+                className="block w-full rounded-[12px]"
+                style={{ background: bg }}
+              />
+              <p className="text-[16px] leading-[1.4] tracking-[-0.02em] text-center m-0" style={{ color: ink }}>
+                {poster.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="grid items-start gap-15 pt-24 pb-[120px] px-[10%] border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
+        <Label>FEEDBACK - ROUND 1</Label>
+        <div>
+          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Valuable feedbacks for the posters</h2>
+          <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>We conducted usability testing with 6 participations and received feedbacks with message clarity, URL visibility, QR-code trust, and the poster’s ability to communicate its story.</p>
+        </div>
+        <img
+          className="col-span-2 block mx-auto mt-5 rounded-[12px]"
+          style={{ width: '80%', maxWidth: 1120, background: bg }}
+          src="/public/assets/USER TESTING - poster.png"
+          alt="Feedback from user testing of the poster design"
+        />
+      </section>
+
+      <section className="grid items-start gap-15 pt-24 pb-[120px] px-[10%] border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
+        <Label>FEEDBACK - ROUND 2</Label>
+        <div>
+          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Valuable feedbacks for the website</h2>
+          <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>Through cognitive walkthrough, users mentioned that the website effectively communicated the program's benefits, but they raised concerns about diversity and references.</p>
+        </div>
+        <img
+          className="col-span-2 block mx-auto mt-5 rounded-[12px]"
+          style={{ width: '100%', maxWidth: 1120, background: bg }}
+          src="/public/assets/feedback - website.png"
+          alt="Feedback from user testing of the website design"
+        />
+      </section>
+
+      <section className="grid items-start gap-15 pt-24 pb-[120px] px-[10%] border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
+        <Label>ITERATE - POSTER</Label>
+        <div>
+          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>We want everyone is easily accessible!</h2>
+          <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>• Makes the QR code smaller + larger the URL </p>
+          <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>• Creates 2 versions targeting both primary + secondary stakeholders</p>
+          <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>• Incorporates illustration to better show the poster story </p>
+
+        </div>
+        <img
+          className="col-span-2 block mx-auto mt-5"
+          style={{ width: '100%', maxWidth: 1120, background: bg }}
+          src="/public/assets/poster-final.png"
+          alt="Feedback from user testing of the website design"
+        />
+      </section>
+
+      <Split
+        id="section-ethics"
+        title="04. Deliverables"
+      />
+
+       <section className="grid gap-10 pt-[50px] px-[10%] pb-24 border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
         <div className="col-span-2 grid grid-cols-2 gap-6 pt-10" style={{ width: '100%'}}>
         {[
           { label: '— Solution 1', title: 'Bus Posters', body: 'Physical awareness campaign designed for transit hubs and community spaces.', cta: 'See the Poster →', href: 'https://www.canva.com/design/DAHGHg-6BMw/_fLm7zbkSduMFtmCE7uWow/edit' },
@@ -577,126 +640,71 @@ export default function Kitsap() {
           </article>
         ))}
       </div>
-
       </section>
 
-      <section className="grid gap-10 pt-[92px] px-[10%] pb-24 border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
-        <Label>Poster Design - version beta 1</Label>
+      <section className="grid items-start gap-15 pt-24 pb-[120px] px-[10%] border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
+        <Label>FINAL VERSION OF POSTERS</Label>
         <div>
-          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>
-            Exploring the first poster concepts
-          </h2>
-          <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>
-            These posters focused on communicating the Lifeline program clearly and quickly. Each concept used a prominent QR code that directed users to a streamlined website with eligibility requirements and guidance on how to qualify.
-          </p>
+          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>By having many different versions, we want to make everyone feel included - either the person who's in need or those who know someones who is.</h2>
         </div>
-        <div className="col-span-2 grid grid-cols-3 gap-6 mt-5">
-          {[
-            { src: '/assets/kitsap-poster-2.png', alt: 'Kitsap poster design beta version 2', label: 'Version 1' },
-            { src: '/assets/kitsap-poster-3.png', alt: 'Kitsap poster design beta version 3', label: 'Version 2' },
-            { src: '/assets/kitsap-poster-4.png', alt: 'Kitsap poster design beta version 4', label: 'Version 3' },
-          ].map((poster) => (
-            <div key={poster.src} className="grid gap-4">
-              <img
-                src={poster.src}
-                alt={poster.alt}
-                className="block w-full rounded-[12px]"
-                style={{ background: bg }}
-              />
-              <p className="text-[16px] leading-[1.4] tracking-[-0.02em] text-center m-0" style={{ color: ink }}>
-                {poster.label}
-              </p>
-            </div>
-          ))}
-        </div>
+        <img
+          className="col-span-2 block mx-auto mt-5"
+          style={{ width: '90%', maxWidth: 1120, background: bg }}
+          src="/public/assets/poster-deliverables.png"
+          alt="Feedback from user testing of the website design"
+        />
+        <img
+          className="col-span-2 block mx-auto mt-5"
+          style={{ width: '90%', maxWidth: 1120, background: bg }}
+          src="/public/assets/poster horizontal.png"
+          alt="Feedback from user testing of the website design"
+        />
       </section>
 
-      <Split
-        id="section-ethics"
-        title="04. User Testing"
-      />
-
-      <section className="grid items-start gap-10 pt-24 pb-[120px] px-[10%] border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
-        <Label>USER TESTING</Label>
+      <section className="grid items-start gap-15 pt-24 pb-[120px] px-[10%] border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
+        <Label>FINAL VERSION OF THE WEBSITE</Label>
         <div>
-          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Some aspects that we find NotebookLM falls short.</h2>
-          <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>NotebookLM is an AI tool developed by Google to help users generate audio files and interact with them by uploading their documents. NotebookLM also does quite of the same thing with our intended goal but there are some features that I find they are lacking of.</p>
+          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Access important information in one place.</h2>
+          <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>• Change wording to “How do I qualify?” for better clarification</p>
+          <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>• Add a “Get Started” section, explaining steps in details</p>
+          <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>• Include a table that outlines all phone plans with links</p>
         </div>
-        <div className="col-span-2 relative grid place-items-center mt-20 py-[60px] mx-auto w-full" style={{ maxWidth: 1320 }}>
-          <span className="absolute z-10 flex flex-col items-start gap-3" style={{ top: '6%', left: '2%', width: 'clamp(210px,18vw,300px)' }}>
-            <span className="text-[clamp(15px,1.1vw,18px)] font-normal leading-[1.28] tracking-[-0.03em]" style={{ color: ink }}>
-              URL link is hard to see when squeezing eyes
-            </span>
-            <img
-              src="/assets/kitsap-arrows/arrow4.png"
-              alt=""
-              className="block self-end"
-              style={{ width: 'clamp(135px,13vw,195px)', marginRight: -18 }}
-              aria-hidden="true"
-            />
-          </span>
-
-          <span className="absolute z-10 flex flex-col items-end gap-3 text-right" style={{ top: '4%', right: '2%', width: 'clamp(250px,21vw,340px)' }}>
-            <img
-              src="/assets/kitsap-arrows/arrow1.png"
-              alt=""
-              className="block self-start"
-              style={{ width: 'clamp(150px,14vw,215px)', marginLeft: -118, marginBottom: -6 }}
-              aria-hidden="true"
-            />
-            <span className="text-[clamp(15px,1.1vw,18px)] font-normal leading-[1.28] tracking-[-0.03em]" style={{ color: ink }}>
-              The current poster only targets to secondary stakeholders
-            </span>
-          </span>
-
-          <img
-            src="/assets/kitsap-poster-2.png"
-            alt="Kitsap Transit poster testing"
-            className="block rounded-[16px]"
-            style={{ width: '100%', maxWidth: 630 }}
-          />
-
-          <span className="absolute z-10 flex flex-col items-start gap-3" style={{ bottom: '9%', left: '2%', width: 'clamp(220px,19vw,320px)' }}>
-            <span className="text-[clamp(15px,1.1vw,18px)] font-normal leading-[1.28] tracking-[-0.03em]" style={{ color: ink }}>
-              Image does not show the poster story
-            </span>
-            <img
-              src="/assets/kitsap-arrows/arrow3.png"
-              alt=""
-              className="block self-end"
-              style={{ width: 'clamp(130px,12vw,180px)', marginRight: -12 }}
-              aria-hidden="true"
-            />
-          </span>
-
-          <span className="absolute z-10 flex flex-col items-end gap-3 text-right" style={{ bottom: '13%', right: '2%', width: 'clamp(220px,20vw,330px)' }}>
-            <img
-              src="/assets/kitsap-arrows/arrow2.png"
-              alt=""
-              className="block self-start"
-              style={{ width: 'clamp(145px,13vw,205px)', marginLeft: -118, marginBottom: -4 }}
-              aria-hidden="true"
-            />
-            <span className="text-[clamp(15px,1.1vw,18px)] font-normal leading-[1.28] tracking-[-0.03em]" style={{ color: ink }}>
-              Concerning about the QR code fraud
-            </span>
-          </span>
-        </div>
+        <video
+          className="col-span-2 block w-full mx-auto mt-5 rounded-[18px]"
+          style={{ maxWidth: 1120, background: bg }}
+          src="/assets/website-result.mov"
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls
+        />
       </section>
 
       <Split
         id="section-hmw"
-        title="05. Meet my team"
+        title="That's a wrap!"
       />
+
+      <section className="grid grid-cols-2 gap-16 items-start px-[10%] py-20 border-b border-[#252525]">
+        <div className="flex justify-center">
+          <img
+            className="col-span-2 block mx-auto mt-5"
+            style={{ width: '90%', maxWidth: 1120, background: bg, borderRadius: 15 }}
+            src="/public/assets/team-kitsap.MP.JPEG"
+            alt="That is my Kitsap Transit team!"
+          />
+        </div>
+        <div className="flex flex-col gap-5 pt-4 justify-center h-full">
+          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Huge shout out to my amazing team for working alongside me and making this 6-month capstone project a success!</h2>
+        </div>
+      </section>
 
       <section className="py-24 px-[5vw] border-b" style={{ borderColor: line, background: bg }}>
         <div className="max-w-[760px] mb-12">
           <h2 className="text-[clamp(32px,4vw,58px)] font-bold leading-[1.05] tracking-[-0.04em] m-0 mb-5" style={{ color: ink }}>
-            Next steps
+            I learnt meaningful lessons
           </h2>
-          <p className="text-base leading-[1.72] m-0" style={{ color: muted }}>
-            With a clear problem statement and four defined barriers, we are moving into a 9-week design phase with usability testing planned for Spring quarter.
-          </p>
         </div>
 
         <div className="grid gap-6" style={{ gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }}>
@@ -709,6 +717,17 @@ export default function Kitsap() {
           ))}
         </div>
       </section>
+      
+      <section className="py-24 px-[5vw] border-y flex justify-end" style={{ borderColor: line, background: bg }}>
+        <Link to="/viettel-digital" className="next-project-link" aria-label="Next project: Viettel Digital">
+          <span className="next-project-eyebrow">
+            <span>Next</span>
+            <span className="next-project-arrow"><NextArrow /></span>
+          </span>
+          <span className="next-project-title">VIETTEL DIGITAL</span>
+        </Link>
+      </section>
+
     </>
   )
 }
