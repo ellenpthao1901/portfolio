@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties, type MouseEvent as ReactMouseEvent } from 'react'
+import { useEffect, useState, type CSSProperties } from 'react'
 import PhotoShuffle from '../components/PhotoShuffle'
 import ToolBubbles from '../components/ToolBubbles'
 
@@ -41,18 +41,17 @@ function TweakPhoto({
   className,
   style,
   imageClassName = '',
-  cursorZoom = false,
+  growOnHover = false,
 }: {
   src: string
   alt: string
   className: string
   style: CSSProperties
   imageClassName?: string
-  cursorZoom?: boolean
+  growOnHover?: boolean
 }) {
   const [tweak, setTweak] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
-  const [transformOrigin, setTransformOrigin] = useState('50% 50%')
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
 
   const playTweak = () => {
@@ -75,41 +74,28 @@ function TweakPhoto({
     ? style.transform.match(/rotate\(([^)]+)\)/)?.[1] ?? '0deg'
     : '0deg'
 
-  const handleMouseMove = (event: ReactMouseEvent<HTMLButtonElement>) => {
-    if (!cursorZoom || prefersReducedMotion) return
-
-    const rect = event.currentTarget.getBoundingClientRect()
-    const cursorX = event.clientX - rect.left
-    const cursorY = event.clientY - rect.top
-    const xPercent = (cursorX / rect.width) * 100
-    const yPercent = (cursorY / rect.height) * 100
-
-    setTransformOrigin(`${xPercent}% ${yPercent}%`)
-  }
-
-  const handleMouseEnter = (event: ReactMouseEvent<HTMLButtonElement>) => {
-    if (!cursorZoom || prefersReducedMotion) return
-    handleMouseMove(event)
-    setIsHovered(true)
-  }
-
-  const handleMouseLeave = () => {
-    setIsHovered(false)
-    setTransformOrigin('50% 50%')
-  }
+  const restingTransform = typeof style.transform === 'string' ? style.transform : ''
+  const hoverTransform = growOnHover && !prefersReducedMotion && isHovered
+    ? `${restingTransform} scale(1.08)`.trim()
+    : restingTransform
 
   return (
     <button
       type="button"
       onClick={playTweak}
-      onMouseEnter={handleMouseEnter}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => growOnHover && setIsHovered(true)}
+      onMouseLeave={() => growOnHover && setIsHovered(false)}
       aria-label="Tweak the photo"
       className={`${className} group cursor-pointer focus:outline-none ${tweak ? 'workspace-tweak' : ''}`}
       style={
         {
           ...style,
+          transform: hoverTransform || undefined,
+          transformOrigin: 'center center',
+          transition: growOnHover && !tweak
+            ? 'transform 520ms cubic-bezier(0.22, 1, 0.36, 1)'
+            : undefined,
+          willChange: growOnHover ? 'transform' : undefined,
           ['--base-rotate' as string]: baseRotate,
         } as CSSProperties
       }
@@ -118,16 +104,6 @@ function TweakPhoto({
         src={src}
         alt={alt}
         className={`w-full h-full object-cover pointer-events-none ${imageClassName}`}
-        style={
-          cursorZoom
-            ? {
-                transform: !prefersReducedMotion && isHovered ? 'scale(1.5)' : 'scale(1)',
-                transformOrigin,
-                transition: 'transform 520ms cubic-bezier(0.22, 1, 0.36, 1), transform-origin 520ms cubic-bezier(0.22, 1, 0.36, 1)',
-                willChange: 'transform',
-              }
-            : undefined
-        }
       />
     </button>
   )
@@ -146,7 +122,7 @@ export default function About() {
             alt="Thao Nguyen"
             className="rounded-[20px] overflow-hidden"
             style={{ width: 360, aspectRatio: '3/4' }}
-            cursorZoom
+            growOnHover
           />
         </div>
         <div className="flex flex-col gap-5 pt-4 justify-center h-full">
