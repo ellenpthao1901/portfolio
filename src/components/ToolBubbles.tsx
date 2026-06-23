@@ -20,11 +20,11 @@ const FIGMA_BUBBLES = [
   { label: 'AI',        src: '/assets/about/tool-ai.png',        x: 652.93,  y: 106.27  },
   { label: 'ProtoPie',  src: '/assets/about/tool-protopie.png',  x: 678.6,   y: 389.06  },
   { label: 'Miro',      src: '/assets/about/tool-miro.png',      x: 446.25,  y: 253.52  },
-  { label: 'Codex',     src: '/assets/about/tool-codex.png',     x: 85.11,   y: 610.6   },
+  { label: 'Codex',     src: '/assets/about/tool-codex.png',     x: 295.11,   y: 710.6   },
   { label: 'Photoshop', src: '/assets/about/tool-ps.png',        x: 887.54,  y: 253.52  },
   { label: 'Google',    src: '/assets/about/tool-google.png',    x: 943.38,  y: 483.62  },
-  { label: 'Canva',     src: '/assets/about/tool-canva.png',     x: 320.16,  y: 718.23  },
-  { label: 'FigJam',    src: '/assets/about/tool-figjam.png',    x: 555.22,  y: 760.55  },
+  { label: 'Canva',     src: '/assets/about/tool-canva.png',     x: 450.16,  y: 518.23  },
+  { label: 'FigJam',    src: '/assets/about/tool-figjam.png',    x: 85.22,  y: 560.55  },
   { label: 'GitHub',    src: '/assets/about/tool-github.png',    x: 750.65,  y: 620.51  },
 ]
 
