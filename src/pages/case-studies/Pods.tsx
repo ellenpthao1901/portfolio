@@ -295,15 +295,15 @@ export default function Pods() {
           <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Home Dashboard — an organized overview with pinned and recent items.</h2>
         </div>
 
-        <div className="col-span-2 grid gap-x-0 gap-y-5 mt-5" style={{ gridTemplateColumns: 'minmax(280px,0.78fr) minmax(420px,1fr)', alignItems: 'stretch' }}>
-          <div className="flex items-center justify-center">
+        <div className="col-span-2 grid gap-x-0 gap-y-5 mt-5" style={{ alignItems: 'stretch' }}>
+          <div className="flex items-center justify-end">
             <img
               src="/public/assets/homepage-v1.png"
               className="block w-full h-auto"
-              style={{ width: '100%' }}
+              style={{ width: '80%' }}
             />
           </div>
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-start">
             <img
               src="/public/assets/homepage-v2.png"
               className="block w-full h-auto"
