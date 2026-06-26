@@ -8,13 +8,13 @@ const IMG_HERO        = '/assets/about/hero.jpg'
 // Tool icons
 
 // Web Impact photos
-const WI_LOGO         = '/assets/about/wi-logo.png'
+const WI_LOGO         = '/assets/about/wi-logo.webp'
 const WI_IMG1         = '/assets/about/wi-img1.jpg'
 const WI_IMG2         = '/assets/about/wi-img2.jpg'
 const WI_IMG3         = '/assets/about/wi-img3.jpg'
 
 // ATC photos
-const ATC_LOGO        = '/assets/about/atc-logo.png'
+const ATC_LOGO        = '/assets/about/atc-logo.webp'
 const ATC_IMG1        = '/assets/about/atc-img1.jpg'
 const ATC_IMG3        = '/assets/about/atc-img3.jpg'
 const ATC_IMG2        = '/assets/about/atc-img2.jpg'

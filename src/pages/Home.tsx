@@ -38,7 +38,7 @@ const WORK_ITEMS: WorkItem[] = [
     subtitle: null,
     meta: '2025 • Project',
     href: '/pods',
-    preview: '/assets/pods-cover.png',
+    preview: '/assets/pods-cover.webp',
     description:
       'Benchmarked with Google NotebookLM to make podcasts more personalized.',
     tags: ['EdTech', 'Learning Through Conversation', 'Flashcard Generated'],
@@ -56,7 +56,7 @@ const WORK_ITEMS: WorkItem[] = [
     subtitle: 'Mix-method Research',
     meta: '2026 • Capstone',
     href: '/kitsap',
-    preview: '/assets/kitsapcover.png',
+    preview: '/assets/kitsapcover.webp',
     description:
       'Raise awareness of the federal mobile-supported program.',
     tags: ['1-1 Interview', 'Data Synthesize', 'A/B Testing', 'Usability Testing'],
