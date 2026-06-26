@@ -461,33 +461,33 @@ export default function Pods() {
       <section className="pb-[120px] px-[10%] border-b" style={{ borderColor: line, background: bg }}>
         <div className="mx-auto flex flex-col gap-[clamp(44px,7vw,92px)]" style={{ width: '100%', maxWidth: 1400 }}>
           {ITERATION_CASES.map((pair) => (
-            <div key={pair.id} className="grid items-start gap-[clamp(32px,4vw,64px)]" style={{ gridTemplateColumns: 'minmax(420px, 1.1fr) minmax(300px, 0.9fr)' }}>
-              <div className="flex flex-col gap-[clamp(30px,3.5vw,44px)]">
-                {[
-                  { label: 'Version 1', src: pair.before.src, alt: pair.before.alt, active: false },
-                  { label: 'Version 2', src: pair.after.src, alt: pair.after.alt, active: true },
-                ].map((version) => (
-                  <div key={version.label} className="grid items-center gap-6" style={{ gridTemplateColumns: 'minmax(0, 1fr) clamp(120px, 14vw, 160px)' }}>
-                    <img src={version.src} alt={version.alt} className="w-full block rounded-[14px]" style={{ background: '#f7f7f7', boxShadow: '0 8px 28px rgba(0,0,0,0.08)' }} />
-                    <div className="flex flex-col items-start gap-4 pt-2">
-                      <div className="flex items-center gap-3">
-                        <span className="text-[clamp(20px,1.8vw,28px)] leading-none tracking-[-0.03em]" style={{ color: muted }}>↪</span>
-                        <span className="text-[clamp(18px,1.8vw,28px)] font-semibold leading-[1.1] tracking-[-0.03em]" style={{ color: muted }}>{version.label}</span>
-                      </div>
-                      <span className="block rounded-full" style={{ width: 52, height: 52, background: version.active ? '#d7b9ff' : '#7b7b7b', position: 'relative' }}>
-                        {version.active ? (
-                          <span style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', color: '#141414', fontSize: 38, fontWeight: 500, lineHeight: 1 }}>✓</span>
-                        ) : null}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <div key={pair.id} className="grid items-center gap-[clamp(32px,4vw,64px)]" style={{ gridTemplateColumns: 'minmax(300px, 0.9fr) minmax(420px, 1.1fr)' }}>
               <div className="pt-3 flex flex-col gap-[clamp(34px,4vw,52px)]">
                 {pair.quotes.map((quote) => (
                   <p key={quote} className="text-[clamp(18px,2vw,20px)] leading-[1.45] tracking-[-0.03em] italic m-0 max-w-[560px]" style={{ color: muted }}>
                     {quote}
                   </p>
+                ))}
+              </div>
+              <div className="flex flex-col gap-[clamp(30px,3.5vw,44px)]">
+                {[
+                  { label: 'Version 1', src: pair.before.src, alt: pair.before.alt, active: false },
+                  { label: 'Version 2', src: pair.after.src, alt: pair.after.alt, active: true },
+                ].map((version) => (
+                  <div key={version.label} className="grid items-center gap-6" style={{ gridTemplateColumns: 'clamp(120px, 14vw, 160px) minmax(0, 1fr)' }}>
+                    <div className="flex flex-col items-start gap-4 pt-2">
+                      <div className="flex items-center gap-3">
+                        <span className="text-[clamp(20px,1.8vw,28px)] leading-none tracking-[-0.03em]" style={{ color: muted }}>↪</span>
+                        <span className="text-[clamp(18px,1.8vw,28px)] font-semibold leading-[1.1] tracking-[-0.03em]" style={{ color: muted }}>{version.label}</span>
+                      </div>
+                      <span className="block rounded-full" style={{ width: 30, height: 30, background: version.active ? '#d7b9ff' : '#7b7b7b', position: 'relative' }}>
+                        {version.active ? (
+                          <span style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', color: '#141414', fontSize: 25, fontWeight: 700, lineHeight: 1 }}>✓</span>
+                        ) : null}
+                      </span>
+                    </div>
+                    <img src={version.src} alt={version.alt} className="w-full block rounded-[14px]" style={{ background: '#f7f7f7', boxShadow: '0 8px 28px rgba(0,0,0,0.08)' }} />
+                  </div>
                 ))}
               </div>
             </div>
