@@ -172,7 +172,7 @@ export default function Pods() {
           <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Surveyed 50 students to validate the problem</h2>
           <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>We sent out a Google Form to 50 college, master's, and PhD students to gather data on their study difficulties and the platform features they wished existed.</p>
         </div>
-        <img className="col-span-2 block mx-auto rounded-[12px]" style={{ width: '80%', marginTop: 56, background: bg }} src="/public/assets/Group 11621.png" alt="Survey data line chart" />
+        <img className="col-span-2 block mx-auto rounded-[12px]" style={{ width: '80%', marginTop: 56, background: bg }} src="/assets/Group 11621.webp" alt="Survey data line chart" />
 
       </section>
 
@@ -286,7 +286,7 @@ export default function Pods() {
           <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Inspired by Google NotebookLM, I came up with the user flow for the main page of Pods - Creating new Podcasts</h2>
           <p className="text-[20.6px] leading-8 tracking-[-0.44px] m-0" style={{ color: muted }}>I distilled the experience into four essential steps: upload sources, prompt the AI with additional context, fine-tune preferences, and generate.</p>
         </div>
-        <img className="col-span-2 block w-full mt-14 rounded-[12px]" style={{ background: bg }} src="/public//assets/Group 301.png" alt="Simplified 4-step user flow diagram" />
+        <img className="col-span-2 block w-full mt-14 rounded-[12px]" style={{ background: bg }} src="/assets/Group 301.webp" alt="Simplified 4-step user flow diagram" />
       </section>
 
       {/* IA */}
@@ -313,14 +313,14 @@ export default function Pods() {
         <div className="col-span-2 grid gap-x-0 gap-y-5 mt-5" style={{ alignItems: 'stretch' }}>
           <div className="flex items-center justify-end">
             <img
-              src="/public/assets/homepage-v1.png"
+              src="/assets/homepage-v1.webp"
               className="block w-full h-auto"
               style={{ width: '80%' }}
             />
           </div>
           <div className="flex items-center justify-start">
             <img
-              src="/public/assets/homepage-v2.png"
+              src="/assets/homepage-v2.webp"
               className="block w-full h-auto"
               style={{ width: '80%' }}
             />
@@ -335,7 +335,7 @@ export default function Pods() {
           <img
             className="col-span-2 block mx-auto mt-5 rounded-[12px]"
             style={{ width: '80%', maxWidth: 1120, background: bg }}
-            src="/public/assets/design-details-homepage.png"
+            src="/assets/design-details-homepage.webp"
           />
         </div>
       </section>
@@ -350,14 +350,14 @@ export default function Pods() {
         <div className="col-span-2 grid gap-x-0 gap-y-5 mt-5" style={{ alignItems: 'stretch' }}>
           <div className="flex items-center justify-end">
             <img
-              src="/public/assets/pod-creation-v1.png"
+              src="/assets/pod-creation-v1.webp"
               className="block w-full h-auto"
               style={{ width: '80%' }}
             />
           </div>
           <div className="flex items-center justify-start">
             <img
-              src="/public/assets/pod-creation-v2.png"
+              src="/assets/pod-creation-v2.webp"
               className="block w-full h-auto"
               style={{ width: '80%' }}
             />
@@ -365,7 +365,7 @@ export default function Pods() {
           <img
             className="col-span-2 block mx-auto mt-5"
             style={{ width: '85%', maxWidth: 1120, background: bg }}
-            src="/public/assets/pod-creation-design-detail.png"
+            src="/assets/pod-creation-design-detail.webp"
           />
         </div>
       </section>
@@ -380,14 +380,14 @@ export default function Pods() {
         <div className="col-span-2 grid gap-x-0 gap-y-5 mt-5" style={{ alignItems: 'stretch' }}>
           <div className="flex items-center justify-end">
             <img
-              src="/public/assets/customization-v1.png"
+              src="/assets/customization-v1.webp"
               className="block w-full h-auto"
               style={{ width: '80%' }}
             />
           </div>
           <div className="flex items-center justify-start">
             <img
-              src="/public/assets/customization-v2.png"
+              src="/assets/customization-v2.webp"
               className="block w-full h-auto"
               style={{ width: '80%' }}
             />
@@ -395,7 +395,7 @@ export default function Pods() {
           <img
             className="col-span-2 block mx-auto mt-5"
             style={{ width: '85%', maxWidth: 1120, background: bg }}
-            src="/public/assets/customization-detail.png"
+            src="/assets/customization-detail.webp"
           />
         </div>
       </section>
@@ -410,14 +410,14 @@ export default function Pods() {
         <div className="col-span-2 grid gap-x-0 gap-y-5 mt-5" style={{ alignItems: 'stretch' }}>
           <div className="flex items-center justify-end">
             <img
-              src="/public/assets/Latency 1.png"
+              src="/assets/Latency 1.webp"
               className="block w-full h-auto"
               style={{ width: '80%' }}
             />
           </div>
           <div className="flex items-center justify-start">
             <img
-              src="/public/assets/Latency 2.png"
+              src="/assets/Latency 2.webp"
               className="block w-full h-auto"
               style={{ width: '80%' }}
             />
@@ -425,7 +425,7 @@ export default function Pods() {
           <img
             className="col-span-2 block mx-auto mt-5"
             style={{ width: '85%', maxWidth: 1120, background: bg }}
-            src="/public/assets/customization-detail.png"
+            src="/assets/customization-detail.webp"
           />
         </div>
 

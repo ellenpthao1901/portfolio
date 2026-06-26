@@ -55,22 +55,22 @@ const BARRIERS = [
   {
     title: 'Digital Literacy',
     body: 'Text-heavy qualification content creates barriers for older adults and non-English speakers.',
-    icon: <img src="/assets/digital_literacy.png" alt="" className="block" style={{ width: 48, height: 48 }} aria-hidden="true" />,
+    icon: <img src="/assets/digital_literacy.webp" alt="" className="block" style={{ width: 48, height: 48 }} aria-hidden="true" />,
   },
   {
     title: 'Lack of Awareness',
     body: 'Limited understanding of program benefits despite name recognition among some residents.',
-    icon: <img src="/assets/lack-of-awareness.png" alt="" className="block" style={{ width: 48, height: 48 }} aria-hidden="true" />,
+    icon: <img src="/assets/lack-of-awareness.webp" alt="" className="block" style={{ width: 48, height: 48 }} aria-hidden="true" />,
   },
   {
     title: 'Trust',
     body: 'Skepticism about program legitimacy and concerns regarding data privacy discourage sign-ups.',
-    icon: <img src="/assets/trust.png" alt="" className="block" style={{ width: 48, height: 48 }} aria-hidden="true" />,
+    icon: <img src="/assets/trust.webp" alt="" className="block" style={{ width: 48, height: 48 }} aria-hidden="true" />,
   },
   {
     title: 'Eligibility',
     body: 'Confusion about qualification requirements; many residents do not realize SNAP or Medicaid can automatically qualify them.',
-    icon: <img src="/assets/eligibility.png" alt="" className="block" style={{ width: 48, height: 48 }} aria-hidden="true" />,
+    icon: <img src="/assets/eligibility.webp" alt="" className="block" style={{ width: 48, height: 48 }} aria-hidden="true" />,
   },
 ]
 
@@ -269,7 +269,7 @@ export default function Kitsap() {
 
       <section className="py-14 px-[10%] border-b" style={{ borderColor: line, background: '#000' }} aria-label="Project cover">
         <img
-          src="/assets/kitsapcover2.png"
+          src="/assets/kitsapcover2.webp"
           alt="Kitsap Transit Lifeline campaign collage"
           className="block w-full rounded-sm object-contain"
           style={{ maxHeight: '60vh' }}
@@ -342,7 +342,7 @@ export default function Kitsap() {
         </div>
         <div className="col-span-2 pt-9">
           <img
-            src="/assets/kitsap-interview-charts.png"
+            src="/assets/kitsap-interview-charts.webp"
             alt="Primary versus secondary stakeholder interviews and in-person versus online interview charts"
             className="block rounded-[18px] mx-auto"
             style={{ width: '88%', maxWidth: 1480, background: soft }}
@@ -379,7 +379,7 @@ export default function Kitsap() {
         <img
           className="col-span-2 block mx-auto mt-5"
           style={{ width: '100%', maxWidth: 1120, background: bg }}
-          src="/public/assets/Group 48095383.png"
+          src="/assets/Group 48095383.webp"
           alt="Four key research insights after interviews"
         />
       </section>
@@ -452,7 +452,7 @@ export default function Kitsap() {
         <div className="col-span-2 grid gap-[clamp(28px,4vw,56px)] mt-5" style={{ gridTemplateColumns: 'minmax(280px,0.78fr) minmax(420px,1fr)', alignItems: 'stretch' }}>
           <div className="flex items-center justify-center rounded-[30px]">
             <img
-              src="/assets/ethical-icon-card.png"
+              src="/assets/ethical-icon-card.webp"
               alt="Ethical considerations illustration"
               className="block w-full h-auto"
               style={{ maxWidth: 250 }}
@@ -528,9 +528,9 @@ export default function Kitsap() {
         </div>
         <div className="col-span-2 grid grid-cols-3 gap-6 mt-5">
           {[
-            { src: '/assets/kitsap-poster-2.png', alt: 'Kitsap poster design beta version 2', label: 'Version 1' },
-            { src: '/assets/kitsap-poster-3.png', alt: 'Kitsap poster design beta version 3', label: 'Version 2' },
-            { src: '/assets/kitsap-poster-4.png', alt: 'Kitsap poster design beta version 4', label: 'Version 3' },
+            { src: '/assets/kitsap-poster-2.webp', alt: 'Kitsap poster design beta version 2', label: 'Version 1' },
+            { src: '/assets/kitsap-poster-3.webp', alt: 'Kitsap poster design beta version 3', label: 'Version 2' },
+            { src: '/assets/kitsap-poster-4.webp', alt: 'Kitsap poster design beta version 4', label: 'Version 3' },
           ].map((poster) => (
             <div key={poster.src} className="grid gap-4">
               <img
@@ -556,7 +556,7 @@ export default function Kitsap() {
         <img
           className="col-span-2 block mx-auto mt-5 rounded-[12px]"
           style={{ width: '80%', maxWidth: 1120, background: bg }}
-          src="/public/assets/USER TESTING - poster.png"
+          src="/assets/USER TESTING - poster.webp"
           alt="Feedback from user testing of the poster design"
         />
       </section>
@@ -570,7 +570,7 @@ export default function Kitsap() {
         <img
           className="col-span-2 block mx-auto mt-5 rounded-[12px]"
           style={{ width: '100%', maxWidth: 1120, background: bg }}
-          src="/public/assets/feedback - website.png"
+          src="/assets/feedback - website.webp"
           alt="Feedback from user testing of the website design"
         />
       </section>
@@ -587,7 +587,7 @@ export default function Kitsap() {
         <img
           className="col-span-2 block mx-auto mt-5"
           style={{ width: '100%', maxWidth: 1120, background: bg }}
-          src="/public/assets/poster-final.png"
+          src="/assets/poster-final.webp"
           alt="Feedback from user testing of the website design"
         />
       </section>
@@ -650,13 +650,13 @@ export default function Kitsap() {
         <img
           className="col-span-2 block mx-auto mt-5"
           style={{ width: '90%', maxWidth: 1120, background: bg }}
-          src="/public/assets/poster-deliverables.png"
+          src="/assets/poster-deliverables.webp"
           alt="Feedback from user testing of the website design"
         />
         <img
           className="col-span-2 block mx-auto mt-5"
           style={{ width: '90%', maxWidth: 1120, background: bg }}
-          src="/public/assets/poster horizontal.png"
+          src="/assets/poster horizontal.webp"
           alt="Feedback from user testing of the website design"
         />
       </section>
@@ -691,7 +691,7 @@ export default function Kitsap() {
           <img
             className="col-span-2 block mx-auto mt-5"
             style={{ width: '90%', maxWidth: 1120, background: bg, borderRadius: 15 }}
-            src="/public/assets/team-kitsap.MP.JPEG"
+            src="/assets/team-kitsap.MP.JPEG"
             alt="That is my Kitsap Transit team!"
           />
         </div>

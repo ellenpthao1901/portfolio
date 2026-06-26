@@ -13,19 +13,19 @@ const SCALE = DISPLAY_SIZE / FIGMA_SIZE
 
 const FIGMA_BUBBLES = [
   // label,                    src,                                          figma_left, figma_top
-  { label: 'Claude',    src: '/assets/about/tool-claude.png',    x: 0,       y: 337.72  },
-  { label: 'Adobe',     src: '/assets/about/tool-adobe.png',     x: 195.43,  y: 142.29  },
-  { label: 'Figma',     src: '/assets/about/tool-figma.png',     x: 408.42,  y: 0       },
-  { label: 'Blender',   src: '/assets/about/tool-blender.png',   x: 230.55,  y: 398.06  },
-  { label: 'AI',        src: '/assets/about/tool-ai.png',        x: 652.93,  y: 106.27  },
-  { label: 'ProtoPie',  src: '/assets/about/tool-protopie.png',  x: 678.6,   y: 389.06  },
-  { label: 'Miro',      src: '/assets/about/tool-miro.png',      x: 446.25,  y: 253.52  },
-  { label: 'Codex',     src: '/assets/about/tool-codex.png',     x: 295.11,   y: 710.6   },
-  { label: 'Photoshop', src: '/assets/about/tool-ps.png',        x: 887.54,  y: 253.52  },
-  { label: 'Google',    src: '/assets/about/tool-google.png',    x: 943.38,  y: 483.62  },
-  { label: 'Canva',     src: '/assets/about/tool-canva.png',     x: 450.16,  y: 518.23  },
-  { label: 'FigJam',    src: '/assets/about/tool-figjam.png',    x: 85.22,  y: 560.55  },
-  { label: 'GitHub',    src: '/assets/about/tool-github.png',    x: 750.65,  y: 620.51  },
+  { label: 'Claude',    src: '/assets/about/tool-claude.webp',    x: 0,       y: 337.72  },
+  { label: 'Adobe',     src: '/assets/about/tool-adobe.webp',     x: 195.43,  y: 142.29  },
+  { label: 'Figma',     src: '/assets/about/tool-figma.webp',     x: 408.42,  y: 0       },
+  { label: 'Blender',   src: '/assets/about/tool-blender.webp',   x: 230.55,  y: 398.06  },
+  { label: 'AI',        src: '/assets/about/tool-ai.webp',        x: 652.93,  y: 106.27  },
+  { label: 'ProtoPie',  src: '/assets/about/tool-protopie.webp',  x: 678.6,   y: 389.06  },
+  { label: 'Miro',      src: '/assets/about/tool-miro.webp',      x: 446.25,  y: 253.52  },
+  { label: 'Codex',     src: '/assets/about/tool-codex.webp',     x: 295.11,   y: 710.6   },
+  { label: 'Photoshop', src: '/assets/about/tool-ps.webp',        x: 887.54,  y: 253.52  },
+  { label: 'Google',    src: '/assets/about/tool-google.webp',    x: 943.38,  y: 483.62  },
+  { label: 'Canva',     src: '/assets/about/tool-canva.webp',     x: 450.16,  y: 518.23  },
+  { label: 'FigJam',    src: '/assets/about/tool-figjam.webp',    x: 85.22,  y: 560.55  },
+  { label: 'GitHub',    src: '/assets/about/tool-github.webp',    x: 750.65,  y: 620.51  },
 ]
 
 // Scale all positions to display size
