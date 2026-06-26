@@ -9,11 +9,11 @@ const LOADER_RIPPLE_STYLE = {
 } as CSSProperties
 
 function LoaderOverlay({ onDone }: { onDone: () => void }) {
-  const [phase, setPhase] = useState<'COOKING...' | 'DESIGNING...'>('COOKING...')
+  const [phase, setPhase] = useState<'DESIGNING...' | 'SHIPPED!'>('DESIGNING...')
   const [isRevealing, setIsRevealing] = useState(false)
 
   useEffect(() => {
-    const phaseTimeout = window.setTimeout(() => setPhase('DESIGNING...'), SITE_LOADER_TEXT_DURATION)
+    const phaseTimeout = window.setTimeout(() => setPhase('SHIPPED!'), SITE_LOADER_TEXT_DURATION)
     const revealTimeout = window.setTimeout(() => setIsRevealing(true), SITE_LOADER_TEXT_DURATION * 2)
     const timeout = window.setTimeout(onDone, SITE_LOADER_TOTAL_DURATION)
 

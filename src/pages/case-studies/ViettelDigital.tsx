@@ -228,7 +228,7 @@ export default function ViettelDigital() {
         </p>
         <img
           className="col-span-2 block mx-auto mt-5"
-          style={{ width: '69%', maxWidth: 990 }}
+          style={{ width: '85%'}}
           src="/assets/customer-interviews.webp"
           alt="Customer interview insights from three targeted audiences"
         />

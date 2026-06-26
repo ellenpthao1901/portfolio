@@ -107,16 +107,30 @@ function TweakPhoto({
     ? style.transform.match(/rotate\(([^)]+)\)/)?.[1] ?? '0deg'
     : '0deg'
 
+  const applyHoverGrow = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (tweak) return
+    event.currentTarget.style.transform = `rotate(${baseRotate}) scale(1.03)`
+  }
+
+  const clearHoverGrow = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (tweak) return
+    event.currentTarget.style.transform = `rotate(${baseRotate})`
+  }
+
   return (
     <button
       type="button"
       onClick={playTweak}
+      onMouseEnter={applyHoverGrow}
+      onMouseLeave={clearHoverGrow}
       aria-label="Tweak the photo"
-      className={`${className} cursor-pointer focus:outline-none ${tweak ? 'workspace-tweak' : ''}`}
+      className={`${className} cursor-pointer focus:outline-none`}
       style={
         {
           ...style,
           ['--base-rotate' as string]: baseRotate,
+          transition: 'transform 420ms cubic-bezier(0.22, 1, 0.36, 1)',
+          willChange: 'transform',
         } as CSSProperties
       }
     >
@@ -435,12 +449,22 @@ She turns every complex technical concepts into clear, actionable
             <button
               type="button"
               onClick={playTweak}
+              onMouseEnter={(event) => {
+                if (tweak) return
+                event.currentTarget.style.transform = 'rotate(-6.46deg) scale(1.03)'
+              }}
+              onMouseLeave={(event) => {
+                if (tweak) return
+                event.currentTarget.style.transform = 'rotate(-6.46deg)'
+              }}
               aria-label="Tweak the photo"
               className={`w-full max-w-[320px] aspect-[3/4] bg-white border-2 border-white rounded-[6px] p-2 shadow-[0_4px_24px_rgba(119,119,119,0.2)] cursor-pointer focus:outline-none ${tweak ? 'workspace-tweak' : ''}`}
               style={
                 {
                   transform: 'rotate(-6.46deg)',
                   ['--base-rotate' as string]: '-6.46deg',
+                  transition: 'transform 420ms cubic-bezier(0.22, 1, 0.36, 1)',
+                  willChange: 'transform',
                 } as React.CSSProperties
               }
             >

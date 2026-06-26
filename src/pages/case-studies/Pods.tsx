@@ -7,7 +7,7 @@ const TOC = [
   { id: 'section-ideate', label: 'Ideate' },
   { id: 'section-define', label: 'Define' },
   { id: 'section-design', label: 'Design' },
-  { id: 'section-validate', label: 'Validate' },
+  { id: 'section-validate', label: 'ITERATE' },
 ]
 
 // ─── tokens ──────────────────────────────────────────────────────────────────
@@ -65,16 +65,30 @@ function NextArrow() {
   )
 }
 
-function ArrowRight() {
-  return (
-    <svg viewBox="0 0 48 16" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-      <line x1="2" y1="8" x2="42" y2="8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      <polyline points="34,2 44,8 34,14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
 // ─── persona data ─────────────────────────────────────────────────────────────
+const ITERATION_CASES = [
+  {
+    id: 'homepage',
+    before: { src: '/assets/pods/homepage-v1.webp', alt: 'Homepage version 1' },
+    after: { src: '/assets/pods/homepage-v2.webp', alt: 'Homepage version 2' },
+    quotes: [
+      `"I feel like I'd get really stressed out if I had to study every single day just to keep the streak going."`,
+      `"I see this tool as a study helper, similar to ChatGPT or QuillBot, so adding this feature to the platform feels a bit unnecessary to me."`,
+      `"I think I won't care about the streak feature."`,
+    ],
+  },
+  {
+    id: 'customization',
+    before: { src: '/assets/pods/customization-v1.webp', alt: 'Customization version 1' },
+    after: { src: '/assets/pods/customization-v2.webp', alt: 'Customization version 2' },
+    quotes: [
+      `"The space for the fine-tuning option feels quite small, making it hard for me to click on each one."`,
+      `"I would rather see only the most useful controls first so the customization step feels less overwhelming."`,
+      `"More breathing room between options would make this much easier to scan and use quickly."`,
+    ],
+  },
+]
+
 const PERSONAS = [
   { src: '/assets/pods/persona-lily.webp', alt: 'Lily Ng — passionate PhD student persona', caption: 'Lily Ng — The passionate PhD Student, would like to minimize time in reading articles and doing her research' },
   { src: '/assets/pods/persona-edward.webp', alt: 'Edward White — tenure CS professor persona', caption: 'Edward White — That One Tenure CS Professor, likes to keep up with all the new breakthroughs' },
@@ -265,9 +279,6 @@ export default function Pods() {
         </div>
       </section>
 
-      {/* 04 Design */}
-      <Split id="section-design" title="04. DESIGN" />
-
       {/* User flow */}
       <section className="grid gap-10 py-[72px] px-[10%] pb-24 border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
         <Label>User Flow</Label>
@@ -288,13 +299,17 @@ export default function Pods() {
         <img className="col-span-2 block w-full mt-14 rounded-[12px]" style={{ background: bg }} src="/assets/pods/information-architecture.webp" alt="Information architecture diagram" />
       </section>
 
+      {/* 04 Design */}
+      <Split id="section-design" title="04. DESIGN" />
+
       {/* Core screens */}
+      {/* Core Screen 1 */}
       <section className="grid gap-10 py-[72px] px-[10%] pb-24 border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
         <Label>Four core screens shape the product</Label>
         <div>
-          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Home Dashboard — an organized overview with pinned and recent items.</h2>
+          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>
+            <span className="font-bold">#1 Home Dashboard</span> — an organized overview with pinned and recent items.</h2>
         </div>
-
         <div className="col-span-2 grid gap-x-0 gap-y-5 mt-5" style={{ alignItems: 'stretch' }}>
           <div className="flex items-center justify-end">
             <img
@@ -310,26 +325,120 @@ export default function Pods() {
               style={{ width: '80%' }}
             />
           </div>
+          <div className="col-span-2 flex justify-end mt-2">
+            <div className="text-right" style={{ width: '80%', maxWidth: 1120 }}>
+              <p className="text-[20.6px] leading-[30px] tracking-[-0.44px] m-0" style={{ color: muted }}>
+                ↪ Design details on v.2
+              </p>
+            </div>
+          </div>
           <img
             className="col-span-2 block mx-auto mt-5 rounded-[12px]"
             style={{ width: '80%', maxWidth: 1120, background: bg }}
             src="/public/assets/design-details-homepage.png"
           />
         </div>
+      </section>
 
+      {/* Core Screen 2 */}
+      <section className="grid gap-10 py-[72px] px-[10%] pb-24 border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
+        <Label>Core screen #2</Label>
         <div>
-          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Home Dashboard — an organized overview with pinned and recent items.</h2>
+          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>
+            <span className="font-bold">#2 Create a New Pod</span> — input any source and get real-time recommendations.</h2>
+        </div>
+        <div className="col-span-2 grid gap-x-0 gap-y-5 mt-5" style={{ alignItems: 'stretch' }}>
+          <div className="flex items-center justify-end">
+            <img
+              src="/public/assets/pod-creation-v1.png"
+              className="block w-full h-auto"
+              style={{ width: '80%' }}
+            />
+          </div>
+          <div className="flex items-center justify-start">
+            <img
+              src="/public/assets/pod-creation-v2.png"
+              className="block w-full h-auto"
+              style={{ width: '80%' }}
+            />
+          </div>
+          <img
+            className="col-span-2 block mx-auto mt-5"
+            style={{ width: '85%', maxWidth: 1120, background: bg }}
+            src="/public/assets/pod-creation-design-detail.png"
+          />
         </div>
       </section>
 
-      {/* 05 Validate */}
-      <Split id="section-validate" title="05. VALIDATE" />
+      {/* Core Screen 3 */}
+       <section className="grid gap-10 py-[72px] px-[10%] pb-24 border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
+        <Label>Core screen #3</Label>
+        <div>
+          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>
+            <span className="font-bold">#3 Customization</span> — granular inputs before generating results.</h2>
+        </div>
+        <div className="col-span-2 grid gap-x-0 gap-y-5 mt-5" style={{ alignItems: 'stretch' }}>
+          <div className="flex items-center justify-end">
+            <img
+              src="/public/assets/customization-v1.png"
+              className="block w-full h-auto"
+              style={{ width: '80%' }}
+            />
+          </div>
+          <div className="flex items-center justify-start">
+            <img
+              src="/public/assets/customization-v2.png"
+              className="block w-full h-auto"
+              style={{ width: '80%' }}
+            />
+          </div>
+          <img
+            className="col-span-2 block mx-auto mt-5"
+            style={{ width: '85%', maxWidth: 1120, background: bg }}
+            src="/public/assets/customization-detail.png"
+          />
+        </div>
+      </section>
+
+      {/* Core Screen 4 */}
+       <section className="grid gap-10 py-[72px] px-[10%] pb-24 border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
+        <Label>Core screen #4</Label>
+        <div>
+          <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>
+            <span className="font-bold">#4 Latency</span> — AI progress with contextual flashcards while waiting.</h2>
+        </div>
+        <div className="col-span-2 grid gap-x-0 gap-y-5 mt-5" style={{ alignItems: 'stretch' }}>
+          <div className="flex items-center justify-end">
+            <img
+              src="/public/assets/Latency 1.png"
+              className="block w-full h-auto"
+              style={{ width: '80%' }}
+            />
+          </div>
+          <div className="flex items-center justify-start">
+            <img
+              src="/public/assets/Latency 2.png"
+              className="block w-full h-auto"
+              style={{ width: '80%' }}
+            />
+          </div>
+          <img
+            className="col-span-2 block mx-auto mt-5"
+            style={{ width: '85%', maxWidth: 1120, background: bg }}
+            src="/public/assets/customization-detail.png"
+          />
+        </div>
+
+      </section>
+
+      {/* 05 Iterate */}
+      <Split id="section-validate" title="05. ITERATE" />
 
       {/* Feedback cards */}
       <div className="grid grid-cols-2 gap-6 pb-24 mx-auto" style={{ width: '69%', maxWidth: 990 }}>
         {[
-          { label: '— Feedback 1', title: 'Streak system felt stressful, not motivating', body: '"I feel like I\'d get really stressed out if I had to study every single day just to keep the streak going." Users shared they wouldn\'t engage with the streak feature, so I removed it entirely.' },
-          { label: '— Feedback 2', title: 'Customization felt too dense', body: '"The space for the fine-tuning option feels quite small, making it hard for me to click on each one." I refined the back button, reduced fine-tuning to the 2 most used features, and added breathing room.' },
+          { label: '— Feedback 1', title: 'Streak system felt stressful, not motivating', body: 'Students felt the streak mechanic added pressure instead of helping them build a sustainable learning routine.' },
+          { label: '— Feedback 2', title: 'Customization felt too dense', body: 'The fine-tuning step introduced too many controls at once, making the experience harder to scan and use quickly.' },
         ].map(c => (
           <article key={c.label} className="p-7 border rounded-[24px]" style={{ borderColor: line, background: soft }}>
             <p className="text-[13px] tracking-[0.06em] uppercase mb-[14px] m-0" style={{ color: ink }}>{c.label}</p>
@@ -341,35 +450,49 @@ export default function Pods() {
 
       {/* Iteration intro */}
       <section className="grid gap-10 py-[72px] px-[10%]" style={{ gridTemplateColumns: '1fr 1fr', background: bg }}>
-        <Label>Iteration</Label>
+        <Label>A/B Testing & Usability Testing</Label>
         <div>
           <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Refined design decisions based on feedback</h2>
-          <p className="text-[20.6px] leading-8 tracking-[-0.44px] mb-5" style={{ color: muted }}>Synthesizing user feedback and observed behaviors, I iterated on the initial designs to help users move through the flow with less friction.</p>
-          <ul className="m-0 pl-5 flex flex-col gap-2">
-            {['Initial logo changed to match the overall theme', 'Limited the homepage navigation to 3 clear sections', '"Recent Pods" refined to contain only generated podcasts', 'Added a 3-step progress bar for process tracking', 'Showed captions side-by-side with generated podcasts'].map(t => (
-              <li key={t} className="text-[20.6px] leading-8 tracking-[-0.44px]" style={{ color: muted }}>{t}</li>
-            ))}
-          </ul>
+          <p className="text-[20.6px] leading-8 tracking-[-0.44px] mb-5" style={{ color: muted }}>Testing between 2 versions was conducted both in-person and remotely over Zoom with mostly local Washington students.</p>
         </div>
       </section>
 
       {/* Iteration comparisons */}
-      <section className="relative grid gap-[clamp(40px,6vw,80px)] pb-[120px] mx-auto"
-        style={{ gridTemplateColumns: '1fr 1fr', width: '75%', maxWidth: 1250 }}>
-        <div className="absolute left-1/2 bottom-0 -translate-x-1/2 h-px" style={{ width: '100vw', background: line }} />
-        {[
-          { before: { src: '/assets/pods/homepage-v1.webp', alt: 'Homepage v1' }, after: { src: '/assets/pods/homepage-v2.webp', alt: 'Homepage v2' }, caption: 'Limited the homepage navigation to 3 clear sections and refined "Recent Pods"' },
-          { before: { src: '/assets/pods/customization-v1.webp', alt: 'Customization v1' }, after: { src: '/assets/pods/customization-v2.webp', alt: 'Customization v2' }, caption: 'Reduced fine-tuning to the 2 most used features and added breathing room for clickability' },
-        ].map((pair, i) => (
-          <figure key={i} className="m-0 flex flex-col gap-4">
-            <div className="grid items-center gap-[clamp(16px,2.5vw,32px)]" style={{ gridTemplateColumns: '1fr auto 1fr' }}>
-              <img src={pair.before.src} alt={pair.before.alt} className="w-full block rounded-[24px] object-contain p-4 shadow-[0_8px_32px_rgba(0,0,0,0.38)]" style={{ background: soft }} />
-              <span className="flex items-center justify-center text-white" style={{ width: 'clamp(36px,4vw,56px)', height: 'clamp(12px,1.4vw,18px)' }}><ArrowRight /></span>
-              <img src={pair.after.src} alt={pair.after.alt} className="w-full block rounded-[24px] object-contain p-4 shadow-[0_8px_32px_rgba(0,0,0,0.38)]" style={{ background: soft }} />
+      <section className="pb-[120px] px-[10%] border-b" style={{ borderColor: line, background: bg }}>
+        <div className="mx-auto flex flex-col gap-[clamp(44px,7vw,92px)]" style={{ width: '100%', maxWidth: 1400 }}>
+          {ITERATION_CASES.map((pair) => (
+            <div key={pair.id} className="grid items-start gap-[clamp(32px,4vw,64px)]" style={{ gridTemplateColumns: 'minmax(420px, 1.1fr) minmax(300px, 0.9fr)' }}>
+              <div className="flex flex-col gap-[clamp(30px,3.5vw,44px)]">
+                {[
+                  { label: 'Version 1', src: pair.before.src, alt: pair.before.alt, active: false },
+                  { label: 'Version 2', src: pair.after.src, alt: pair.after.alt, active: true },
+                ].map((version) => (
+                  <div key={version.label} className="grid items-center gap-6" style={{ gridTemplateColumns: 'minmax(0, 1fr) clamp(120px, 14vw, 160px)' }}>
+                    <img src={version.src} alt={version.alt} className="w-full block rounded-[14px]" style={{ background: '#f7f7f7', boxShadow: '0 8px 28px rgba(0,0,0,0.08)' }} />
+                    <div className="flex flex-col items-start gap-4 pt-2">
+                      <div className="flex items-center gap-3">
+                        <span className="text-[clamp(20px,1.8vw,28px)] leading-none tracking-[-0.03em]" style={{ color: muted }}>↪</span>
+                        <span className="text-[clamp(18px,1.8vw,28px)] font-semibold leading-[1.1] tracking-[-0.03em]" style={{ color: muted }}>{version.label}</span>
+                      </div>
+                      <span className="block rounded-full" style={{ width: 52, height: 52, background: version.active ? '#d7b9ff' : '#7b7b7b', position: 'relative' }}>
+                        {version.active ? (
+                          <span style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', color: '#141414', fontSize: 38, fontWeight: 500, lineHeight: 1 }}>✓</span>
+                        ) : null}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="pt-3 flex flex-col gap-[clamp(34px,4vw,52px)]">
+                {pair.quotes.map((quote) => (
+                  <p key={quote} className="text-[clamp(18px,2vw,20px)] leading-[1.45] tracking-[-0.03em] italic m-0 max-w-[560px]" style={{ color: muted }}>
+                    {quote}
+                  </p>
+                ))}
+              </div>
             </div>
-            <figcaption className="text-base leading-[26px] tracking-[-0.32px] text-center mx-auto max-w-[720px]" style={{ color: muted }}>{pair.caption}</figcaption>
-          </figure>
-        ))}
+          ))}
+        </div>
       </section>
 
       {/* Final galleries */}

@@ -209,19 +209,24 @@ export default function About() {
               src={WI_IMG1}
               alt="Web Impact workshop group photo"
               className="absolute rounded-[20px] overflow-hidden shadow-[20px_15px_50px_0px_rgba(255,255,255,0.15)]"
-              style={{ width: 400, height: 300, left: 260, top: 0, transform: 'rotate(5.06deg)', zIndex: 3 }}>
+              style={{ width: 400, height: 300, left: 260, top: 0, transform: 'rotate(5.06deg)', zIndex: 3 }}
+              growOnHover>
             </TweakPhoto>
             <TweakPhoto
               src={WI_IMG2}
               alt="Web Impact officers together"
               className="absolute rounded-[20px] overflow-hidden shadow-[20px_15px_50px_0px_rgba(255,255,255,0.15)]"
-              style={{ width: 370, height: 290, left: -30, top: 70, transform: 'rotate(-7deg)', zIndex: 4 }}>
+              style={{ width: 370, height: 290, left: -30, top: 70, transform: 'rotate(-7deg)', zIndex: 4 }}
+              growOnHover
+            >
             </TweakPhoto>
             <TweakPhoto
               src={WI_IMG3}
               alt="Web Impact Figma collaboration workshop"
               className="absolute rounded-[20px] overflow-hidden shadow-[20px_15px_50px_0px_rgba(255,255,255,0.15)]"
-              style={{ width: 300, height: 320, left: 650, top: 40, transform: 'rotate(-6.55deg)', zIndex: 5 }}>
+              style={{ width: 300, height: 320, left: 650, top: 40, transform: 'rotate(-6.55deg)', zIndex: 5 }}
+              growOnHover
+              >
             </TweakPhoto>
             <p className="absolute text-[14px] text-[#888] text-center leading-[1.4]"
               style={{ left: 50, bottom: 60, transform: 'rotate(-6.4deg)', maxWidth: 220 }}>
@@ -257,19 +262,23 @@ export default function About() {
               src={ATC_IMG2}
               alt="Algorithm Trading Club meeting"
               className="absolute rounded-[20px] overflow-hidden shadow-[20px_15px_50px_0px_rgba(255,255,255,0.15)]"
-              style={{ width: 400, height: 300, left: 260, top: 0, transform: 'rotate(-5.68deg)', zIndex: 3 }}>
+              style={{ width: 400, height: 300, left: 260, top: 0, transform: 'rotate(-5.68deg)', zIndex: 3 }}
+              growOnHover
+              >
             </TweakPhoto>
             <TweakPhoto
               src={ATC_IMG3}
               alt="Algorithm Trading Club social event"
               className="absolute rounded-[20px] overflow-hidden shadow-[20px_15px_50px_0px_rgba(255,255,255,0.15)]"
-              style={{ width: 370, height: 290, left: -30, top: 70, transform: 'rotate(7.47deg)', zIndex: 4 }}>
+              style={{ width: 370, height: 290, left: -30, top: 70, transform: 'rotate(7.47deg)', zIndex: 4 }}
+              growOnHover>
             </TweakPhoto>
             <TweakPhoto
               src={ATC_IMG1}
               alt="Husky Hold'em website visual"
               className="absolute rounded-[20px] overflow-hidden shadow-[20px_15px_50px_0px_rgba(255,255,255,0.15)]"
-              style={{ width: 400, height: 280, left: 650, top: 40, transform: 'rotate(6.38deg)', zIndex: 1 }}>
+              style={{ width: 400, height: 280, left: 650, top: 40, transform: 'rotate(6.38deg)', zIndex: 1 }}
+              growOnHover>
             </TweakPhoto>
             <p className="absolute text-[14px] text-[#888] text-center leading-[1.4]"
               style={{ left: 50, bottom: 100, transform: 'rotate(8.07deg)', maxWidth: 220 }}>
