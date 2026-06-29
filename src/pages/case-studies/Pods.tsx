@@ -107,7 +107,7 @@ export default function Pods() {
       </section>
 
       {/* Cover image */}
-      <section data-nav-contrast="high" className="overflow-hidden border-b" style={{ background: bg, borderColor: line }}>
+      <section className="overflow-hidden border-b" style={{ background: bg, borderColor: line }}>
         <img src="/assets/pods/cover.webp" alt="Pods platform cover" className="block object-cover" style={{ width: '102%', margin: '-1% -1% -2%' }} />
       </section>
 
@@ -466,7 +466,7 @@ export default function Pods() {
       </section>
 
       {/* Iteration comparisons */}
-      <section data-nav-contrast="high" className="pb-[120px] px-[10%] border-b" style={{ borderColor: line, background: bg }}>
+      <section className="pb-[120px] px-[10%] border-b" style={{ borderColor: line, background: bg }}>
         <div className="mx-auto flex flex-col gap-[clamp(44px,7vw,92px)]" style={{ width: '100%', maxWidth: 1400 }}>
           {ITERATION_CASES.filter((pair) => pair.id !== 'customization').map((pair) => (
             <div
@@ -544,7 +544,7 @@ export default function Pods() {
         { label: 'LISTEN TO PODCAST', images: [{ src: '/assets/pods/listen-transcript-final.webp', alt: 'Listen final' }, { src: '/assets/pods/listen-transcript-1.webp', alt: 'Listen 1' }, { src: '/assets/pods/listen-transcript-2.webp', alt: 'Listen 2' }] },
         { label: 'TIMELINE', images: [{ src: '/assets/pods/timeline-v2.webp', alt: 'Timeline v2' }, { src: '/assets/pods/timeline-v2-1.webp', alt: 'Timeline v2-1' }] },
       ].map(gallery => (
-        <section key={gallery.label} data-nav-contrast="high" className="py-24 px-[5vw] border-b" style={{ borderColor: line, background: bg }}>
+        <section key={gallery.label} className="py-24 px-[5vw] border-b" style={{ borderColor: line, background: bg }}>
           <p className="text-[13px] tracking-[0.06em] uppercase text-center m-0" style={{ color: ink }}>{gallery.label}</p>
           <div className="grid mt-[42px] mx-auto" style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 'clamp(24px,3vw,40px)', width: '90%', maxWidth: 1500 }}>
             {gallery.images.map(img => (

@@ -8,6 +8,11 @@ export default function Nav() {
   const [highContrast, setHighContrast] = useState(false)
 
   useEffect(() => {
+    if (pathname !== '/viettel-digital') {
+      setHighContrast(false)
+      return
+    }
+
     let frame: number | null = null
 
     const updateContrast = () => {

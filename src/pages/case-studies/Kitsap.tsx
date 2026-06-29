@@ -547,7 +547,7 @@ export default function Kitsap() {
         </div>
       </section>
 
-      <section data-nav-contrast="high" className="grid items-start gap-15 pt-24 pb-[120px] px-[10%] border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
+      <section className="grid items-start gap-15 pt-24 pb-[120px] px-[10%] border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
         <Label>FEEDBACK - ROUND 1</Label>
         <div>
           <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Valuable feedbacks for the posters</h2>
@@ -561,7 +561,7 @@ export default function Kitsap() {
         />
       </section>
 
-      <section data-nav-contrast="high" className="grid items-start gap-15 pt-24 pb-[120px] px-[10%] border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
+      <section className="grid items-start gap-15 pt-24 pb-[120px] px-[10%] border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
         <Label>FEEDBACK - ROUND 2</Label>
         <div>
           <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Valuable feedbacks for the website</h2>
@@ -575,7 +575,7 @@ export default function Kitsap() {
         />
       </section>
 
-      <section data-nav-contrast="high" className="grid items-start gap-15 pt-24 pb-[120px] px-[10%] border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
+      <section className="grid items-start gap-15 pt-24 pb-[120px] px-[10%] border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
         <Label>ITERATE - POSTER</Label>
         <div>
           <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>We want everyone is easily accessible!</h2>
@@ -642,7 +642,7 @@ export default function Kitsap() {
       </div>
       </section>
 
-      <section data-nav-contrast="high" className="grid items-start gap-15 pt-24 pb-[120px] px-[10%] border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
+      <section className="grid items-start gap-15 pt-24 pb-[120px] px-[10%] border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
         <Label>FINAL VERSION OF POSTERS</Label>
         <div>
           <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>By having many different versions, we want to make everyone feel included - either the person who's in need or those who know someones who is.</h2>
