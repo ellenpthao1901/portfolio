@@ -227,7 +227,11 @@ export default function Intro() {
       </div>
       <p className="statement" style={{ position: 'relative', zIndex: 1, pointerEvents: 'none' }}>
         I designed alongside with data and crafted products that actually matters.
-        Shipping live products at SAP and Viettel Digital.
+        {' '}Shipping live products at{' '}
+        <span style={{ color: '#ebebeb' }}>SAP</span>
+        {' '}and{' '}
+        <span style={{ color: '#ebebeb' }}>Viettel Digital</span>
+        .
       </p>
     </section>
   )

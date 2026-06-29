@@ -81,11 +81,7 @@ const ITERATION_CASES = [
     id: 'customization',
     before: { src: '/assets/pods/customization-v1.webp', alt: 'Customization version 1' },
     after: { src: '/assets/pods/customization-v2.webp', alt: 'Customization version 2' },
-    quotes: [
-      `"The space for the fine-tuning option feels quite small, making it hard for me to click on each one."`,
-      `"I would rather see only the most useful controls first so the customization step feels less overwhelming."`,
-      `"More breathing room between options would make this much easier to scan and use quickly."`,
-    ],
+    quotes: [],
   },
 ]
 
@@ -99,7 +95,7 @@ export default function Pods() {
 
   return (
     <>
-      <TableOfContents items={TOC} />
+      <TableOfContents items={TOC} adaptiveContrast />
 
       {/* Project intro */}
       <section className="grid border-b py-[60px] px-[10%]"
@@ -111,7 +107,7 @@ export default function Pods() {
       </section>
 
       {/* Cover image */}
-      <section className="overflow-hidden border-b" style={{ background: bg, borderColor: line }}>
+      <section data-nav-contrast="high" className="overflow-hidden border-b" style={{ background: bg, borderColor: line }}>
         <img src="/assets/pods/cover.webp" alt="Pods platform cover" className="block object-cover" style={{ width: '102%', margin: '-1% -1% -2%' }} />
       </section>
 
@@ -434,20 +430,6 @@ export default function Pods() {
       {/* 05 Iterate */}
       <Split id="section-validate" title="05. ITERATE" />
 
-      {/* Feedback cards */}
-      <div className="grid grid-cols-2 gap-6 pb-24 mx-auto" style={{ width: '69%', maxWidth: 990 }}>
-        {[
-          { label: '— Feedback 1', title: 'Streak system felt stressful, not motivating', body: 'Students felt the streak mechanic added pressure instead of helping them build a sustainable learning routine.' },
-          { label: '— Feedback 2', title: 'Customization felt too dense', body: 'The fine-tuning step introduced too many controls at once, making the experience harder to scan and use quickly.' },
-        ].map(c => (
-          <article key={c.label} className="p-7 border rounded-[24px]" style={{ borderColor: line, background: soft }}>
-            <p className="text-[13px] tracking-[0.06em] uppercase mb-[14px] m-0" style={{ color: ink }}>{c.label}</p>
-            <h3 className="text-[24px] font-bold mb-3" style={{ color: ink }}>{c.title}</h3>
-            <p className="text-base leading-[1.72] m-0" style={{ color: muted }}>{c.body}</p>
-          </article>
-        ))}
-      </div>
-
       {/* Iteration intro */}
       <section className="grid gap-10 py-[72px] px-[10%]" style={{ gridTemplateColumns: '1fr 1fr', background: bg }}>
         <Label>A/B Testing & Usability Testing</Label>
@@ -455,20 +437,52 @@ export default function Pods() {
           <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Refined design decisions based on feedback</h2>
           <p className="text-[20.6px] leading-8 tracking-[-0.44px] mb-5" style={{ color: muted }}>Testing between 2 versions was conducted both in-person and remotely over Zoom with mostly local Washington students.</p>
         </div>
+        <div className="col-span-2 w-full flex justify-center py-10">
+          <div className="w-full" style={{ maxWidth: 780 }}>
+            {[
+              { label: '— Feedback 1', title: 'Streak system felt stressful, not motivating', body: 'Students felt the streak mechanic added pressure instead of helping them build a sustainable learning routine.' },
+            ].map(c => (
+              <article
+                key={c.label}
+                className="p-7 border rounded-[24px]"
+                style={{ borderColor: line, background: soft }}
+              >
+                <p
+                  className="text-[13px] tracking-[0.06em] uppercase mb-[14px] m-0"
+                  style={{ color: ink }}
+                >
+                  {c.label}
+                </p>
+                <h3 className="text-[24px] font-bold mb-3" style={{ color: ink }}>
+                  {c.title}
+                </h3>
+                <p className="text-base leading-[1.72] m-0" style={{ color: muted }}>
+                  {c.body}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Iteration comparisons */}
-      <section className="pb-[120px] px-[10%] border-b" style={{ borderColor: line, background: bg }}>
+      <section data-nav-contrast="high" className="pb-[120px] px-[10%] border-b" style={{ borderColor: line, background: bg }}>
         <div className="mx-auto flex flex-col gap-[clamp(44px,7vw,92px)]" style={{ width: '100%', maxWidth: 1400 }}>
-          {ITERATION_CASES.map((pair) => (
-            <div key={pair.id} className="grid items-center gap-[clamp(32px,4vw,64px)]" style={{ gridTemplateColumns: 'minmax(300px, 0.9fr) minmax(420px, 1.1fr)' }}>
-              <div className="pt-3 flex flex-col gap-[clamp(34px,4vw,52px)]">
-                {pair.quotes.map((quote) => (
-                  <p key={quote} className="text-[clamp(18px,2vw,20px)] leading-[1.45] tracking-[-0.03em] italic m-0 max-w-[560px]" style={{ color: muted }}>
-                    {quote}
-                  </p>
-                ))}
-              </div>
+          {ITERATION_CASES.filter((pair) => pair.id !== 'customization').map((pair) => (
+            <div
+              key={pair.id}
+              className="grid items-center gap-[clamp(32px,4vw,64px)]"
+              style={{ gridTemplateColumns: pair.quotes.length ? 'minmax(300px, 0.9fr) minmax(420px, 1.1fr)' : '1fr' }}
+            >
+              {pair.quotes.length ? (
+                <div className="pt-3 flex flex-col gap-[clamp(34px,4vw,52px)]">
+                  {pair.quotes.map((quote) => (
+                    <p key={quote} className="text-[clamp(18px,2vw,20px)] leading-[1.45] tracking-[-0.03em] italic m-0 max-w-[560px]" style={{ color: muted }}>
+                      {quote}
+                    </p>
+                  ))}
+                </div>
+              ) : null}
               <div className="flex flex-col gap-[clamp(30px,3.5vw,44px)]">
                 {[
                   { label: 'Version 1', src: pair.before.src, alt: pair.before.alt, active: false },
@@ -495,6 +509,33 @@ export default function Pods() {
         </div>
       </section>
 
+      <div className="w-full flex justify-center py-15" style={{ background: bg }}>
+        <div className="w-full" style={{ maxWidth: 780 }}>
+          {[
+            { label: '— Feedback 2', title: 'Customization felt too dense', body: 'The fine-tuning step introduced too many controls at once, making the experience harder to scan and use quickly.' },
+          ].map(c => (
+            <article
+              key={c.label}
+              className="p-7 border rounded-[24px]"
+              style={{ borderColor: line, background: soft }}
+            >
+              <p
+                className="text-[13px] tracking-[0.06em] uppercase mb-[14px] m-0"
+                style={{ color: ink }}
+              >
+                {c.label}
+              </p>
+              <h3 className="text-[24px] font-bold mb-3" style={{ color: ink }}>
+                {c.title}
+              </h3>
+              <p className="text-base leading-[1.72] m-0" style={{ color: muted }}>
+                {c.body}
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
+
       {/* Final galleries */}
       {[
         { label: 'DASHBOARD & HOMEPAGE', images: [{ src: '/assets/pods/dashboard.webp', alt: 'Dashboard' }, { src: '/assets/pods/desktop-1.webp', alt: 'Desktop home' }] },
@@ -503,7 +544,7 @@ export default function Pods() {
         { label: 'LISTEN TO PODCAST', images: [{ src: '/assets/pods/listen-transcript-final.webp', alt: 'Listen final' }, { src: '/assets/pods/listen-transcript-1.webp', alt: 'Listen 1' }, { src: '/assets/pods/listen-transcript-2.webp', alt: 'Listen 2' }] },
         { label: 'TIMELINE', images: [{ src: '/assets/pods/timeline-v2.webp', alt: 'Timeline v2' }, { src: '/assets/pods/timeline-v2-1.webp', alt: 'Timeline v2-1' }] },
       ].map(gallery => (
-        <section key={gallery.label} className="py-24 px-[5vw] border-b" style={{ borderColor: line, background: bg }}>
+        <section key={gallery.label} data-nav-contrast="high" className="py-24 px-[5vw] border-b" style={{ borderColor: line, background: bg }}>
           <p className="text-[13px] tracking-[0.06em] uppercase text-center m-0" style={{ color: ink }}>{gallery.label}</p>
           <div className="grid mt-[42px] mx-auto" style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 'clamp(24px,3vw,40px)', width: '90%', maxWidth: 1500 }}>
             {gallery.images.map(img => (

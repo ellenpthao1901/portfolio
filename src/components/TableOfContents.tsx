@@ -7,9 +7,10 @@ export interface TocItem {
 
 interface TableOfContentsProps {
   items: TocItem[]
+  adaptiveContrast?: boolean
 }
 
-export default function TableOfContents({ items }: TableOfContentsProps) {
+export default function TableOfContents({ items, adaptiveContrast = false }: TableOfContentsProps) {
   const [active, setActive] = useState<string | null>(items[0]?.id ?? null)
 
   useEffect(() => {
@@ -38,10 +39,14 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
   return (
     <nav
       className="
-        fixed left-[2vw] top-1/2 -translate-y-1/2 z-40
+        fixed left-[2vw] top-1/2 z-40
         hidden lg:flex flex-col gap-7
         pointer-events-none
       "
+      style={{
+        transform: 'translateY(calc(-50% + 100px))',
+        mixBlendMode: adaptiveContrast ? 'difference' : 'normal',
+      }}
       aria-label="Table of contents"
     >
       {items.map(item => {
@@ -63,20 +68,38 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
               aria-hidden="true"
               className={`
                 absolute -top-3 left-1/2 -translate-x-1/2
-                w-[7px] h-[7px] rounded-full bg-[#ebebeb]
-                transition-opacity duration-200
+                w-[7px] h-[7px] rounded-full transition-opacity duration-200
+                ${adaptiveContrast ? 'bg-white' : 'bg-[#ebebeb]'}
                 ${isActive ? 'opacity-100' : 'opacity-0'}
               `}
+              style={
+                adaptiveContrast
+                  ? { boxShadow: '0 0 10px rgba(255,255,255,0.85), 0 0 18px rgba(255,255,255,0.45)' }
+                  : undefined
+              }
             />
             <span
               className={`
                 [writing-mode:vertical-rl] [text-orientation:mixed] rotate-180
                 text-[11px] tracking-[0.08em] uppercase
                 transition-colors duration-200
-                ${isActive
-                  ? 'text-[#ebebeb] font-medium'
-                  : 'text-[#888] font-normal group-hover:text-[#ebebeb]'}
+                ${adaptiveContrast
+                  ? (isActive
+                      ? 'text-white font-medium'
+                      : 'text-white/75 font-normal group-hover:text-white')
+                  : (isActive
+                      ? 'text-[#ebebeb] font-medium'
+                      : 'text-[#888] font-normal group-hover:text-[#ebebeb]')}
               `}
+              style={
+                adaptiveContrast
+                  ? {
+                      textShadow: isActive
+                        ? '0 0 12px rgba(255,255,255,0.95), 0 0 20px rgba(255,255,255,0.45)'
+                        : '0 0 8px rgba(255,255,255,0.4)',
+                    }
+                  : undefined
+              }
             >
               {item.label}
             </span>

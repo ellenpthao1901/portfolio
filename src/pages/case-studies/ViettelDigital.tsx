@@ -6,8 +6,8 @@ const TOC = [
   { id: 'section-discovery', label: 'Discovery' },
   { id: 'section-define', label: 'Define' },
   { id: 'section-prototype', label: 'Prototype' },
-  { id: 'section-testing', label: 'User Testing' },
-  { id: 'section-final', label: 'Final Design' },
+  { id: 'section-testing', label: 'Testing' },
+  { id: 'section-final', label: 'Design' },
 ]
 
 // ─── Carousel ────────────────────────────────────────────────────────────────
@@ -60,9 +60,9 @@ const SOLUTIONS = [
     title: '"Quick Support Center" Feature',
     body: 'To enhance customer assistance, I designed a new Quick Support Center feature. This feature provides users with three primary support options:',
     list: [
-      'Hotline support available daily from 7:00 AM to 10:00 PM',
-      'Messaging support for more flexible communication',
-      'Hotline access to car insurance support',
+      '• Hotline support available daily from 7:00 AM to 10:00 PM',
+      '• Messaging support for more flexible communication',
+      '• Hotline access to car insurance support',
     ],
     footer: 'A comprehensive FAQ section also helps users quickly resolve common questions without contacting support directly.',
     images: [{ src: '/assets/solution-hotline.webp', alt: 'Quick support center feature preview' }],
@@ -72,7 +72,7 @@ const SOLUTIONS = [
     kicker: 'Solution 2',
     title: 'Streamlined Transaction Page',
     body: 'To improve the transaction page experience, I structured information into clearly defined categories:',
-    list: ['Car rental policies', 'Rental requirements', 'Important notices', 'Change and cancellation policies', 'Potential additional fees'],
+    list: ['• Car rental policies', '• Rental requirements', '• Important notices', '• Change and cancellation policies', '• Potential additional fees'],
     footer: 'Each category is presented in a dedicated section so users can locate relevant information quickly and understand key details with less effort.',
     images: [{ src: '/assets/solution-transaction.webp', alt: 'Streamlined transaction page preview' }],
     visualClass: 'items-center justify-center',
@@ -228,7 +228,7 @@ export default function ViettelDigital() {
         </p>
         <img
           className="col-span-2 block mx-auto mt-5"
-          style={{ width: '85%'}}
+          style={{ width: '80%'}}
           src="/assets/customer-interviews.webp"
           alt="Customer interview insights from three targeted audiences"
         />
@@ -238,7 +238,7 @@ export default function ViettelDigital() {
       <Split id="section-define" number="02. DEFINE" title={'Empathize and “listen” to user needs'} body="For me, thoroughly understanding the product requirements at the beginning is one of the most crucial parts of the design thinking process. It sets a clear direction, allowing me to deliver the best product quality for the business and users." />
 
       {/* Pain points intro */}
-      <section className="grid gap-10 py-[72px] px-[10%] pb-6" style={{ gridTemplateColumns: '1fr 1fr', background: bg }}>
+      <section className="grid gap-10 py-[72px] px-[10%] pb-12" style={{ gridTemplateColumns: '1fr 1fr', background: bg }}>
         <Label>User Pain Points</Label>
         <div>
           <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>
@@ -251,12 +251,12 @@ export default function ViettelDigital() {
       </section>
 
       {/* Pain points table */}
-      <section className="grid gap-10 px-[10%] pb-24 border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
+      <section className="gap-10 px-[10%] pb-24 border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
         <div /> {/* empty left col */}
         <table className="w-full border-collapse border-t" style={{ borderColor: line, color: muted }}>
           <thead>
             <tr>
-              <th className="text-[11px] font-normal tracking-[0.04em] uppercase text-left py-3 pb-2" style={{ color: meta, width: '42%', paddingRight: 56 }}>Pain Point</th>
+              <th className="text-[11px] font-normal tracking-[0.04em] uppercase text-left py-3 pb-2" style={{ color: meta, width: '51%', paddingRight: 56 }}>Pain Point</th>
               <th className="text-[11px] font-normal tracking-[0.04em] uppercase text-left py-3 pb-2" style={{ color: meta }}>How Might We</th>
             </tr>
           </thead>
@@ -276,8 +276,8 @@ export default function ViettelDigital() {
               },
             ].map((row, i) => (
               <tr key={i} className="border-b" style={{ borderColor: line }}>
-                <td className="py-[15px] text-[14px] leading-5 tracking-[-0.28px] align-top" style={{ paddingRight: 56 }}>{row.pain}</td>
-                <td className="py-[15px] text-[14px] leading-5 tracking-[-0.28px] align-top">{row.hmw}</td>
+                <td className="py-[15px] text-[15px] leading-5 tracking-[-0.28px] align-top" style={{ paddingRight: 56 }}>{row.pain}</td>
+                <td className="py-[15px] text-[15px] leading-5 tracking-[-0.28px] align-top">{row.hmw}</td>
               </tr>
             ))}
           </tbody>
@@ -397,7 +397,7 @@ export default function ViettelDigital() {
       </section>
 
       {/* Wireframes */}
-      <section className="grid gap-10 pt-[72px] px-[10%] pb-24 border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
+      <section data-nav-contrast="high" className="grid gap-10 pt-[72px] px-[10%] pb-24 border-b" style={{ gridTemplateColumns: '1fr 1fr', borderColor: line, background: bg }}>
         <Label>Wireframe</Label>
         <div>
           <h2 className="text-[20.6px] font-normal leading-[30px] tracking-[-0.44px] mb-6" style={{ color: ink }}>Wireframe</h2>
@@ -493,8 +493,9 @@ export default function ViettelDigital() {
 
       {/* Iteration comparisons */}
       <section
+        data-nav-contrast="high"
         className="relative grid gap-[clamp(40px,6vw,80px)] pb-[120px] mx-auto"
-        style={{ gridTemplateColumns: '1fr 1fr', width: '75%', maxWidth: 1250 }}
+        style={{ gridTemplateColumns: '1fr 1fr', width: '85%', maxWidth: 1250 }}
         aria-label="Design iterations"
       >
         <div className="absolute left-1/2 bottom-0 -translate-x-1/2 h-px" style={{ width: '100vw', background: line }} />
@@ -510,18 +511,17 @@ export default function ViettelDigital() {
             caption: 'Allow users to adjust rental date and location in Step 3 without having to go back to Step 1 or Step 2',
           },
         ].map((pair, i) => (
-          <figure key={i} className="m-0">
-            <div className="grid items-center gap-[clamp(16px,2.5vw,32px)]" style={{ gridTemplateColumns: '1fr auto 1fr' }}>
+          <figure key={i} className="m-0 flex flex-col gap-[clamp(20px,3vw,40px)]">
+            <div className="grid items-center min-h-[520px] gap-[clamp(16px,2.5vw,32px)]" style={{ gridTemplateColumns: '1fr auto 1fr' }}>
               <img src={pair.before.src} alt={pair.before.alt} className="w-full block rounded-[24px] object-contain shadow-[0_8px_32px_rgba(0,0,0,0.38)] p-4" style={{ background: soft }} />
               <span className="flex items-center justify-center text-white" style={{ width: 'clamp(36px,4vw,56px)', height: 'clamp(12px,1.4vw,18px)' }}>
                 <ArrowRight />
               </span>
               <img src={pair.after.src} alt={pair.after.alt} className="w-full block rounded-[24px] object-contain shadow-[0_8px_32px_rgba(0,0,0,0.38)] p-4" style={{ background: soft }} />
             </div>
+            <p className="text-base leading-[26px] tracking-[-0.32px] text-center mx-auto max-w-[720px] m-0" style={{ color: muted }}>{pair.caption}</p>
           </figure>
         ))}
-        <p className="text-base leading-[26px] tracking-[-0.32px] text-center mx-auto max-w-[720px] m-0" style={{ color: muted }}>Add Filter Options on the top and Rename "Sort By" to "Filter" for better clarity</p>
-        <p className="text-base leading-[26px] tracking-[-0.32px] text-center mx-auto max-w-[720px] m-0" style={{ color: muted }}>Allow users to adjust rental date and location in Step 3 without having to go back to Step 1 or Step 2</p>
       </section>
 
       {/* 05 Final Design */}
@@ -563,7 +563,7 @@ export default function ViettelDigital() {
           ],
         },
       ].map(gallery => (
-        <section key={gallery.label} className="py-24 px-[5vw] border-b" style={{ borderColor: line, background: bg }}>
+        <section key={gallery.label} data-nav-contrast="high" className="py-24 px-[5vw] border-b" style={{ borderColor: line, background: bg }}>
           <p className="text-[13px] tracking-[0.06em] uppercase text-center mb-0" style={{ color: ink }}>{gallery.label}</p>
           <div className="flex flex-wrap justify-center items-start gap-7 mt-[42px]">
             {gallery.images.map(img => (

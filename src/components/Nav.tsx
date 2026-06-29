@@ -1,10 +1,45 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 export default function Nav() {
   const { pathname } = useLocation()
   const isHome = pathname === '/'
   const navRef = useRef<HTMLElement>(null)
+  const [highContrast, setHighContrast] = useState(false)
+
+  useEffect(() => {
+    let frame: number | null = null
+
+    const updateContrast = () => {
+      frame = null
+      const nav = navRef.current
+      if (!nav) return
+
+      const sampleY = nav.getBoundingClientRect().top + nav.getBoundingClientRect().height / 2
+      const brightSections = Array.from(document.querySelectorAll<HTMLElement>('[data-nav-contrast="high"]'))
+      const shouldBoostContrast = brightSections.some(section => {
+        const rect = section.getBoundingClientRect()
+        return rect.top <= sampleY && rect.bottom >= sampleY
+      })
+
+      setHighContrast(current => (current === shouldBoostContrast ? current : shouldBoostContrast))
+    }
+
+    const scheduleUpdate = () => {
+      if (frame !== null) cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(updateContrast)
+    }
+
+    scheduleUpdate()
+    window.addEventListener('scroll', scheduleUpdate, { passive: true })
+    window.addEventListener('resize', scheduleUpdate)
+
+    return () => {
+      if (frame !== null) cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', scheduleUpdate)
+      window.removeEventListener('resize', scheduleUpdate)
+    }
+  }, [pathname])
 
   const onMouseMove = (e: React.MouseEvent) => {
     const nav = navRef.current
@@ -31,7 +66,7 @@ export default function Nav() {
     >
       <nav
         ref={navRef}
-        className="site-nav"
+        className={`site-nav${highContrast ? ' site-nav--high-contrast' : ''}`}
         onMouseMove={onMouseMove}
         onMouseLeave={onMouseLeave}
       >

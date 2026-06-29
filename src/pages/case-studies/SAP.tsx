@@ -6,9 +6,7 @@ import TableOfContents from '../../components/TableOfContents'
 import { useContactForm } from '../../hooks/useContactForm'
 
 const TOC = [
-  { id: 'section-mission', label: 'Mission' },
   { id: 'section-projects', label: 'Projects' },
-  { id: 'section-confidential', label: 'Confidential' },
   { id: 'section-testimonial', label: 'Testimonial' },
   { id: 'section-photos', label: 'Memories' },
 ]

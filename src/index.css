@@ -245,6 +245,39 @@ h1 {
   color: #f2f2f2;
 }
 
+.site-nav--high-contrast {
+  border-color: rgba(255,255,255,0.26);
+  background:
+    linear-gradient(180deg, rgba(24,24,24,0.9), rgba(8,8,8,0.84)),
+    rgba(8, 8, 8, 0.82);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.14),
+    inset 0 -1px 0 rgba(255,255,255,0.08),
+    0 22px 60px rgba(0,0,0,0.58),
+    0 0 0 1px rgba(0,0,0,0.22),
+    0 0 18px rgba(255,255,255,0.08);
+  backdrop-filter: blur(28px) saturate(155%) contrast(116%);
+  -webkit-backdrop-filter: blur(28px) saturate(155%) contrast(116%);
+}
+
+.site-nav--high-contrast::before {
+  background: radial-gradient(circle, rgba(255,255,255,0.17) 0%, transparent 72%);
+}
+
+.site-nav--high-contrast .site-nav-link {
+  color: rgba(252,252,252,0.94);
+  text-shadow:
+    0 1px 12px rgba(0,0,0,0.62),
+    0 0 14px rgba(255,255,255,0.08);
+}
+
+.site-nav--high-contrast .site-nav-link:hover {
+  color: #ffffff;
+  text-shadow:
+    0 1px 14px rgba(0,0,0,0.68),
+    0 0 14px rgba(255,255,255,0.14);
+}
+
 /* ── Home page ──────────────────────────────────────── */
 .home {
   flex: 1;
