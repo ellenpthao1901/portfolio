@@ -179,11 +179,13 @@ export default function SAP() {
       {/* Hero banner */}
       <section className="px-[10%] py-16 border-b border-[#252525] max-md:px-[5vw] max-md:py-12">
         <video
-          src="/assets/sap-hover.webm"
+          src="/assets/sap-hover.mp4"
+          poster="/assets/sap-hover-poster.webp"
           autoPlay
           loop
           muted
           playsInline
+          preload="metadata"
           className="w-full h-auto rounded-[8px] block"
           aria-label="SAP project hero"
         />

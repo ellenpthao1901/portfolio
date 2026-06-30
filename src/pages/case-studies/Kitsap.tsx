@@ -672,12 +672,14 @@ export default function Kitsap() {
         <video
           className="col-span-2 block w-full mx-auto mt-5 rounded-[18px]"
           style={{ maxWidth: 1120, background: bg }}
-          src="/assets/website-result.mov"
+          src="/assets/website-result.mp4"
+          poster="/assets/website-result-poster.webp"
           autoPlay
           muted
           loop
           playsInline
           controls
+          preload="metadata"
         />
       </section>
 
@@ -691,7 +693,7 @@ export default function Kitsap() {
           <img
             className="col-span-2 block mx-auto mt-5"
             style={{ width: '90%', maxWidth: 1120, background: bg, borderRadius: 15 }}
-            src="/assets/team-kitsap.MP.JPEG"
+            src="/assets/team-kitsap.MP.webp"
             alt="That is my Kitsap Transit team!"
           />
         </div>
