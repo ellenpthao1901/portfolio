@@ -118,7 +118,7 @@ export default function About() {
       <section className="grid grid-cols-2 gap-16 items-start px-[10%] py-20 border-b border-[#252525]">
         <div className="flex justify-center">
           <TweakPhoto
-            src={IMG_HERO}
+            src="/assets/me.jpg"
             alt="Thao Nguyen"
             className="rounded-[20px] overflow-hidden"
             style={{ width: 360, aspectRatio: '3/4' }}
