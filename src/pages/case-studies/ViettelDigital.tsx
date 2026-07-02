@@ -139,8 +139,10 @@ export default function ViettelDigital() {
       {/* Demo video */}
       <section className="py-14 px-[10%] border-b" style={{ borderColor: line, background: '#000' }} aria-label="Project video">
         <video
-          src="/assets/viettel-digital-hover.mov"
+          src="/assets/viettel-digital-hover.mp4"
+          poster="/assets/viettel-digital-hover-poster.webp"
           autoPlay muted loop playsInline controls
+          preload="metadata"
           className="block w-full rounded-sm object-contain"
           style={{ maxHeight: '82vh' }}
         />

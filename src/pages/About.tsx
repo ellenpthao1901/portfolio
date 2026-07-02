@@ -3,36 +3,36 @@ import PhotoShuffle from '../components/PhotoShuffle'
 import ToolBubbles from '../components/ToolBubbles'
 
 // ── Figma image assets ────────────────────────────────────────────────────────
-const IMG_HERO        = '/assets/about/hero.jpg'
+const IMG_HERO        = '/assets/about/hero.webp'
 
 // Tool icons
 
 // Web Impact photos
 const WI_LOGO         = '/assets/about/wi-logo.webp'
-const WI_IMG1         = '/assets/about/wi-img1.jpg'
-const WI_IMG2         = '/assets/about/wi-img2.jpg'
-const WI_IMG3         = '/assets/about/wi-img3.jpg'
+const WI_IMG1         = '/assets/about/wi-img1.webp'
+const WI_IMG2         = '/assets/about/wi-img2.webp'
+const WI_IMG3         = '/assets/about/wi-img3.webp'
 
 // ATC photos
 const ATC_LOGO        = '/assets/about/atc-logo.webp'
-const ATC_IMG1        = '/assets/about/atc-img1.jpg'
-const ATC_IMG3        = '/assets/about/atc-img3.jpg'
-const ATC_IMG2        = '/assets/about/atc-img2.jpg'
+const ATC_IMG1        = '/assets/about/atc-img1.webp'
+const ATC_IMG3        = '/assets/about/atc-img3.webp'
+const ATC_IMG2        = '/assets/about/atc-img2.webp'
 
 // Beyond design — hiking
-const HIKE_IMG1       = '/assets/about/hike1.jpg'
-const HIKE_IMG2       = '/assets/about/hike2.jpg'
-const HIKE_IMG3       = '/assets/about/hike3.jpg'
+const HIKE_IMG1       = '/assets/about/hike1.webp'
+const HIKE_IMG2       = '/assets/about/hike2.webp'
+const HIKE_IMG3       = '/assets/about/hike3.webp'
 
 // Beyond design — foodie
-const FOOD_IMG1       = '/assets/about/food1.jpg'
-const FOOD_IMG2       = '/assets/about/food2.jpg'
-const FOOD_IMG3       = '/assets/about/food3.jpg'
+const FOOD_IMG1       = '/assets/about/food1.webp'
+const FOOD_IMG2       = '/assets/about/food2.webp'
+const FOOD_IMG3       = '/assets/about/food3.webp'
 
 // Beyond design — hobbies
-const HOBBY_IMG1      = '/assets/about/hobby1.jpg'
-const HOBBY_IMG2      = '/assets/about/hobby2.jpg'
-const HOBBY_IMG3      = '/assets/about/hobby3.jpg'
+const HOBBY_IMG1      = '/assets/about/hobby1.webp'
+const HOBBY_IMG2      = '/assets/about/hobby2.webp'
+const HOBBY_IMG3      = '/assets/about/hobby3.webp'
 
 // ── Tool bubble data ──────────────────────────────────────────────────────────
 function TweakPhoto({

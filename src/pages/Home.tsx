@@ -18,7 +18,7 @@ const WORK_ITEMS: WorkItem[] = [
     subtitle: 'AI for SaaS Analytics Dashboard',
     meta: '2025 • Internship',
     href: '/sap',
-    preview: '/assets/sap-hover.webm',
+    preview: '/assets/sap-hover.mp4',
     description:
       'Designed AI experiences across multiple CMMS/EAM products.',
     tags: ['B2B SaaS', 'AI Workflows', 'Data Dashboard', 'Commerce UX'],
@@ -28,7 +28,7 @@ const WORK_ITEMS: WorkItem[] = [
     subtitle: 'B2C Car Renting Mobile App',
     meta: '2024 • Internship',
     href: '/viettel-digital',
-    preview: '/assets/vietteldigital-cover1.mov',
+    preview: '/assets/vietteldigital-cover1.mp4',
     description:
       'Designed a 0-1 car-rental experiences for the top 1 fintech app in Vietnam, serving nearly 20M users and 1000+ ecosystem partners.',
     tags: ['0-1 Design', 'Car Booking Flow', 'Payment Flow', 'Fintech Super App'],
@@ -167,6 +167,7 @@ export default function Home() {
                 loop
                 playsInline
                 autoPlay
+                preload="metadata"
               />
             ) : (
               <img src={activeSrc} alt="" className="work-hover-media" />
