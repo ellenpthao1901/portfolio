@@ -2,9 +2,6 @@ import { useEffect, useState, type CSSProperties } from 'react'
 import PhotoShuffle from '../components/PhotoShuffle'
 import ToolBubbles from '../components/ToolBubbles'
 
-// ── Figma image assets ────────────────────────────────────────────────────────
-const IMG_HERO        = '/assets/about/hero.webp'
-
 // Tool icons
 
 // Web Impact photos
@@ -118,7 +115,7 @@ export default function About() {
       <section className="grid grid-cols-2 gap-16 items-start px-[10%] py-20 border-b border-[#252525]">
         <div className="flex justify-center">
           <TweakPhoto
-            src="/assets/me.jpg"
+            src="/assets/me.webp"
             alt="Thao Nguyen"
             className="rounded-[20px] overflow-hidden"
             style={{ width: 360, aspectRatio: '3/4' }}
