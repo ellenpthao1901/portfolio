@@ -2,10 +2,14 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 export default function Nav() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
   const isHome = pathname === '/'
   const navRef = useRef<HTMLElement>(null)
   const [highContrast, setHighContrast] = useState(false)
+
+  const workActive = pathname !== '/about' && !(isHome && hash === '#play')
+  const playActive = isHome && hash === '#play'
+  const aboutActive = pathname === '/about'
 
   useEffect(() => {
     if (pathname !== '/viettel-digital') {
@@ -20,7 +24,8 @@ export default function Nav() {
       const nav = navRef.current
       if (!nav) return
 
-      const sampleY = nav.getBoundingClientRect().top + nav.getBoundingClientRect().height / 2
+      const navRect = nav.getBoundingClientRect()
+      const sampleY = navRect.top + navRect.height / 2
       const brightSections = Array.from(document.querySelectorAll<HTMLElement>('[data-nav-contrast="high"]'))
       const shouldBoostContrast = brightSections.some(section => {
         const rect = section.getBoundingClientRect()
@@ -56,13 +61,21 @@ export default function Nav() {
         ref={navRef}
         className={`site-nav${highContrast ? ' site-nav--high-contrast' : ''}`}
       >
-        {isHome ? (
-          <a href="#work" className="site-nav-link">Work</a>
-        ) : (
-          <Link to="/" className="site-nav-link">Work</Link>
-        )}
-        <a href="#play" className="site-nav-link">Play</a>
-        <Link to="/about" className="site-nav-link">About</Link>
+        <Link
+          to={{ pathname: '/', hash: '#work' }}
+          className={`site-nav-link${workActive ? ' is-active' : ''}`}
+        >
+          Work
+        </Link>
+        <Link
+          to={{ pathname: '/', hash: '#play' }}
+          className={`site-nav-link${playActive ? ' is-active' : ''}`}
+        >
+          Play
+        </Link>
+        <Link to="/about" className={`site-nav-link${aboutActive ? ' is-active' : ''}`}>
+          About
+        </Link>
       </nav>
     </header>
   )

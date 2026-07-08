@@ -5,11 +5,22 @@ import Intro from './Intro'
 import Footer from './Footer'
 
 export default function Layout() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
 
   useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '')
+      requestAnimationFrame(() => {
+        const target = document.getElementById(id)
+        if (target) {
+          target.scrollIntoView({ behavior: 'auto', block: 'start' })
+        }
+      })
+      return
+    }
+
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-  }, [pathname])
+  }, [pathname, hash])
 
   return (
     <div className="min-h-screen flex flex-col">
