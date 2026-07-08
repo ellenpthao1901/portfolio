@@ -166,12 +166,12 @@ const SECONDARY_RESEARCH_STATS = [
 
 const PERSONAS = [
   {
-    src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/ae20d4a0-8b72-4597-9a02-99d8953193f4/Screenshot+2026-04-15+at+4.53.31%E2%80%AFPM.png',
+    src: '/assets/kitsap-persona-maria.webp',
     alt: 'First Kitsap Transit persona',
     caption: 'Maria tries to stay connected to transportation information and work opportunities.',
   },
   {
-    src: 'https://images.squarespace-cdn.com/content/v1/6721561e2010432092388353/508fef44-2fb7-47cd-ab76-57eff02075b2/Screenshot+2026-04-15+at+4.53.40%E2%80%AFPM.png',
+    src: '/assets/kitsap-persona-darnell.webp',
     alt: 'Second Kitsap Transit persona',
     caption: 'Darnell lost phone access due to financial hardship and need clearer guidance to regain reliable communication access.',
   },

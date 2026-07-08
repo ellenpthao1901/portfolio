@@ -92,6 +92,7 @@ const PERSONAS = [
 
 export default function Pods() {
   const persona = useCarousel(PERSONAS.length)
+  const customizationIteration = ITERATION_CASES.find((pair) => pair.id === 'customization')
 
   return (
     <>
@@ -472,7 +473,7 @@ export default function Pods() {
             <div
               key={pair.id}
               className="grid items-center gap-[clamp(32px,4vw,64px)]"
-              style={{ gridTemplateColumns: pair.quotes.length ? 'minmax(300px, 0.9fr) minmax(420px, 1.1fr)' : '1fr' }}
+              style={{ gridTemplateColumns: pair.quotes.length ? 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))' : '1fr' }}
             >
               {pair.quotes.length ? (
                 <div className="pt-3 flex flex-col gap-[clamp(34px,4vw,52px)]">
@@ -506,35 +507,65 @@ export default function Pods() {
               </div>
             </div>
           ))}
+          {customizationIteration ? (
+            <div className="flex flex-col gap-[clamp(44px,7vw,92px)]">
+              <div className="w-full flex justify-center">
+                <article
+                  className="w-full p-7 border rounded-[24px]"
+                  style={{ maxWidth: 780, borderColor: line, background: soft }}
+                >
+                  <p
+                    className="text-[13px] tracking-[0.06em] uppercase mb-[14px] m-0"
+                    style={{ color: ink }}
+                  >
+                    — Feedback 2
+                  </p>
+                  <h3 className="text-[24px] font-bold mb-3" style={{ color: ink }}>
+                    Customization felt too dense
+                  </h3>
+                  <p className="text-base leading-[1.72] m-0" style={{ color: muted }}>
+                    The fine-tuning step introduced too many controls at once, making the experience harder to scan and use quickly.
+                  </p>
+                </article>
+              </div>
+              <div
+                className="grid items-center gap-[clamp(32px,4vw,64px)]"
+                style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))' }}
+              >
+                <div className="pt-3 flex flex-col gap-[clamp(34px,4vw,52px)]">
+                  <p className="text-[clamp(18px,2vw,20px)] leading-[1.45] tracking-[-0.03em] italic m-0 max-w-[560px]" style={{ color: muted }}>
+                    "There are too many settings here. I would need more time to understand what each control changes before I can move forward."
+                  </p>
+                  <p className="text-[clamp(18px,2vw,20px)] leading-[1.45] tracking-[-0.03em] italic m-0 max-w-[560px]" style={{ color: muted }}>
+                    "I like having options, but this screen feels heavy when I just want to create the podcast quickly."
+                  </p>
+                </div>
+                <div className="flex flex-col gap-[clamp(30px,3.5vw,44px)]">
+                  {[
+                    { label: 'Version 1', src: customizationIteration.before.src, alt: customizationIteration.before.alt, active: false },
+                    { label: 'Version 2', src: customizationIteration.after.src, alt: customizationIteration.after.alt, active: true },
+                  ].map((version) => (
+                    <div key={version.label} className="grid items-center gap-6" style={{ gridTemplateColumns: 'clamp(120px, 14vw, 160px) minmax(0, 1fr)' }}>
+                      <div className="flex flex-col items-start gap-4 pt-2">
+                        <div className="flex items-center gap-3">
+                          <span className="text-[clamp(20px,1.8vw,28px)] leading-none tracking-[-0.03em]" style={{ color: muted }}>↪</span>
+                          <span className="text-[clamp(18px,1.8vw,28px)] font-semibold leading-[1.1] tracking-[-0.03em]" style={{ color: muted }}>{version.label}</span>
+                        </div>
+                        <span className="block rounded-full" style={{ width: 30, height: 30, background: version.active ? '#d7b9ff' : '#7b7b7b', position: 'relative' }}>
+                          {version.active ? (
+                            <span style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', color: '#141414', fontSize: 25, fontWeight: 700, lineHeight: 1 }}>✓</span>
+                          ) : null}
+                        </span>
+                      </div>
+                      <img src={version.src} alt={version.alt} className="w-full block rounded-[14px]" style={{ background: '#f7f7f7', boxShadow: '0 8px 28px rgba(0,0,0,0.08)' }} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : null}
         </div>
       </section>
-
-      <div className="w-full flex justify-center py-15" style={{ background: bg }}>
-        <div className="w-full" style={{ maxWidth: 780 }}>
-          {[
-            { label: '— Feedback 2', title: 'Customization felt too dense', body: 'The fine-tuning step introduced too many controls at once, making the experience harder to scan and use quickly.' },
-          ].map(c => (
-            <article
-              key={c.label}
-              className="p-7 border rounded-[24px]"
-              style={{ borderColor: line, background: soft }}
-            >
-              <p
-                className="text-[13px] tracking-[0.06em] uppercase mb-[14px] m-0"
-                style={{ color: ink }}
-              >
-                {c.label}
-              </p>
-              <h3 className="text-[24px] font-bold mb-3" style={{ color: ink }}>
-                {c.title}
-              </h3>
-              <p className="text-base leading-[1.72] m-0" style={{ color: muted }}>
-                {c.body}
-              </p>
-            </article>
-          ))}
-        </div>
-      </div>
 
       {/* Final galleries */}
       {[
