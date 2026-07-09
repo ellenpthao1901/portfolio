@@ -7,6 +7,7 @@ import Layout from './components/Layout'
 import { useVisitorTracking } from './hooks/useVisitorTracking'
 
 const Home = lazy(() => import('./pages/Home'))
+const Play = lazy(() => import('./pages/Play'))
 const About = lazy(() => import('./pages/About'))
 const SAP = lazy(() => import('./pages/case-studies/SAP'))
 const ViettelDigital = lazy(() => import('./pages/case-studies/ViettelDigital'))
@@ -27,6 +28,7 @@ export default function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
+            <Route path="/play" element={<Play />} />
             <Route path="/about" element={<About />} />
             <Route path="/sap" element={<SAP />} />
             <Route path="/viettel-digital" element={<ViettelDigital />} />

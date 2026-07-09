@@ -2,13 +2,12 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 export default function Nav() {
-  const { pathname, hash } = useLocation()
-  const isHome = pathname === '/'
+  const { pathname } = useLocation()
   const navRef = useRef<HTMLElement>(null)
   const [highContrast, setHighContrast] = useState(false)
 
-  const workActive = pathname !== '/about' && !(isHome && hash === '#play')
-  const playActive = isHome && hash === '#play'
+  const workActive = pathname !== '/about' && pathname !== '/play'
+  const playActive = pathname === '/play'
   const aboutActive = pathname === '/about'
 
   useEffect(() => {
@@ -61,16 +60,10 @@ export default function Nav() {
         ref={navRef}
         className={`site-nav${highContrast ? ' site-nav--high-contrast' : ''}`}
       >
-        <Link
-          to={{ pathname: '/', hash: '#work' }}
-          className={`site-nav-link${workActive ? ' is-active' : ''}`}
-        >
+        <Link to="/" className={`site-nav-link${workActive ? ' is-active' : ''}`}>
           Work
         </Link>
-        <Link
-          to={{ pathname: '/', hash: '#play' }}
-          className={`site-nav-link${playActive ? ' is-active' : ''}`}
-        >
+        <Link to="/play" className={`site-nav-link${playActive ? ' is-active' : ''}`}>
           Play
         </Link>
         <Link to="/about" className={`site-nav-link${aboutActive ? ' is-active' : ''}`}>
