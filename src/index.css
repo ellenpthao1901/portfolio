@@ -72,12 +72,42 @@
   inset: 0;
   z-index: 9999;
   background: var(--color-bg);
-  opacity: 1;
   pointer-events: none;
-  transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 1;
+  transition: opacity 360ms ease-in-out;
+  will-change: opacity;
 }
-.page-fade.is-loaded { opacity: 0; }
-.page-fade.is-leaving { opacity: 1; pointer-events: auto; }
+
+.page-fade.is-loaded {
+  opacity: 0;
+}
+
+.page-fade.is-pre-leaving {
+  opacity: 0;
+  pointer-events: auto;
+  transition: none;
+}
+
+.page-fade.is-leaving {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 360ms ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-fade {
+    transition: opacity 160ms ease;
+  }
+
+  .page-fade.is-loaded {
+    opacity: 0;
+  }
+
+  .page-fade.is-pre-leaving,
+  .page-fade.is-leaving {
+    opacity: 1;
+  }
+}
 
 /* Custom cursor */
 .cursor-dot {
