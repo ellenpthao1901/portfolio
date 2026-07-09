@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from 'react'
+
 type PlayItem = {
   title: string
   tools: string
@@ -8,14 +10,31 @@ type PlayItem = {
   }
 }
 
+type PlayImage = {
+  src: string
+  alt: string
+}
+
+type ActivePlayImage =
+  | {
+      mode: 'single'
+      image: PlayImage
+    }
+  | {
+      mode: 'ticket'
+      front: PlayImage
+      back: PlayImage
+      side: 'front' | 'back'
+    }
+
 const PLAY_ITEMS: PlayItem[] = [
   {
     title: 'Creative Design - Invitation to Club Retreat as a type of a ticket ✦',
     tools: 'Adobe Illustrator + Canva',
     variant: 'tickets',
     assets: {
-      primary: '/assets/play/retreat-front.png',
-      secondary: '/assets/play/retreat-back.png',
+      primary: '/assets/play/retreat-front.webp',
+      secondary: '/assets/play/retreat-back.webp',
     },
   },
   {
@@ -23,15 +42,90 @@ const PLAY_ITEMS: PlayItem[] = [
     tools: 'Blender + Adobe Illustrator',
     variant: 'projectube',
     assets: {
-      primary: '/assets/play/projectube-process.png',
-      secondary: '/assets/play/projectube-logo.png',
+      primary: '/assets/play/projectube-process.webp',
+      secondary: '/assets/play/projectube-logo.webp',
     },
   },
 ]
 
 export default function Play() {
+  const [activeImage, setActiveImage] = useState<ActivePlayImage | null>(null)
+  const isTicketFlippingRef = useRef(false)
+  const flipTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const clearFlipLock = () => {
+    isTicketFlippingRef.current = false
+    if (flipTimeoutRef.current) {
+      clearTimeout(flipTimeoutRef.current)
+      flipTimeoutRef.current = null
+    }
+  }
+
+  const openPlayImage = (image: PlayImage, source: string) => {
+    console.log(`${source} clicked`, image.src)
+    clearFlipLock()
+    setActiveImage({ mode: 'single', image })
+  }
+
+  const openTicketImage = (
+    ticket: { front: PlayImage; back: PlayImage },
+    side: 'front' | 'back',
+    source: string,
+  ) => {
+    const image = ticket[side]
+    console.log(`${source} clicked`, image.src)
+    clearFlipLock()
+    setActiveImage({ mode: 'ticket', ...ticket, side })
+  }
+
+  const flipTicketImage = () => {
+    if (isTicketFlippingRef.current) return
+
+    isTicketFlippingRef.current = true
+    setActiveImage((current) => {
+      if (!current || current.mode !== 'ticket') return current
+
+      const nextSide = current.side === 'front' ? 'back' : 'front'
+      console.log(`Expanded ticket flipped to ${nextSide}`, current[nextSide].src)
+      return { ...current, side: nextSide }
+    })
+    flipTimeoutRef.current = setTimeout(() => {
+      isTicketFlippingRef.current = false
+      flipTimeoutRef.current = null
+    }, 760)
+  }
+
+  const handleImageKeyDown = (
+    event: ReactKeyboardEvent,
+    action: () => void,
+  ) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return
+    event.preventDefault()
+    action()
+  }
+
+  const closeActiveImage = () => {
+    clearFlipLock()
+    setActiveImage(null)
+  }
+
+  useEffect(() => {
+    return () => clearFlipLock()
+  }, [])
+
+  useEffect(() => {
+    if (!activeImage) return
+
+    const handleKeyDown = (event: globalThis.KeyboardEvent) => {
+      if (event.key === 'Escape') closeActiveImage()
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [activeImage])
+
   return (
-    <main className="home" aria-label="Thao Nguyen play page">
+    <main className="home play-page" aria-label="Thao Nguyen play page">
       <section className="play-section play-section--page" aria-label="Play projects">
         {PLAY_ITEMS.map((item) => (
           <article key={item.title} className="play-row">
@@ -47,24 +141,85 @@ export default function Play() {
                     <img
                       src={item.assets.primary}
                       alt="Front side of the club retreat invitation ticket"
-                      className="play-ticket"
+                      className="play-ticket play-clickable-image"
+                      role="button"
+                      tabIndex={0}
+                      onClick={() => openTicketImage({
+                        front: {
+                          src: item.assets.primary,
+                          alt: 'Front side of the club retreat invitation ticket',
+                        },
+                        back: {
+                          src: item.assets.secondary,
+                          alt: 'Back side of the club retreat invitation ticket',
+                        },
+                      }, 'front', 'Play ticket front image')}
+                      onKeyDown={(event) => handleImageKeyDown(event, () => openTicketImage({
+                        front: {
+                          src: item.assets.primary,
+                          alt: 'Front side of the club retreat invitation ticket',
+                        },
+                        back: {
+                          src: item.assets.secondary,
+                          alt: 'Back side of the club retreat invitation ticket',
+                        },
+                      }, 'front', 'Play ticket front image'))}
                     />
                     <img
                       src={item.assets.secondary}
                       alt="Back side of the club retreat invitation ticket"
-                      className="play-ticket"
+                      className="play-ticket play-clickable-image"
+                      role="button"
+                      tabIndex={0}
+                      onClick={() => openTicketImage({
+                        front: {
+                          src: item.assets.primary,
+                          alt: 'Front side of the club retreat invitation ticket',
+                        },
+                        back: {
+                          src: item.assets.secondary,
+                          alt: 'Back side of the club retreat invitation ticket',
+                        },
+                      }, 'back', 'Play ticket back image')}
+                      onKeyDown={(event) => handleImageKeyDown(event, () => openTicketImage({
+                        front: {
+                          src: item.assets.primary,
+                          alt: 'Front side of the club retreat invitation ticket',
+                        },
+                        back: {
+                          src: item.assets.secondary,
+                          alt: 'Back side of the club retreat invitation ticket',
+                        },
+                      }, 'back', 'Play ticket back image'))}
                     />
                   </div>
-                  <button type="button" className="play-ticket-cta" aria-label="Click me">
-                    <span className="play-ticket-cta-pointer-wrap" aria-hidden="true">
-                      <img
-                        src="/assets/play/click-me-ticket-button.png"
-                        alt=""
-                        className="play-ticket-cta-pointer"
-                      />
-                    </span>
-                    <span className="play-ticket-cta-pill">Click me!</span>
-                  </button>
+                  <img
+                    src="/assets/play/clickme.webp"
+                    alt="Click me"
+                    className="play-ticket-cta-image"
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => openTicketImage({
+                      front: {
+                        src: item.assets.primary,
+                        alt: 'Front side of the club retreat invitation ticket',
+                      },
+                      back: {
+                        src: item.assets.secondary,
+                        alt: 'Back side of the club retreat invitation ticket',
+                      },
+                    }, 'front', 'Play ticket CTA image')}
+                    onKeyDown={(event) => handleImageKeyDown(event, () => openTicketImage({
+                      front: {
+                        src: item.assets.primary,
+                        alt: 'Front side of the club retreat invitation ticket',
+                      },
+                      back: {
+                        src: item.assets.secondary,
+                        alt: 'Back side of the club retreat invitation ticket',
+                      },
+                    }, 'front', 'Play ticket CTA image'))}
+                  />
                 </div>
               ) : (
                 <div className="play-projectube-showcase">
@@ -72,14 +227,34 @@ export default function Play() {
                     <img
                       src={item.assets.primary}
                       alt="Projectube logo process shown inside Blender"
-                      className="play-projectube-process"
+                      className="play-projectube-process play-clickable-image"
+                      role="button"
+                      tabIndex={0}
+                      onClick={() => openPlayImage({
+                        src: item.assets.primary,
+                        alt: 'Projectube logo process shown inside Blender',
+                      }, 'Projectube process image')}
+                      onKeyDown={(event) => handleImageKeyDown(event, () => openPlayImage({
+                        src: item.assets.primary,
+                        alt: 'Projectube logo process shown inside Blender',
+                      }, 'Projectube process image'))}
                     />
                   </div>
                   <div className="play-projectube-logo-wrap">
                     <img
                       src={item.assets.secondary}
                       alt="Final 3D Projectube logo"
-                      className="play-projectube-logo"
+                      className="play-projectube-logo play-clickable-image"
+                      role="button"
+                      tabIndex={0}
+                      onClick={() => openPlayImage({
+                        src: item.assets.secondary,
+                        alt: 'Final 3D Projectube logo',
+                      }, 'Projectube logo image')}
+                      onKeyDown={(event) => handleImageKeyDown(event, () => openPlayImage({
+                        src: item.assets.secondary,
+                        alt: 'Final 3D Projectube logo',
+                      }, 'Projectube logo image'))}
                     />
                   </div>
                 </div>
@@ -88,6 +263,50 @@ export default function Play() {
           </article>
         ))}
       </section>
+      {activeImage ? (
+        <div
+          className="play-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Expanded play image"
+          onClick={closeActiveImage}
+        >
+          {activeImage.mode === 'ticket' ? (
+            <button
+              type="button"
+              className={`play-lightbox-flip-card${activeImage.side === 'back' ? ' is-back' : ''}`}
+              aria-label={`Flip ticket to ${activeImage.side === 'front' ? 'back' : 'front'} side`}
+              onClick={(event) => {
+                event.stopPropagation()
+                flipTicketImage()
+              }}
+            >
+              <span className="play-lightbox-flip-inner">
+                <img
+                  src={activeImage.front.src}
+                  alt={activeImage.front.alt}
+                  className="play-lightbox-face play-lightbox-face--front"
+                />
+                <img
+                  src={activeImage.back.src}
+                  alt={activeImage.back.alt}
+                  className="play-lightbox-face play-lightbox-face--back"
+                />
+              </span>
+            </button>
+          ) : (
+            <img
+              src={activeImage.image.src}
+              alt={activeImage.image.alt}
+              className="play-lightbox-image"
+              onClick={(event) => {
+                event.stopPropagation()
+                console.log('Expanded play image clicked', activeImage.image.src)
+              }}
+            />
+          )}
+        </div>
+      ) : null}
     </main>
   )
 }
