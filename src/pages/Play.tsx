@@ -55,8 +55,15 @@ export default function Play() {
                       className="play-ticket"
                     />
                   </div>
-                  <button type="button" className="play-glass-button">
-                    Click me!
+                  <button type="button" className="play-ticket-cta" aria-label="Click me">
+                    <span className="play-ticket-cta-pointer-wrap" aria-hidden="true">
+                      <img
+                        src="/assets/play/click-me-ticket-button.png"
+                        alt=""
+                        className="play-ticket-cta-pointer"
+                      />
+                    </span>
+                    <span className="play-ticket-cta-pill">Click me!</span>
                   </button>
                 </div>
               ) : (
