@@ -15,17 +15,12 @@ type PlayImage = {
   alt: string
 }
 
-type ActivePlayImage =
-  | {
-      mode: 'single'
-      image: PlayImage
-    }
-  | {
-      mode: 'ticket'
-      front: PlayImage
-      back: PlayImage
-      side: 'front' | 'back'
-    }
+type ActivePlayImage = {
+  mode: 'ticket'
+  front: PlayImage
+  back: PlayImage
+  side: 'front' | 'back'
+}
 
 const PLAY_ITEMS: PlayItem[] = [
   {
@@ -59,12 +54,6 @@ export default function Play() {
       clearTimeout(flipTimeoutRef.current)
       flipTimeoutRef.current = null
     }
-  }
-
-  const openPlayImage = (image: PlayImage, source: string) => {
-    console.log(`${source} clicked`, image.src)
-    clearFlipLock()
-    setActiveImage({ mode: 'single', image })
   }
 
   const openTicketImage = (
@@ -227,34 +216,14 @@ export default function Play() {
                     <img
                       src={item.assets.primary}
                       alt="Projectube logo process shown inside Blender"
-                      className="play-projectube-process play-clickable-image"
-                      role="button"
-                      tabIndex={0}
-                      onClick={() => openPlayImage({
-                        src: item.assets.primary,
-                        alt: 'Projectube logo process shown inside Blender',
-                      }, 'Projectube process image')}
-                      onKeyDown={(event) => handleImageKeyDown(event, () => openPlayImage({
-                        src: item.assets.primary,
-                        alt: 'Projectube logo process shown inside Blender',
-                      }, 'Projectube process image'))}
+                      className="play-projectube-process"
                     />
                   </div>
                   <div className="play-projectube-logo-wrap">
                     <img
                       src={item.assets.secondary}
                       alt="Final 3D Projectube logo"
-                      className="play-projectube-logo play-clickable-image"
-                      role="button"
-                      tabIndex={0}
-                      onClick={() => openPlayImage({
-                        src: item.assets.secondary,
-                        alt: 'Final 3D Projectube logo',
-                      }, 'Projectube logo image')}
-                      onKeyDown={(event) => handleImageKeyDown(event, () => openPlayImage({
-                        src: item.assets.secondary,
-                        alt: 'Final 3D Projectube logo',
-                      }, 'Projectube logo image'))}
+                      className="play-projectube-logo"
                     />
                   </div>
                 </div>
@@ -271,40 +240,28 @@ export default function Play() {
           aria-label="Expanded play image"
           onClick={closeActiveImage}
         >
-          {activeImage.mode === 'ticket' ? (
-            <button
-              type="button"
-              className={`play-lightbox-flip-card${activeImage.side === 'back' ? ' is-back' : ''}`}
-              aria-label={`Flip ticket to ${activeImage.side === 'front' ? 'back' : 'front'} side`}
-              onClick={(event) => {
-                event.stopPropagation()
-                flipTicketImage()
-              }}
-            >
-              <span className="play-lightbox-flip-inner">
-                <img
-                  src={activeImage.front.src}
-                  alt={activeImage.front.alt}
-                  className="play-lightbox-face play-lightbox-face--front"
-                />
-                <img
-                  src={activeImage.back.src}
-                  alt={activeImage.back.alt}
-                  className="play-lightbox-face play-lightbox-face--back"
-                />
-              </span>
-            </button>
-          ) : (
-            <img
-              src={activeImage.image.src}
-              alt={activeImage.image.alt}
-              className="play-lightbox-image"
-              onClick={(event) => {
-                event.stopPropagation()
-                console.log('Expanded play image clicked', activeImage.image.src)
-              }}
-            />
-          )}
+          <button
+            type="button"
+            className={`play-lightbox-flip-card${activeImage.side === 'back' ? ' is-back' : ''}`}
+            aria-label={`Flip ticket to ${activeImage.side === 'front' ? 'back' : 'front'} side`}
+            onClick={(event) => {
+              event.stopPropagation()
+              flipTicketImage()
+            }}
+          >
+            <span className="play-lightbox-flip-inner">
+              <img
+                src={activeImage.front.src}
+                alt={activeImage.front.alt}
+                className="play-lightbox-face play-lightbox-face--front"
+              />
+              <img
+                src={activeImage.back.src}
+                alt={activeImage.back.alt}
+                className="play-lightbox-face play-lightbox-face--back"
+              />
+            </span>
+          </button>
         </div>
       ) : null}
     </main>

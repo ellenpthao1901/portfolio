@@ -827,7 +827,7 @@ body.site-loader-revealing #root > :not(.site-loader):not(.cursor-dot):not(.page
 .play-ticket-cta-image {
   position: absolute;
   left: clamp(16%, 21%, 26%);
-  bottom: clamp(4px, 2vw, 30px);
+  bottom: 8px;
   width: clamp(150px, 14vw, 230px);
   height: auto;
   display: block;
