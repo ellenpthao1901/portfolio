@@ -787,30 +787,75 @@ body.site-loader-revealing #root > :not(.site-loader):not(.cursor-dot):not(.page
   justify-content: flex-end;
 }
 
-.play-ticket-stack {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: clamp(20px, 3vw, 36px);
+.play-ticket-area {
   width: 100%;
-  min-height: clamp(220px, 26vw, 320px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.play-ticket-stack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: clamp(18px, 2.4vw, 28px);
+  width: 100%;
 }
 
 .play-ticket {
-  width: clamp(300px, 31vw, 520px);
-  max-width: 100%;
+  width: 100%;
+  max-width: none;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 24px 46px rgba(0, 0, 0, 0.36));
 }
 
-.play-ticket--front {
-  transform: translateY(-12px);
+.play-glass-button {
+  min-width: 142px;
+  min-height: 46px;
+  padding: 0 24px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.34);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.22),
+    inset 0 -1px 0 rgba(255,255,255,0.08),
+    0 18px 42px rgba(0,0,0,0.34);
+  backdrop-filter: blur(32px) saturate(150%);
+  -webkit-backdrop-filter: blur(32px) saturate(150%);
+  color: #f3f3f3;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.28px;
+  cursor: pointer;
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 180ms ease,
+    box-shadow 220ms ease,
+    color 180ms ease,
+    background 220ms ease;
 }
 
-.play-ticket--back {
-  transform: translateY(24px) translateX(-18px);
+.play-glass-button:hover {
+  transform: translateY(-1px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.34);
+  background: rgba(16, 16, 16, 0.42);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.26),
+    inset 0 -1px 0 rgba(255,255,255,0.1),
+    0 24px 48px rgba(0,0,0,0.38);
+}
+
+.play-glass-button:focus-visible {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.42);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.26),
+    inset 0 -1px 0 rgba(255,255,255,0.1),
+    0 0 0 3px rgba(255, 255, 255, 0.12),
+    0 24px 48px rgba(0,0,0,0.38);
 }
 
 .play-projectube-showcase {
@@ -852,15 +897,12 @@ body.site-loader-revealing #root > :not(.site-loader):not(.cursor-dot):not(.page
     justify-content: flex-start;
   }
 
-  .play-ticket-stack {
-    justify-content: flex-start;
-    min-height: auto;
-    flex-wrap: wrap;
+  .play-ticket-area {
+    align-items: flex-start;
   }
 
-  .play-ticket--front,
-  .play-ticket--back {
-    transform: none;
+  .play-ticket-stack {
+    grid-template-columns: 1fr;
   }
 
   .play-projectube-showcase {

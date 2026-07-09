@@ -42,17 +42,22 @@ export default function Play() {
 
             <div className={`play-visual play-visual--${item.variant}`}>
               {item.variant === 'tickets' ? (
-                <div className="play-ticket-stack">
-                  <img
-                    src={item.assets.primary}
-                    alt="Front side of the club retreat invitation ticket"
-                    className="play-ticket play-ticket--front"
-                  />
-                  <img
-                    src={item.assets.secondary}
-                    alt="Back side of the club retreat invitation ticket"
-                    className="play-ticket play-ticket--back"
-                  />
+                <div className="play-ticket-area">
+                  <div className="play-ticket-stack">
+                    <img
+                      src={item.assets.primary}
+                      alt="Front side of the club retreat invitation ticket"
+                      className="play-ticket"
+                    />
+                    <img
+                      src={item.assets.secondary}
+                      alt="Back side of the club retreat invitation ticket"
+                      className="play-ticket"
+                    />
+                  </div>
+                  <button type="button" className="play-glass-button">
+                    Click me!
+                  </button>
                 </div>
               ) : (
                 <div className="play-projectube-showcase">
